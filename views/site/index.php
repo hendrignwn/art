@@ -1,53 +1,45 @@
 <?php
 
-/* @var $this yii\web\View */
+use app\models\Config;
+use app\widgets\AboutWidget;
+use app\widgets\BannerWidget;
+use app\widgets\BlogUpdatedWidget;
+use app\widgets\ContactUsWidget;
+use app\widgets\CounterWidget;
+use app\widgets\FooterWidget;
+use app\widgets\NavbarWidget;
+use app\widgets\PortfolioWidget;
+use app\widgets\ServiceWidget;
+use app\widgets\SubscribeFormWidget;
+use app\widgets\TeamWidget;
+use yii\web\View;
 
-$this->title = 'My Yii Application';
+/* @var $this View */
+
+$this->title = Config::getAppMotto();
 ?>
-<div class="site-index">
+<div class="culmn lli_home">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+    <?= NavbarWidget::widget() ?>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+    <?= BannerWidget::widget() ?>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
+    <?= AboutWidget::widget() ?>
 
-    <div class="body-content">
+    <?= CounterWidget::widget() ?>
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+    <?= PortfolioWidget::widget() ?>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+    <?= ServiceWidget::widget() ?>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+    <?= TeamWidget::widget() ?>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+    <?= BlogUpdatedWidget::widget() ?>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+    <?= ContactUsWidget::widget() ?>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+    <?= SubscribeFormWidget::widget() ?>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
+    <?= FooterWidget::widget() ?>
 
-    </div>
 </div>

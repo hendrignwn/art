@@ -1,9 +1,10 @@
 <?php
 
 $params = require(__DIR__ . '/params.php');
+$urlManager = require(__DIR__ . '/url-manager.php');
 
 $config = [
-    'id' => 'basic',
+    'id' => 'art',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
@@ -38,14 +39,15 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        /*
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
+        'urlManager' => require(__DIR__ . '/url-manager.php'),
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+					'@app/views' => '@app/themes/v1/views',
+				],
+				'baseUrl' => '@app/themes/v1',
             ],
         ],
-        */
     ],
     'params' => $params,
 ];

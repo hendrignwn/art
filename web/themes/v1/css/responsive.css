@@ -1,0 +1,975 @@
+
+
+/*
+Author: Bootstrapthemes
+Author URI: http://www.xpeedstudio.com
+*/
+
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+    body {
+        font-size: 1rem;
+    }
+
+    nav.navbar.bootsnav.lli_menu ul.nav > li.active:before{
+        top:6%;
+    }
+    nav.navbar.bootsnav.lli_menu ul.nav > li.active:after{
+        top:6%;
+    }
+
+    nav.navbar.bootsnav ul.nav > li > a {
+        padding: 5px 15px;
+        font-weight: 600;
+    }
+    .navbar-nav>li>a {
+        line-height: 50px;
+    }
+
+    .home1_slider .home_slider_text h1{
+        font-size: 3.5rem;
+    }
+    .yam_main_quality_area .slide .carousel-indicators{
+        top:0;
+    }
+    .main-nav ul.nav > li > a {
+        padding: 0px 10px;
+    }
+    .home1_menu .navbar-brand {
+        width: 200px;
+        left: 0%;
+    }
+    .home1_menu .call_us_area ul li {
+        padding-left: 2%;
+    }
+    .home1_menu .call_us_area ul li span.icon {
+        margin-right: 10px;
+    }
+    .home1_menu .head_top_social ul.helpdesk li a {
+        padding: .9rem 0rem;
+    }
+    .home2_slider .home_slider_text h1{
+        font-size:4rem;
+    }
+
+
+
+    .call_us_area:after {
+        left: 15.95%;
+    }
+    .thu_main_feature_area .thu_main_feature_content .thu_featuure_content_item {
+        min-height: 310px;
+    }
+    .main_subcribs_content_area .subcribs_content_item_left h2{
+        font-size:2.275rem;
+    }
+    .counter{
+        height: auto;
+    }
+
+    /*LLi Home page*/
+    .lli_about_item_right .nav-tabs>li>a {
+        padding: 1.5rem 3rem;
+    }
+    .lli_testimonial_area .slide{
+        padding: 70px 10px 71px 10px;
+    }
+
+    .lli_testimonial_area .slide .carousel-control{
+        top:92.7%;
+    }
+    .lli_testimonial_area .slide .carousel-control.left{
+        left:74%;
+    }
+    .lli_menu .navbar-nav {
+        margin: 8px;
+    }
+
+    li.lli_effect a::before{
+        top:12%;
+    }
+    li.lli_effect a::after{
+        top:12%;
+    }
+    nav.navbar.bootsnav.yam_menu ul.nav > li > a{
+        padding: 0px 20px;
+    }
+
+    .yam_main_mission .yam_mission_item h2{
+        font-size:2rem;
+    }
+    
+    .yam_main_mission .yam_mission_item {
+        min-height: 427px;
+    }
+    
+    /*lli Team*/
+    .lli_main_team_area .single_team .single_team_overlay {
+        bottom: 22%;
+        height: 50%;
+    }
+
+    nav.navbar.bootsnav.lli_menu ul.nav > li > a {
+        color: #111f28;
+        font-size: 14px;
+        padding: 12px 10px;
+    }
+
+
+    /*Yam work*/
+    .yam_work_content_area .port_overfolio .s_team_overlay_border{
+        padding-top:4%;
+    }
+
+    /*Yam Quality*/
+
+    .yam_quality_content_area .yam_quality_left_text {
+        padding: 50px 20px;
+    }
+    .yam_quality_content_area .yam_quality_tinny_content_area {
+        padding: 35px 45px;
+        margin-top: 25px;
+    }
+
+
+    /*Yam Client test section*/ 
+    .main_yam_client_test_area .slick-arrow.nextprevleft {
+        margin-right: 4.15%;
+    }
+
+
+
+    .thu_main_weidget .single_weidget.s_w_contact_us .s_w_contact_us_icon {
+        margin-left: 30%;
+    }
+    .sidebar_contactus .sidebar_contactus_text {
+        left:119%;
+    }
+    .single_sidebar .sidebare_projects_post {
+        margin-left: -2%;
+    }
+    .single_sidebar .sidebare_projects_post .sidebare_project_img {
+        margin-left: 2%;
+    }
+    .lli_main_about_content_area .lli_about_item_right .nav-tabs>li>a{
+        padding: 1rem 3.2rem;
+    }
+    .thu_f_btn_area {
+        left: 71.5%;
+    }
+    .thu_main_weidget .single_weidget.s_w_contact_us .s_w_contact_us_icon span.icon{
+        font-size:1.125rem;
+    }
+
+    .lli_main_counter_area .lli_counter_item p {
+        font-size: 1.129rem;
+    }
+
+    .home1_main_mix_menu.main_mix_menu ul li,
+    .lli_main_work_menu.main_mix_menu ul li,
+    .yam_main_work_menu.main_mix_menu ul li{
+        font-size:1rem;
+        width:18%;
+    }
+
+}
+
+
+
+/* Portrait tablets and small desktops */
+@media (max-width: 991px) {
+    
+    .main_about_banner .breadcrumb{
+        width:25%;
+    }
+    .yam_menu .attr-nav > ul > li > a i{
+        display: none;
+    }
+    nav.navbar.bootsnav.yam_menu ul.nav {
+        background-color: #fff;
+        padding-left: 0;
+    }
+    .yam_menu .attr-nav > ul > li > a span.icon{
+        line-height: 2rem;
+    }
+
+    .yam_menu .attr-nav {
+        right: 15px;
+    }
+    nav.yam_menu .menu_border_bottom:before{
+        bottom:-80px;
+    }
+    .yam_main_quality_area .slide .carousel-indicators {
+        top: -5%;
+    }
+
+    .lli_main_about_content_area .lli_about_item_right .nav-tabs>li>a{
+        padding: 1.5rem 3.1rem;
+    }
+    .about_banner {
+        margin-top: 80px;
+    }
+
+    .thu_main_weidget .single_weidget.s_w_contact_us .s_w_contact_us_icon {
+        margin-left: 0%;
+    }
+    .home1_menu .attr-nav{
+        width: 0px;
+        margin-right: 0px;
+        top: -3.8rem;
+    }
+    .home1_menu .attr-nav form{
+        display: none;
+    }
+
+    nav.navbar.home1_menu.bootsnav .navbar-header {
+        background: #fff;
+    }
+    .home1_menu.navbar>.container .navbar-brand {
+        top: 5px;
+    }
+
+    .home1_menu .navbar-brand {
+        padding: 2px 15px;
+        width: 190px;
+        position: relative;
+        top: 0px;
+        left: 0%;
+    }
+
+    nav.small.home1_menu .head_top_social_area {
+        margin-top:-45px
+    }
+    nav.small.home1_menu .nav-top {
+        margin-top:-110px
+    }
+    .home1_menu .head_top_social_area {
+        display: none;
+    }
+    .home1_menu .nav-top {
+        display: none;
+    }
+    nav.small.home1_menu .main-nav{
+        margin-top:6.6%;
+    }
+    nav.small.home1_menu ul.nav {
+        padding-left: 35%;
+    }
+    nav.small.home1_menu .navbar-toggle {
+        margin-top: 0.5%;
+    }
+    nav {
+        height: 80px;
+        border-bottom: 0px solid transparent !important;
+    }
+    .home1_menu .navbar-toggle i{
+        color:#000;
+    }
+    .home1_menu .main-nav-border{
+        display: none;
+    }
+    nav.navbar.home1_menu.bootsnav.navbar-fixed {
+        height: 80px;
+    }
+    nav.navbar.home1_menu.bootsnav.navbar-fixed.small {
+        height: 60px;
+    }
+    .home1_menu.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+        background-color: transparent;
+    }
+    .home1_main_menu_bg {
+        background: transparent;
+    }
+    .home.home3banner, .home.home1banner {
+        margin-top: 80px;
+    }
+    /* End off nav menu home one */
+
+    .main-nav{
+        height: auto;
+    }
+
+
+    .home1_main_mix_menu.main_mix_menu {
+        margin-top: -72px;
+    }
+
+    .home1_main_mix_menu.main_mix_menu ul li,
+    .lli_main_work_menu.main_mix_menu ul li,
+    .yam_main_work_menu.main_mix_menu ul li{
+        width: 18%;
+        font-size: 0.875rem;
+    }
+
+
+
+    .home1_slider .home_slider_text h1 {
+        font-size: 3rem;
+    }
+    .home1_slider .home_slider_text p {
+        width: 100%;
+    }
+
+
+    .dividehr{
+        display: none;
+    }
+    .dividevr{
+        display: none;
+    }
+    .thu_main_feature_area .thu_main_feature_content .thu_featuure_content_item {
+        min-height: 330px;
+    }
+
+
+    .thu_clientsfeedback_content_right_text{
+        margin-top:30%;
+    }
+    .thu_clientsfeedback_content_area .col-md-7.no-padding {
+        padding-left:15px; 
+        padding-right:15px; 
+    }
+    .main_subcribs_content_area .subcribs_content_item_left{
+        text-align: center;
+    }
+    .main_subcribs_content_area .subcribs_content_item_right{
+        margin-top:8%;
+    }
+    .main_footer{
+        text-align: center;
+    }
+    .main_footer .copyright_menu{
+        text-align: center;
+        margin-top:10px;
+    }
+
+
+    /*LLi Home page*/
+    .home2_slider .home_slider_text {
+        width: 75%;
+    }
+    .home2_slider .carousel-inner .item img {
+        height: 650px;
+    }
+    .home2_slider .home_slider_text h1 {
+        font-size: 3.325rem;
+    }
+    .lli_menu.scroll_menu{
+        margin-top: -70px;
+    }
+    nav.navbar.bootsnav.lli_menu.navbar-fixed{
+        height: 160px;
+    }
+    .lli_menu .head_top_social_area {
+        height: 70px;
+    }
+    .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+        background-color: transparent;
+    }
+    nav.navbar.bootsnav .navbar-toggle.lli {
+        margin-top: 25px;
+    }
+    .lli_menu .top_socail_icon_area {
+        margin-top: 10px;
+    }
+
+    .lli_about_item_right .nav-tabs>li>a {
+        padding: 1.5rem 3.27rem;
+    }  
+    .lli_attr_nav{
+        top:-9.3%;
+    }
+
+    .lli_main_counter_area .lli_counter_item{
+        margin-top:40px;
+    }
+
+    /*LLi work area*/
+
+
+    /*LLi service area*/
+    .main_lli_service_content_area .lli_service_content_head_title .service_head_left_irght p{
+        color:#1a1a1a;
+        margin-left: 0px;
+    }
+    .main_lli_service_content .col-md-4.right-no-padding{
+        padding-right:15px !important;
+    }
+    .main_lli_service_content .col-md-8.left-no-padding{
+        padding-left:15px !important;
+    }
+
+    /*testimonial*/
+
+    .lli_testimonial_area .slide .item_test_content .item_test_img i{
+        right: 40%;
+    } 
+    .lli_main_pricing_area .lli_pricing_content .lli_pricing_item {
+        margin-bottom: 20px;
+    }
+    /*lli Team*/
+    .lli_main_team_area .single_team .single_team_overlay {
+        bottom: 13%;
+    }
+
+    /*yam banner*/
+
+    .yam_banner_area .yam_banner_text h1{
+        font-size:3rem;
+        line-height: 4rem;
+    }
+
+    /*Yam Nav menu*/
+    nav.navbar.bootsnav.yam_menu .navbar-toggle{
+        top:15px;
+    }
+
+    /*Yam work*/
+
+    .yam_work_content_area .hover_middle_text{
+        margin-top:10%;
+    }
+
+
+    /*Yam Quality*/
+
+    .yam_quality_content_area .yam_quality_tinny_content_area {
+        border-left-color: #0099ff;
+        margin-left: 0px;
+    }
+    .yam_quality_content_area .yam_quality_left_img {
+        height: 400px;
+    }
+    .yam_quality_content_area .yam_quality_left_img img{
+        height: 400px;
+    }
+
+    .yam_service_content_right .yam_best_head{
+        text-align: center;
+    }
+
+    .yam_main_team_area .single_team .single_team_overlay{
+        bottom:14%;
+    }
+
+
+    /*Yam Client test section*/ 
+    .main_yam_client_test_area .slick-arrow.nextprevleft {
+        margin-right: 5.4%;
+    }
+
+
+
+
+    .sidebar_contactus {
+        margin-top: 60px;
+    }
+    .sidebar_contactus .sidebar_contactus_text {
+        top:38%;
+        left:135%;
+    }
+
+
+    /*team grid page*/
+    .single_team_join {
+        background: #111f28;
+        padding: 8rem 1rem;
+    }
+
+
+    /*404 Error*/
+    .main_error_area .error_text h1{
+        font-size:18rem;
+    }
+    .main_error_area .error_text h3{
+        top:40%;
+    }
+
+    .thu_main_blog_area .thu_blog_content_area .thu_blog_items{
+        margin-bottom:40px;
+    }
+    .yam_main_blog_area .yam_blog_content_area .yam_blog_items{
+        margin-bottom: 40px;
+    }
+    .thu_main_weidget .single_weidget {
+        min-height: 326px;
+    }
+    .yam_main_client_logo_area .yam_client_item_img{
+        margin: 20px 0px;
+    }
+    .lli_main_client_logo_area .lli_client_item_img{
+        margin:20px 0px;
+    }
+    .head_title h2{
+        font-size:2.5rem;
+    }
+
+    .thu_main_feature_area .thu_main_feature_content .thu_featuure_content_item {
+        margin-top: 40px;
+    }
+    .thu_f_border_hover{
+        left:48%;
+    }
+    .thu_f_btn_area{
+        left:60%;
+    }
+    .content_border{
+        display: none;
+    }
+
+
+    .thu_service_content_area .service-img{
+        text-align: center;
+    }
+
+}
+
+
+
+/* Landscape phones and portrait tablets */
+@media  (max-width: 768px) {
+    /*    html {
+            font-size: 80%;
+        }*/
+    p{
+        line-height: 2.2rem;
+    }
+    button.navbar-toggle i.fa {
+        color:#333;
+    }
+
+    .navbar-toggle {
+        margin-top: 3%;
+    }
+    .head_title h2 {
+        font-size: 2rem;
+    }
+
+    .main-nav-border{
+        display: none;
+    }
+    .main-nav ul.nav > li > a {
+        height: 45px;
+        line-height: 45px;
+    }
+
+    .head_top_social_area {
+        display: none;
+    }
+    .main-nav form{
+        display: none;
+    }
+    .nav-top {
+        display: none;
+    }
+
+
+    .home1_slider .home_slider_text h1 {
+        font-size: 1.89rem;
+        line-height: 3rem;
+    }
+
+    .home1_slider .carousel-inner .item img{
+        height: 420px;
+    }
+    .slide_style_3 {
+        top: 10%;
+    }
+    .home1_slider .home_slider_text p{
+        line-height: 1.5rem;
+    }
+    .home1_slider .home_slider_text p.margin-top-40{
+        margin-top:10px;
+    }
+    .home1_slider .home_slider_text a.margin-top-40{
+        margin-top:10px;
+    }
+
+    .home1_slider .carousel-control.left {
+        top: 40%;
+    }
+    .home1_slider .carousel-control.right {
+        top: 40%;
+    }
+
+    #xsslider {
+        min-height: 450px; 
+    }
+
+
+    .home2_slider .home_slider_text h1 {
+        font-size: 2rem;
+        line-height: 3rem;
+    }
+    .home2_slider .home_slider_text p {
+        line-height: 1.6rem;
+    }
+
+    .home2_slider .carousel-inner .item img {
+        height: 450px;
+    }
+    .home2_slider .slide_style_3 {
+        top: 30%;
+    }
+
+
+    .thu_f_border_hover {
+        left: 48%;
+    }
+
+
+    .home1_main_mix_menu.main_mix_menu ul li,
+    .lli_main_work_menu.main_mix_menu ul li,
+    .yam_main_work_menu.main_mix_menu ul li {
+        width: 50%;
+        display: block;
+        margin: 0 auto;
+        padding: 0.8rem 0rem;
+    }
+
+    .home1_main_mix_menu.main_mix_menu ul li:before,
+    .lli_main_work_menu.main_mix_menu ul li:before,
+    .yam_main_work_menu.main_mix_menu ul li:before{
+        display: none;
+    }
+
+
+
+
+    /*LLi Home page*/
+    .lli_menu.scroll_menu{
+        margin-top: -90px;
+    }
+    nav.navbar.bootsnav.lli_menu.navbar-fixed{
+        height: 190px;
+    }
+    .lli_menu .head_top_social_area {
+        display: inline-block;
+        text-align: center;
+        height: 90px;
+    }
+    .lli_menu .top_socail_icon_area{
+        text-align: center;
+    }
+    .lli_about_item_right .nav-tabs>li>a {
+        padding: 1.5rem 3.27rem;
+    } 
+
+    .lli_about_item_right .nav-tabs>li {
+        float: left;
+        margin-bottom: -1px;
+        width: 100%;
+        text-align: center;
+    }
+    .lli_attr_nav{
+        display: none;
+    }
+
+
+    /*LLI work*/
+
+
+    /*LLI service*/
+    .main_lli_service_content_area .lli_service_left_menu .nav-tabs>li>a{
+        padding: 1rem;
+    }
+    .main_lli_service_content_area .lli_service_right_text .tabe_content_list ul li {
+        line-height: 2rem;
+    }
+    .main_lli_service_content_area .lli_service_right_text {
+        padding: 30px;
+    }
+    /*lli Team*/
+    .lli_main_team_area .single_team .single_team_overlay {
+        bottom: 7%;
+    }
+    /*lli client logo*/
+    .lli_main_client_logo_area .lli_client_item_img{
+        margin-top:20px;
+        overflow: hidden;
+        display: inline-block;
+    }
+    /*yam banner*/
+    .yam_banner_area .yam_banner_text h1{
+        font-size:2rem;
+        line-height: 2.5rem;
+    }
+
+
+
+    .yam_main_quality_area .slide .carousel-indicators {
+        top: -5%;
+        left: 90%;
+    }
+    .yam_main_team_area .single_team .single_team_overlay {
+        bottom: 8%;
+    }
+    /*yam work*/
+
+
+    .yam_work_content_area .hover_middle_text {
+        margin-top: 0%;
+    }
+    .yam_work_content_area .port_overfolio .s_team_overlay_border{
+        padding-top:5%;
+    }
+    /*Yam Client test section*/
+    .main_yam_client_test_area .slick-arrow.nextprevleft {
+        margin-right: 15%;
+    }
+    .main_yam_client_test_area .slick-arrow.nextprevright  {
+        margin-right: 6%;
+    }
+
+    /*Yam client logo*/
+    .yam_main_client_logo_area .yam_client_item_img{
+        margin-top:20px;
+    }
+
+
+    .scrollup{
+        left:47.5%;
+        top:-20%;
+    }
+    .s_details_features_img img{
+        margin-bottom: 20px;
+    }
+    .details_features_accordion h6 + div.open {
+        height: auto !important;
+    }
+
+
+    /*faq page*/
+    .faq_main_content h6 + div.open {
+        height: auto;
+    }
+
+    /*404 Error*/
+    .main_error_area .error_text h1{
+        font-size:19rem;
+    }
+    .main_error_area .error_text h3 {
+        top: 85%;
+    }
+
+
+    /*comming soon page*/
+    .comming_soon_date_time ul li {
+        width: 40%;
+    }
+
+    .thu_f_btn_area {
+        left: 65%;
+    }
+    .home2_slider .home_slider_text {
+        width: 90%;
+    }
+    .yam_quality_content_area .yam_quality_item_left h2 {
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+    .thu_main_solution_area .thu_solution_item_right h3{
+        font-size:1.271rem;
+    }
+    .thu_main_solution_area .thu_solution_item_right h2{
+        font-size:2.25rem;
+    }
+    .thu_main_solution_area .thu_solution_item_right{
+        padding: 70px 30px;
+    }
+    .yam_main_solution_area .yam_solution_item_right{
+        padding: 70px 30px;
+    }
+    .yam_main_solution_area .yam_solution_item_right h2{
+        font-size: 2rem;
+    }
+    .yam_service_content_right .yam_best_head h2{
+        font-size:2rem;
+    }
+    .yam_main_mission .yam_mission_item h2{
+        font-size:2rem;
+    }
+    .lli_main_news_area .lli_news_content_area .btn_area_lli_news{
+        text-align: left;
+    }
+    .thu_clientsfeedback_content_area .item_test_img {
+        margin: 0 auto;
+    }
+    .thu_clientsfeedback_content_area .item_test_content i{
+        font-size:2rem;
+    }
+    .thu_clientsfeedback_content_area .thu_clientsfeedback_content_left_text h2{
+        font-size:2rem;
+    }
+    .thu_clientsfeedback_content_area .thu_clientsfeedback_content_right_text .item{
+        text-align: center;
+    }
+    .thu_clientsfeedback_content_area .thu_clientsfeedback_content_right_text .item img{
+        margin: 0 auto;
+    }
+    .thu_clientsfeedback_content_area .thu_clientsfeedback_content_right_text ol.carousel-top-img{
+        display: none;
+    }
+
+
+    .hover_divider {
+        margin: 0px auto;
+    }
+
+
+}
+
+
+
+
+/* Landscape phones and smaller */
+@media (max-width: 479px) {
+    html {
+        font-size: 85%;
+    }
+    .hexagon{
+        display: none;
+    }
+    .home1_slider .home_slider_text h1 {
+        font-size: 1.325rem;
+    }
+    .head_title h2 {
+        font-size: 1.6rem;
+    }
+    .main_subcribs_content_area .subcribs_content_item_right {
+        margin-top: 20%;
+    }
+    .main_subcribs_content_area .subcribs_content_item_left h2{
+        font-size: 1.375rem;
+    }
+
+    .home2_slider .home_slider_text h1 {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+
+    .home2_slider .slide_style_3 {
+        top: 15%;
+    }
+    .home2_slider .carousel-control{
+        display: none;
+    }
+    /*LLI service*/
+
+    .main_lli_service_content_area .lli_service_right_text .tabe_content_list ul li {
+        line-height: 2rem;
+        font-size:1rem;
+    }
+
+    /*testimonial*/
+
+    .lli_testimonial_area .slide .item_test_content .item_test_img i{
+        right: 30%;
+    } 
+    .lli_testimonial_area .slide .carousel-control.left{
+        left:70%;
+    }
+
+    .yam_main_team_area .single_team .single_team_overlay {
+        bottom: 12%;
+    }
+    .main_yam_client_test_area .slick-arrow.nextprevleft {
+        margin-right: 17%;
+    }
+
+    .scrollup{
+        left:45%;
+        top:-14%;
+    }
+
+    .thu_navigation_area .pagination>li>a, .pagination>li>span {
+        padding: 0.5rem 1rem;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+
+
+    .sidebar_contactus .sidebar_contactus_text {
+        top: 30%;
+        left: 121.5%;
+    }
+
+    /*404 Error*/
+    .main_error_area .error_text h1{
+        font-size:11rem;
+    }
+    .lli_menu .head_top_social_area {
+        display: none;
+    }
+    nav.navbar.bootsnav.lli_menu.navbar-fixed {
+        height: 95px;
+    }
+    .thu_f_btn_area {
+        left: 73%;
+    }
+    h4 {
+        font-size: 1.2rem;
+    }
+    .thu_main_solution_area .thu_solution_item_right h2{
+        font-size:1.6rem;
+    }
+    .main_lli_service_content_area .lli_service_content_head_title .service_head_left_left h2{
+        font-size:2rem;
+    }
+
+    .yam_main_solution_area .yam_solution_item_right h2 {
+        font-size: 1.375rem;
+    }
+    .yam_service_content_right .yam_best_head h2{
+        font-size:1.575rem;
+    }
+
+}
+
+
+
+
+
+@media (max-width: 400px) {
+
+}
+
+@media (max-width: 320px) {
+    html {
+        font-size: 60.5%;
+    }
+    .main_subcribs_content_area .subcribs_content_item_right {
+        margin-top: 30%;
+    }
+    .main_subcribs_content_area .subcribs_news_letter a.button {
+        padding: 1.25rem 0.5rem;
+    }
+    .img-responsive, .thumbnail>img, .thumbnail a>img, .carousel-inner>.item>img, .carousel-inner>.item>a>img {
+        width: 100%;
+    }
+    .main_subcribs_content_area .subcribs_content_item_left h2{
+        font-size: 1.275rem;
+    }
+
+    .lli_testimonial_area .slide .carousel-control.left{
+        left:69%;
+    }
+
+    .yam_main_team_area .single_team .single_team_overlay {
+        bottom: 12%;
+        height: 55%;
+    }
+    .main_yam_client_test_area .slick-arrow.nextprevleft {
+        margin-right: 19%;
+    }
+    .thu_main_weidget .single_weidget.s_w_contact_us .s_w_contact_us_icon {
+        margin-left: 15%;
+    }
+
+    .thu_f_btn_area {
+        left: 76.5%;
+    }
+
+
+}
+
