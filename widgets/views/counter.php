@@ -1,5 +1,11 @@
 <?php
 
+use app\models\Config;
+
+$yearOfExperience = Config::getCounterYearOfExperience();
+$projectCompleted = Config::getCounterProjectCompleted();
+$happyCustomer = Config::getCounterHappyCustomer();
+$ourEmployee = Config::getCounterOurEmployee();
 
 ?>
 
@@ -12,32 +18,32 @@
 
                 <div class="col-md-3">
                     <div class="lli_counter_item">
-                        <h1 class="wow fadeInDown"><span class="statistic-counter">180</span>+</h1>
-                        <p class="wow fadeInUp text-uppercase">Years of Experience</p>
+                        <h1 class="wow fadeInDown"><span class="statistic-counter"><?= $yearOfExperience->value > 999 ? 999 . '</span>+' : $yearOfExperience->value . '</span>' ?></h1>
+                        <p class="wow fadeInUp text-uppercase"><?= $yearOfExperience->label ?></p>
                         <span class="icon icon-constructor"></span>
                     </div>
                 </div><!-- End off col-md-3 -->
 
                 <div class="col-md-3">
                     <div class="lli_counter_item">
-                        <h1 class="wow fadeInDown"><span class="statistic-counter">220</span>+</h1>
-                        <p class="wow fadeInUp text-uppercase">Projects Completed</p>
+                        <h1 class="wow fadeInDown"><span class="statistic-counter"><?= $projectCompleted->value > 999 ? 999 . '</span>+' : $projectCompleted->value . '</span>' ?></h1>
+                        <p class="wow fadeInUp text-uppercase"><?= $projectCompleted->label ?></p>
                         <span class="icon icon-drawing-architecture-project-of-a-house"></span>
                     </div>
                 </div><!-- End off col-md-3 -->
 
                 <div class="col-md-3">
                     <div class="lli_counter_item">
-                        <h1 class="wow fadeInDown"><span class="statistic-counter">900</span>+</h1>
-                        <p class="wow fadeInUp text-uppercase">Happy Customers</p>
+                        <h1 class="wow fadeInDown"><span class="statistic-counter"><?= $happyCustomer->value > 999 ? 999 . '</span>+' : $happyCustomer->value . '</span>' ?></h1>
+                        <p class="wow fadeInUp text-uppercase"><?= $happyCustomer->label ?></p>
                         <span class="icon icon-journalist-woman-talking-about-culture"></span>
                     </div>
                 </div><!-- End off col-md-3 -->
 
                 <div class="col-md-3">
                     <div class="lli_counter_item">
-                        <h1 class="wow fadeInDown"><span class="statistic-counter">750</span>+</h1>
-                        <p class="wow fadeInUp text-uppercase">Our Employees</p>
+                        <h1 class="wow fadeInDown"><span class="statistic-counter"><?= $ourEmployee->value > 999 ? 999 . '</span>+' : $ourEmployee->value . '</span>' ?></h1>
+                        <p class="wow fadeInUp text-uppercase"><?= $ourEmployee->label ?></p>
                         <span class="icon icon-constructor-with-hat-and-a-gear"></span>
                     </div>
                 </div><!-- End off col-md-3 -->

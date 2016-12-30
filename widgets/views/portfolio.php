@@ -10,8 +10,8 @@
             <div class="main_mix_content lli_main_work_title sections">
                 <div class="col-sm-8 col-sm-offset-2">
                     <div class="head_title text-center text-uppercase">
-                        <h2>Our Precious Works</h2>
-                        <p>It’s a pleasure to make you satisfied</p>
+                        <h2><?= Yii::t('app', 'Our Precious Works') ?></h2>
+                        <p><?= Yii::t('app', 'It’s a pleasure to make you satisfied') ?></p>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                                 </div>
                             </div><!-- End off col-md-3 -->
 
-                            <div class="col-md-3 col-sm-6 mix cat1 cat2" >
+<!--                            <div class="col-md-3 col-sm-6 mix cat1 cat2" >
                                 <div class="single_mixi_portfolio">
                                     <img src="assets/images/lli-folio02.jpg" alt="">
                                     <div class="port_overfolio">
@@ -82,7 +82,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div><!-- End off col-md-3 -->
+                            </div> End off col-md-3 
 
                             <div class="col-md-3 col-sm-6 mix cat1 cat3" data-bound="">
                                 <div class="single_mixi_portfolio">
@@ -107,7 +107,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div><!-- End off col-md-3 -->
+                            </div> End off col-md-3 
 
                             <div class="col-md-3 col-sm-6 mix cat2 cat1">
                                 <div class="single_mixi_portfolio">
@@ -132,7 +132,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div><!-- End off col-md-3 -->
+                            </div> End off col-md-3 
 
                             <div class="col-md-3 col-sm-6 mix cat1 cat2 cat4" data-bound="">
                                 <div class="single_mixi_portfolio">
@@ -157,7 +157,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div><!-- End off col-md-3 -->
+                            </div> End off col-md-3 
 
                             <div class="col-md-3 col-sm-6 mix cat2 cat3">
                                 <div class="single_mixi_portfolio">
@@ -182,7 +182,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div><!-- End off col-md-3 -->
+                            </div> End off col-md-3 
 
                             <div class="col-md-3 col-sm-6 mix cat2 cat3">
                                 <div class="single_mixi_portfolio">
@@ -207,7 +207,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div><!-- End off col-md-3 -->
+                            </div> End off col-md-3 
 
                             <div class="col-md-3 col-sm-6 mix cat2 cat3">
                                 <div class="single_mixi_portfolio">
@@ -232,7 +232,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div><!-- End off col-md-3 -->
+                            </div> End off col-md-3 
 
                             <div class="col-md-3 col-sm-6 mix cat2 cat3">
                                 <div class="single_mixi_portfolio">
@@ -257,7 +257,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div><!-- End off col-md-3 -->
+                            </div> End off col-md-3 
 
                             <div class="col-md-3 col-sm-6 mix cat2 cat3">
                                 <div class="single_mixi_portfolio">
@@ -282,7 +282,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div><!-- End off col-md-3 -->
+                            </div> End off col-md-3 
 
                             <div class="col-md-3 col-sm-6 mix cat2 cat3">
                                 <div class="single_mixi_portfolio">
@@ -307,7 +307,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div><!-- End off col-md-3 -->
+                            </div> End off col-md-3 
 
                             <div class="col-md-3 col-sm-6 mix cat2 cat3">
                                 <div class="single_mixi_portfolio">
@@ -332,7 +332,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div><!-- End off col-md-3 -->
+                            </div> End off col-md-3 -->
 
 
                             <div class="lli_work_btn_area text-center margin-top-50">
