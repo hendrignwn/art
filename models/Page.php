@@ -41,6 +41,7 @@ class Page extends \app\models\BaseActiveRecord
     {
         return [
             [['name', 'description'], 'required'],
+            [['slug'], 'unique'],
             [['description'], 'string'],
             [['status', 'created_by', 'updated_by'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
@@ -58,6 +59,7 @@ class Page extends \app\models\BaseActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
+            'slug' => Yii::t('app', 'Slug'),
             'description' => Yii::t('app', 'Description'),
             'metakey' => Yii::t('app', 'Metakey'),
             'metadesc' => Yii::t('app', 'Metadesc'),
