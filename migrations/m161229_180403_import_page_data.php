@@ -6,7 +6,7 @@ class m161229_180403_import_page_data extends Migration
 {
     public function safeUp()
     {
-        $this->insert('{{page}}', ['id'=>1,'name'=>'What We Have For You', 'description'=>
+        $this->insert('{{page}}', ['id'=>1,'name'=>'What We Have For You', 'slug'=>'about-us', 'description'=>
 '<section id="about" class="lliabout">
     <div class="container">
         <div class="row">

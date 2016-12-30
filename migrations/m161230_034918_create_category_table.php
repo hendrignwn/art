@@ -3,24 +3,21 @@
 use yii\db\Migration;
 
 /**
- * Handles the creation of table `page`.
+ * Handles the creation of table `portfolio_category`.
  */
-class m161229_174147_create_page_table extends Migration
+class m161230_034918_create_category_table extends Migration
 {
     /**
      * @inheritdoc
      */
     public function safeUp()
     {
-        $this->createTable('page', [
+        $this->createTable('category', [
             'id' => $this->primaryKey(),
-            'name' => $this->string(255)->notNull(),
+            'name' => $this->string(150)->notNull(),
             'slug' => $this->string(255)->notNull()->unique(),
-            'description' => $this->text()->notNull(),
-            'metakey' => $this->string(100)->null(),
-            'metadesc' => $this->string(255)->null(),
-            'category' => $this->string('10')->comment('full|partial|event')->defaultValue('full'),
             'status' => $this->smallInteger()->notNull()->defaultValue(1),
+            'order' => $this->integer()->notNull()->defaultValue(0),
             'created_at' => $this->datetime()->null(),
             'updated_at' => $this->datetime()->null(),
             'created_by' => $this->integer()->null(),
@@ -33,6 +30,6 @@ class m161229_174147_create_page_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('page');
+        $this->dropTable('category');
     }
 }
