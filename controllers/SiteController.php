@@ -44,7 +44,7 @@ class SiteController extends Controller
     {
         return [
             'error' => [
-                'class' => 'yii\web\ErrorAction',
+                'class' => '\app\components\ErrorAction',
             ],
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
@@ -123,5 +123,15 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+    
+    /**
+     * displays maintenance page.
+     * 
+     * @return string
+     */
+    public function actionMaintenance()
+    {
+        return $this->render('maintenance');
     }
 }
