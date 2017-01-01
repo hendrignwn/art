@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace app\models\query;
+namespace app\models\queries;
 
 use yii\db\ActiveQuery;
 use app\models\BaseActiveRecord;
@@ -27,6 +27,11 @@ class BaseActiveRecordQuery extends ActiveQuery {
     {
         $this->andWhere(['status'=>  BaseActiveRecord::STATUS_ACTIVE]);
         return $this;
+    }
+    
+    public function ordered()
+    {
+        return $this->addOrderBy(['order'=>SORT_ASC]);
     }
 
     /**

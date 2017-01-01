@@ -2,12 +2,12 @@
 
 namespace app\models;
 
-use app\models\query\BaseActiveRecordQuery;
-use app\models\User;
+use app\models\queries\BaseActiveRecordQuery;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\helpers\Html;
+use app\models\User;
 
 /**
  * parent class of model

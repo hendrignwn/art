@@ -136,7 +136,7 @@ class Config extends \yii\db\ActiveRecord
      */
     public static function getAppCopyright()
     {
-        return self::getValueByName('app_contact_copyright');
+        return self::getValueByName('app_copyright');
     }
     
     /**
@@ -298,7 +298,7 @@ class Config extends \yii\db\ActiveRecord
      * 
      * @return type
      */
-    public static function getWebSupport()
+    public static function getEmailWebSupport()
     {
         return self::getValueByName('email_web_support');
     }
