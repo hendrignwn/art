@@ -16,7 +16,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-12">
+                <div class=" col-sm-offset-3 col-sm-12">
                     <div class="main_team_slider">
                         <div class="col-sm-3">
                             <div class="single_team margin-bottom-40">
@@ -63,7 +63,7 @@
                             </div><!--End off Team Item -->
                         </div><!--End off col-sm-3-->
 
-                        <div class="col-sm-3">
+<!--                        <div class="col-sm-3">
                             <div class="single_team margin-bottom-40">
                                 <div class="single_team_img">
                                     <img src="assets/images/team3.jpg" alt="">
@@ -82,8 +82,8 @@
                                         <h6>Thenmalai Karupan</h6>
                                     </div>
                                 </div>
-                            </div><!--End off Team Item -->
-                        </div><!--End off col-sm-3-->
+                            </div>
+                        </div>
 
                         <div class="col-sm-3">
                             <div class="single_team margin-bottom-40">
@@ -104,8 +104,8 @@
                                         <h6>Kupan Ilavarasan</h6>
                                     </div>
                                 </div>
-                            </div><!--End off Team Item -->
-                        </div><!--End off col-sm-3-->
+                            </div>End off Team Item 
+                        </div>End off col-sm-3
 
                         <div class="col-sm-3">
                             <div class="single_team margin-bottom-40">
@@ -126,8 +126,8 @@
                                         <h6>Thenmalai Karupan</h6>
                                     </div>
                                 </div>
-                            </div><!--End off Team Item -->
-                        </div><!--End off col-sm-3-->
+                            </div>End off Team Item 
+                        </div>End off col-sm-3
 
                         <div class="col-sm-3">
                             <div class="single_team margin-bottom-40 wow zoomIn" data-wow-duration="500ms" data-wow-delay="1300ms">
@@ -147,9 +147,9 @@
                                     <div class="single_team_text">
                                         <h6>Kupan Ilavarasan</h6>
                                     </div>
-                                </div>
-                            </div><!--End off Team Item -->
-                        </div><!--End off col-sm-3-->
+                                </div>-->
+<!--                            </div>End off Team Item 
+                        </div>End off col-sm-3-->
 
                     </div>
                 </div>

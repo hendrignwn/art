@@ -1,5 +1,7 @@
 <?php
 
+use app\models\Config;
+
 ?>
 
 <!-- Footer widget section -->
@@ -17,11 +19,11 @@
                                     <div class="item_s_wcontact_us">
 
                                         <div class="row">
-                                            <div class="col-md-12">
+<!--                                            <div class="col-md-12">
                                                 <div class="footer_logo margin-bottom-20">
                                                     <img src="assets/images/lli-footer-logo.png" alt="" />
                                                 </div>
-                                            </div>
+                                            </div>-->
                                             <div class="col-xs-3 no-padding">
 
                                                 <div class="s_w_contact_us_icon text-center">
@@ -30,8 +32,7 @@
                                             </div>
                                             <div class="col-xs-9">
                                                 <div class="s_w_contact_us_text">
-                                                    <p>12, Design Street, <br /></p>
-                                                    <p>Melbourne - Australia 208</p>
+                                                    <p><?= Config::getAppContactAddress() ?></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -45,8 +46,8 @@
                                             </div>
                                             <div class="col-xs-9">
                                                 <div class="s_w_contact_us_text">
-                                                    <p>(01) 98 - 765 432 10,</p>
-                                                    <p>(01) 90 - 123 456 78</p>
+                                                    <p><?= Config::getAppContactPhone() ?></p>
+                                                    <p><?= Config::getAppContactPhone() ?></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -60,8 +61,8 @@
                                             </div>
                                             <div class="col-xs-9">
                                                 <div class="s_w_contact_us_text">
-                                                    <p>admin@domain.com,</p>
-                                                    <p>info@domain.com</p>
+                                                    <p><?= Config::getAppContactEmail() ?></p>
+                                                    <p><?= Config::getAppContactEmail() ?></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -189,7 +190,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="copyright_text">
-                                    <p class="" data-wow-duration="1s">&copy; Copyrights 2016. Thulliyam Architecture All Rights Reserved</p>
+                                    <p class="" data-wow-duration="1s">&copy; Copyrights <?= date('Y') ?>. <?= Config::getAppCopyright() ?> All Rights Reserved</p>
                                 </div>
                             </div>
                             <div class="col-md-6">

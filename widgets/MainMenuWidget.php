@@ -9,18 +9,14 @@
 namespace app\widgets;
 
 /**
- * Description of NavbarWidget
+ * Description of MainMenuWidget
  *
  * @author Hendri <hendri.gnw@gmail.com>
  */
-class NavbarWidget extends \yii\bootstrap\Widget
+class MainMenuWidget extends \yii\bootstrap\Widget
 {
-    public $mainMenuParams = [];
-    
     public function run()
     {
-        return $this->render('navbar', [
-            'mainMenuParams' => $this->mainMenuParams,
-        ]);
+        return $this->render('main-menu');
     }
 }

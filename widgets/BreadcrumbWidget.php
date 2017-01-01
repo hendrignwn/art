@@ -9,18 +9,18 @@
 namespace app\widgets;
 
 /**
- * Description of NavbarWidget
+ * Description of BreadcrumbWidget
  *
  * @author Hendri <hendri.gnw@gmail.com>
  */
-class NavbarWidget extends \yii\bootstrap\Widget
+class BreadcrumbWidget extends \yii\bootstrap\Widget
 {
-    public $mainMenuParams = [];
+    public $title = 'No Header Title';
     
     public function run()
     {
-        return $this->render('navbar', [
-            'mainMenuParams' => $this->mainMenuParams,
+        return $this->render('breadcrumb', [
+            'title' => $this->title,
         ]);
     }
 }
