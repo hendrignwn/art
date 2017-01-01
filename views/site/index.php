@@ -18,28 +18,19 @@ use yii\web\View;
 
 $this->title = Config::getAppMotto();
 ?>
-<div class="culmn lli_home">
 
-    <?= NavbarWidget::widget() ?>
+<?= BannerWidget::widget() ?>
 
-    <?= BannerWidget::widget() ?>
+<?= AboutWidget::widget() ?>
 
-    <?= AboutWidget::widget() ?>
+<?= CounterWidget::widget() ?>
 
-    <?= CounterWidget::widget() ?>
+<?= PortfolioWidget::widget() ?>
 
-    <?= PortfolioWidget::widget() ?>
+<?= ServiceWidget::widget() ?>
 
-    <?= ServiceWidget::widget() ?>
+<?= TeamWidget::widget() ?>
 
-    <?= TeamWidget::widget() ?>
+<?= BlogUpdatedWidget::widget() ?>
 
-    <?= BlogUpdatedWidget::widget() ?>
-
-    <?= ContactUsWidget::widget() ?>
-
-    <?= SubscribeFormWidget::widget() ?>
-
-    <?= FooterWidget::widget() ?>
-
-</div>
+<?= ContactUsWidget::widget() ?>

@@ -7,7 +7,9 @@ use yii\helpers\Html;
 $this->title = 'About';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-about">
+<div class="row">
+    <div class="col-md-12">
+        
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
@@ -15,4 +17,5 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <code><?= __FILE__ ?></code>
+    </div>
 </div>
