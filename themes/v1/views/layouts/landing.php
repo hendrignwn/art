@@ -5,6 +5,9 @@
 
 use app\assets\LandingAsset;
 use app\models\Config;
+use app\widgets\FooterWidget;
+use app\widgets\NavbarWidget;
+use app\widgets\SubscribeFormWidget;
 use yii\helpers\Html;
 use yii\web\View;
 
@@ -36,7 +39,12 @@ LandingAsset::register($this);
         </div>
     </div><!--End off Preloader -->
     
-    <?= $content ?>
+    <div class="culmn lli_home">
+        <?= NavbarWidget::widget() ?>
+        <?= $content ?>
+        <?= SubscribeFormWidget::widget() ?>
+        <?= FooterWidget::widget() ?>
+    </div>
     
 <?php $this->endBody() ?>
 </body>
