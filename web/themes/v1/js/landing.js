@@ -176,11 +176,11 @@ jQuery(document).ready(function ($) {
 //---------------------------------------------
 // Scroll Up 
 //---------------------------------------------
-//
-//    $( '.scrollup' ).on( 'click', function ( ) {
-//        $("html, body").animate({scrollTop: 0}, 1000);
-//        return false;
-//    });
+
+    $( '.scrollup' ).on( 'click', function ( ) {
+        $("html, body").animate({scrollTop: 0}, 1000);
+        return false;
+    });
 
 
 
