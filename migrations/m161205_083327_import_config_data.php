@@ -8,7 +8,7 @@ class m161205_083327_import_config_data extends Migration
     {
         $this->insert("{{config}}", ['name'=>'app_name', 'value'=>'Artechno Corporation', 'label'=>null, 'notes'=>null]);
         $this->insert("{{config}}", ['name'=>'app_motto', 'value'=>'Global knowledge in your hand', 'label'=>null, 'notes'=>null]);
-        $this->insert("{{config}}", ['name'=>'app_copyright', 'value'=>'Artechno Corporation', 'label'=>null, 'notes'=>null]);
+        $this->insert("{{config}}", ['name'=>'app_copyright', 'value'=>'Art Techno Corporation', 'label'=>null, 'notes'=>null]);
         $this->insert("{{config}}", ['name'=>'app_contact_address', 'value'=>'Jl Kebon Kopi Raya, Ciampea Bogor 16620', 'label'=>null, 'notes'=>null]);
         $this->insert("{{config}}", ['name'=>'app_contact_phone', 'value'=>'(021) 0099 029', 'label'=>null, 'notes'=>null]);
         $this->insert("{{config}}", ['name'=>'app_account_facebook', 'value'=>'https://www.facebook.com/', 'label'=>null, 'notes'=>null]);
