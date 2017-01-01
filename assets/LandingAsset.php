@@ -46,7 +46,7 @@ class LandingAsset extends AssetBundle
         'themes/v1/js/jquery.touchSwipe.min.js',
         'themes/v1/js/xsslider.js',
         'themes/v1/js/plugins.js',
-        'themes/v1/js/main.js',
+        'themes/v1/js/landing.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
