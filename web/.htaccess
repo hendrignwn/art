@@ -7,4 +7,8 @@
 
     # Otherwise forward it to index.php
     RewriteRule . index.php
+
+	RewriteCond %{HTTP_HOST} !^www\.
+	RewriteCond %{HTTPS}s on(s)|offs()
+	RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [NE,L,R]
 </IfModule>
