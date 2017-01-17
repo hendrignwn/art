@@ -3,9 +3,16 @@
 $params = require(__DIR__ . '/params.php');
 
 $config = [
-    'id' => 'basic',
+    'id' => 'atc-art-techno',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+	
+    // default language to use for i18n purpose
+    // source translation is located in @app/messages directory
+    //'language' => 'id-ID',
+	
+    //'catchAll' => ['site/maintenance'],
+	
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -16,18 +23,14 @@ $config = [
         ],
         'user' => [
             'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
+            //'enableAutoLogin' => true,
+            'enableSession' => true,
+            'authTimeout' => 60 * 60, /* 1 hour */
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure a transport
-            // for the mailer to send real emails.
-            'useFileTransport' => true,
-        ],
+        'mailer' => require(__DIR__ . '/mailer.php'),
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -38,14 +41,7 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        /*
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
-        ],
-        */
+        'urlManager' => require(__DIR__ . '/url-manager.php'),
     ],
     'params' => $params,
 ];
