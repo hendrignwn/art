@@ -17,7 +17,13 @@
         "php": ">=5.4.0",
         "yiisoft/yii2": "~2.0.5",
         "yiisoft/yii2-bootstrap": "~2.0.0",
-        "yiisoft/yii2-swiftmailer": "~2.0.0"
+        "zyx/zyx-phpmailer": "@stable",
+        "c006/yii2-migration-utility": "dev-master",
+		"kartik-v/yii2-grid": "@dev",
+		"kartik-v/yii2-widget-select2": "@dev",
+		"kartik-v/yii2-widget-datepicker": "@dev",
+        "johnitvn/yii2-ajaxcrud": "*",
+        "dmstr/yii2-adminlte-asset": "2.*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
