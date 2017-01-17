@@ -10,7 +10,7 @@ $config = [
     // default language to use for i18n purpose
     // source translation is located in @app/messages directory
     //'language' => 'id-ID',
-	
+    
     //'catchAll' => ['site/maintenance'],
 	
     'components' => [
@@ -40,8 +40,46 @@ $config = [
                 ],
             ],
         ],
+        'i18n' => [
+            'translations' => [
+                'app*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'sourceLanguage' => 'en-US',
+                    'basePath' => '@app/messages',
+                    'fileMap' => [
+                        'app' => 'app.php',
+                        'app.menu' => 'app.menu.php',
+                        'app.button' => 'app.button.php',
+                        'app.static' => 'app.static.php',
+                    ],
+                ],
+            ],
+		],
         'db' => require(__DIR__ . '/db.php'),
         'urlManager' => require(__DIR__ . '/url-manager.php'),
+        'view' => [
+			'theme' => [
+				'pathMap' => [
+					/** for administrator module */
+				   '@app/modules/administrator/views' => '@app/themes/admin-lte',
+				],
+			],
+		],
+		'assetManager' => [
+			'bundles' => [
+				'dmstr\web\AdminLteAsset' => [
+					'skin' => 'skin-blue-light',
+				],
+			],
+		],
+    ],
+    'modules' => [
+        'gridview' => [
+			'class' => '\kartik\grid\Module'
+		],
+        'administrator' => [
+            'class' => 'app\modules\administrator\Module',
+        ],
     ],
     'params' => $params,
 ];
@@ -56,6 +94,10 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
+    ];
+    
+    $config['modules']['utility'] = [
+        'class' => 'c006\utility\migration\Module',
     ];
 }
 
