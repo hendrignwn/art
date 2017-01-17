@@ -374,4 +374,14 @@ class Config extends \yii\db\ActiveRecord
     {
         return self::getExplodeValueByName('email_developers', ',');
     }
+    
+    /**
+     * returns array administrator public url
+     * 
+     * @return array
+     */
+    public static function getAdministratorPublicUrl()
+    {
+        return self::getValueJsonByName('administrator_public_url');
+    }
 }
