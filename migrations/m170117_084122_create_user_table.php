@@ -10,10 +10,11 @@ class m170117_084122_create_user_table extends Migration
     /**
      * @inheritdoc
      */
-    public function up()
+    public function safeUp()
     {
         $this->createTable('user', [
             'id' => $this->primaryKey(),
+            'email' => $this->string(100)->notNull()->unique(),
             'username' => $this->string(100)->notNull()->unique(),
             'password_hash' => $this->string(255)->notNull(),
             'auth_key' => $this->string(255)->notNull(),
@@ -31,7 +32,7 @@ class m170117_084122_create_user_table extends Migration
     /**
      * @inheritdoc
      */
-    public function down()
+    public function safeDown()
     {
         $this->dropTable('user');
     }

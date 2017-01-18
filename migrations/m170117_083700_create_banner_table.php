@@ -10,7 +10,7 @@ class m170117_083700_create_banner_table extends Migration
     /**
      * @inheritdoc
      */
-    public function up()
+    public function safeUp()
     {
         $this->createTable('banner', [
             'id' => $this->primaryKey(),
@@ -31,7 +31,7 @@ class m170117_083700_create_banner_table extends Migration
     /**
      * @inheritdoc
      */
-    public function down()
+    public function safeDown()
     {
         $this->dropTable('banner');
     }

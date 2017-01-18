@@ -10,7 +10,7 @@ class m170117_082412_create_service_table extends Migration
     /**
      * @inheritdoc
      */
-    public function up()
+    public function safeUp()
     {
         $this->createTable('service', [
             'id' => $this->primaryKey(),
@@ -30,7 +30,7 @@ class m170117_082412_create_service_table extends Migration
     /**
      * @inheritdoc
      */
-    public function down()
+    public function safeDown()
     {
         $this->dropTable('service');
     }
