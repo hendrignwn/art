@@ -1,7 +1,10 @@
 <?php
-use yii\helpers\Html;
 
-/* @var $this \yii\web\View */
+use app\helpers\FormatConverter;
+use yii\helpers\Html;
+use yii\web\View;
+
+/* @var $this View */
 /* @var $content string */
 ?>
 
@@ -31,7 +34,7 @@ use yii\helpers\Html;
 							<i class="fa fa-user-o fa-5x" style="color:#fff;"></i>
 
                             <p>
-                                <?= Yii::$app->user->identity->detail_lengkap ?>
+                                <?= Yii::$app->user->identity->email ?>
 								<small><?= Yii::t('app', 'Join since') ?>: <?= FormatConverter::indoDateFormat(Yii::$app->user->identity->join_at, '%B, %Y') ?></small>
                                 <small><?= Yii::t('app', 'Last Login') ?>: <?= FormatConverter::dateFormat(Yii::$app->user->identity->last_login, 'd M Y H:i:s') ?></small>
                             </p>
