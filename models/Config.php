@@ -384,4 +384,14 @@ class Config extends \yii\db\ActiveRecord
     {
         return self::getValueJsonByName('administrator_public_url');
     }
+    
+    /**
+     * returns get list title
+     * 
+     * @return array
+     */
+    public static function getTitles()
+    {
+        return self::getValueJsonByName('titles');
+    }
 }
