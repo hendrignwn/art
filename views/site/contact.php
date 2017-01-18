@@ -1,12 +1,16 @@
 <?php
 
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model app\models\ContactForm */
+/* @var $this View */
+/* @var $form ActiveForm */
+/* @var $model ContactForm */
 
-use yii\helpers\Html;
+use app\models\ContactForm;
+use iutbay\yii2kcfinder\KCFinderInputWidget;
+use stenyo\ckeditor\CKEditor;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
+use yii\helpers\Html;
+use yii\web\View;
 
 $this->title = 'Contact';
 $this->params['breadcrumbs'][] = $this->title;
@@ -48,8 +52,43 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= $form->field($model, 'email') ?>
 
                     <?= $form->field($model, 'subject') ?>
+                
+                <?= $form->field($model, 'body')->widget(app\widgets\CKEditor::className(), [
+                    'kcfOptions' => [
+                        'uploadURL' => '@web/uploads',
+                        'uploadDir' => '@app/web/uploads/images',
+                        'maxImageWidth' => 100,
+                        'maxImageHeight' => 100,
+                        'access' => array(
+                            'files' => array(
+                                'upload' => true,
+                                'delete' => true,
+                                'copy' => true,
+                                'move' => true,
+                                'rename' => true
+                            ),
+                            'dirs' => array(
+                                'create' => true,
+                                'delete' => true,
+                                'rename' => true
+                            )
+                        ),
+                        'types' => array(
 
-                    <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
+                            // (F)CKEditor types
+                                'files'   =>  "!pdf",
+                                'flash'   =>  "swf",
+                                'images'  =>  "*img",
+
+                            // TinyMCE types
+                                'file'    =>  "!pdf",
+                                'media'   =>  "swf flv avi mpg mpeg qt mov wmv asf rm",
+                                'image'   =>  "*img",
+                            ),
+                    ]
+]); ?>
+
+                
 
                     <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
                         'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
