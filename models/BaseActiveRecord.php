@@ -8,10 +8,10 @@
 
 namespace app\models;
 
-
 use app\helpers\FormatConverter;
 use app\models\queries\BaseActiveRecordQuery;
 use app\models\User;
+use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
