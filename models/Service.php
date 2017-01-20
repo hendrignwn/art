@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\SluggableBehavior;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "service".
@@ -21,8 +23,23 @@ use Yii;
  * 
  * @property Portfolio[] $portfolios
  */
-class Service extends \app\models\BaseActiveRecord
+class Service extends BaseActiveRecord
 {
+    /**
+     * @inheritdoc
+     */
+    public function behaviors() 
+    {
+        return ArrayHelper::merge(parent::behaviors(), [
+            [
+                'class' => SluggableBehavior::className(),
+                'attribute' => 'name',
+                'slugAttribute' => 'slug',
+                'ensureUnique' => true,
+            ]
+        ]);
+    }
+    
     /**
      * @inheritdoc
      */
@@ -40,10 +57,13 @@ class Service extends \app\models\BaseActiveRecord
             [['name', 'description'], 'required'],
             [['description'], 'string'],
             [['status', 'created_by', 'updated_by'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['name', 'metakey'], 'string', 'max' => 200],
-            [['slug', 'metadesc'], 'string', 'max' => 255],
+            [['slug', 'created_at', 'updated_at'], 'safe'],
+            [['name'], 'string', 'max' => 200],
+            [['slug'], 'string', 'max' => 255],
+            [['metakey'], 'string', 'max' => 100],
+            [['metadesc'], 'string', 'max' => 150],
             [['slug'], 'unique'],
+            [['status'], 'default', 'value' => self::STATUS_ACTIVE],
         ];
     }
 
