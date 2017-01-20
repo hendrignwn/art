@@ -1,9 +1,16 @@
 <?php
 
 return [
-    'class' => 'yii\swiftmailer\Mailer',
-    // send all mails to a file by default. You have to set
-    // 'useFileTransport' to false and configure a transport
-    // for the mailer to send real emails.
-    'useFileTransport' => true,
+    'class' => 'zyx\phpmailer\Mailer',
+    'viewPath' => '@app/mail',
+    'useFileTransport' => true, // change false to real sending email
+    'config' => [
+        'mailer' => '',
+        'host' => '',
+        'port' => '',
+        'smtpsecure' => '',
+        'smtpauth' => true,
+        'username' => '',
+        'password' => '',
+    ],
 ];
