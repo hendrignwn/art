@@ -31,7 +31,7 @@ use yii\web\View;
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-							<i class="fa fa-user-o fa-5x" style="color:#fff;"></i>
+							<i class="fa fa-user-circle fa-5x" style="color:#fff;"></i>
 
                             <p>
                                 <?= Yii::$app->user->identity->email ?>
