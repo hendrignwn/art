@@ -19,6 +19,11 @@ class CKEditor extends BaseCKEditor
     public $enableKCFinder = true;
     
     /**
+     * @var $autoParagraph is default false
+     */
+    public $authParagraph = false;
+    
+    /**
      * @var $kcfOptions
      */
     public $kcfOptions = [];
