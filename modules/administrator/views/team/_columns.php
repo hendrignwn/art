@@ -26,14 +26,18 @@ return [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'professional',
     ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'photo',
-    ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'social_account',
-    ],
+//    [
+//        'class'=>'\kartik\grid\DataColumn',
+//        'attribute'=>'photo',
+//        'content'=>function($model) {
+//            return $model->getPhotoUrlHtml();
+//        },
+//        'format' => 'raw',
+//    ],
+//    [
+//        'class'=>'\kartik\grid\DataColumn',
+//        'attribute'=>'social_account',
+//    ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'description',
@@ -42,10 +46,10 @@ return [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'status',
     // ],
-    // [
-        // 'class'=>'\kartik\grid\DataColumn',
-        // 'attribute'=>'created_at',
-    // ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'created_at',
+    ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'updated_at',

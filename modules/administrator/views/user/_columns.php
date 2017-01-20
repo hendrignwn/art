@@ -1,8 +1,4 @@
 <?php
-
-use app\models\Service;
-use kartik\grid\GridView;
-use kartik\select2\Select2;
 use yii\helpers\Url;
 
 return [
@@ -20,48 +16,44 @@ return [
     // ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'name',
-    ],
-//    [
-//        'class'=>'\kartik\grid\DataColumn',
-//        'attribute'=>'slug',
-//    ],
-//    [
-//        'class'=>'\kartik\grid\DataColumn',
-//        'attribute'=>'description',
-//    ],
-//    [
-//        'class'=>'\kartik\grid\DataColumn',
-//        'attribute'=>'metakey',
-//    ],
-//    [
-//        'class'=>'\kartik\grid\DataColumn',
-//        'attribute'=>'metadesc',
-//    ],
-    [
-        'attribute' => 'status',
-        'filterType' => GridView::FILTER_SELECT2,
-        'filter' => Service::statusLabels(),
-        'filterWidgetOptions' => [
-            'theme' => Select2::THEME_DEFAULT,
-            'pluginOptions' => ['allowClear' => true],
-        ],
-        'filterInputOptions' => ['placeholder' => '-- Select --'],
-        'format' => 'raw',
-        'content' => function ($model) {
-            return $model->getStatusWithStyle();
-        }
+        'attribute'=>'email',
     ],
     [
-        'class' => '\kartik\grid\DataColumn',
-        'width' => '15%',
-        'attribute' => 'created_at',
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'username',
     ],
     [
-        'class' => '\kartik\grid\DataColumn',
-        'width' => '15%',
-        'attribute' => 'updated_at',
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'password_hash',
     ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'auth_key',
+    ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'status',
+    ],
+    // [
+        // 'class'=>'\kartik\grid\DataColumn',
+        // 'attribute'=>'last_login',
+    // ],
+    // [
+        // 'class'=>'\kartik\grid\DataColumn',
+        // 'attribute'=>'join_at',
+    // ],
+    // [
+        // 'class'=>'\kartik\grid\DataColumn',
+        // 'attribute'=>'blocked_at',
+    // ],
+    // [
+        // 'class'=>'\kartik\grid\DataColumn',
+        // 'attribute'=>'created_at',
+    // ],
+    // [
+        // 'class'=>'\kartik\grid\DataColumn',
+        // 'attribute'=>'updated_at',
+    // ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'created_by',

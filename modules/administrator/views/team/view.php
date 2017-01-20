@@ -1,9 +1,12 @@
 <?php
 
+use app\helpers\DetailViewHelper;
+use app\models\Team;
+use yii\web\View;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Team */
+/* @var $this View */
+/* @var $model Team */
 ?>
 <div class="team-view">
  
@@ -14,14 +17,22 @@ use yii\widgets\DetailView;
             'first_name',
             'last_name',
             'professional',
-            'photo',
+            [
+                'attribute' => 'photo',
+                'value' => $model->getPhotoUrlHtml(),
+                'format' => 'raw',
+            ],
             'social_account',
             'description:ntext',
-            'status',
+            [
+                'attribute' => 'status',
+                'value' => $model->getStatusWithStyle(),
+                'format' => 'raw',
+            ],
             'created_at',
             'updated_at',
-            'created_by',
-            'updated_by',
+            DetailViewHelper::author($model, 'created_by'),
+            DetailViewHelper::author($model, 'updated_by'),
         ],
     ]) ?>
 

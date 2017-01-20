@@ -22,7 +22,7 @@ return [
         'class' => '\kartik\grid\DataColumn',
         'attribute' => 'email',
     ],
-        [
+    [
         'attribute' => 'status',
         'filterType' => GridView::FILTER_SELECT2,
         'filter' => Subscribe::statusLabels(),

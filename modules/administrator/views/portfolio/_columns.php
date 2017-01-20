@@ -1,4 +1,9 @@
 <?php
+
+use app\models\Service;
+use kartik\grid\GridView;
+use kartik\select2\Select2;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 
 return [
@@ -15,17 +20,27 @@ return [
         // 'attribute'=>'id',
     // ],
     [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'service_id',
+        'attribute' => 'service_id',
+        'filterType' => GridView::FILTER_SELECT2,
+        'filter' => ArrayHelper::map(Service::find()->actived()->all(), 'id', 'name'),
+        'filterWidgetOptions' => [
+            'theme' => Select2::THEME_DEFAULT,
+            'pluginOptions' => ['allowClear' => true],
+        ],
+        'filterInputOptions' => ['placeholder' => '-- Select --'],
+        'format' => 'raw',
+        'content' => function ($model) {
+            return $model->service ? $model->service->name : $model->service_id;
+        }
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'name',
     ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'slug',
-    ],
+//    [
+//        'class'=>'\kartik\grid\DataColumn',
+//        'attribute'=>'slug',
+//    ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'completed_on',
@@ -34,10 +49,10 @@ return [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'client',
     ],
-    // [
-        // 'class'=>'\kartik\grid\DataColumn',
-        // 'attribute'=>'website',
-    // ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'website',
+    ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'description',
