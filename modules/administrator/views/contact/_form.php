@@ -17,8 +17,8 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?php
-	$titleOptions = ['data'=> Config::getTitles(), 'pluginOptions'=>['allowClear'=>true], 'options'=>['prompt'=>'Choose One']];	
-	?>
+    $titleOptions = ['data' => Config::getTitles(), 'pluginOptions' => ['allowClear' => true], 'options' => ['prompt' => 'Choose One']];
+    ?>
     <?= $form->field($model, 'title_id')->widget(Select2::className(), $titleOptions) ?>
 
     <?= $form->field($model, 'first_name')->textInput(['maxlength' => true]) ?>
@@ -34,17 +34,17 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <?php
-	$status = Contact::statusLabels();
-	$statusOptions = ['data'=>$status, 'pluginOptions'=>['allowClear'=>true], 'options'=>['prompt'=>'Choose One']];	
-	?>
+    $status = Contact::statusLabels();
+    $statusOptions = ['data' => $status, 'pluginOptions' => ['allowClear' => true], 'options' => ['prompt' => 'Choose One']];
+    ?>
     <?= $form->field($model, 'status')->widget(Select2::className(), $statusOptions) ?>
-  
-	<?php if (!Yii::$app->request->isAjax){ ?>
-	  	<div class="form-group">
-	        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-	    </div>
-	<?php } ?>
+
+    <?php if (!Yii::$app->request->isAjax) { ?>
+        <div class="form-group">
+            <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        </div>
+    <?php } ?>
 
     <?php ActiveForm::end(); ?>
-    
+
 </div>

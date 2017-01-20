@@ -1,30 +1,21 @@
 <?php
 
 use app\helpers\DetailViewHelper;
-use app\models\Contact;
+use app\models\Subscribe;
 use yii\web\View;
 use yii\widgets\DetailView;
 
 /* @var $this View */
-/* @var $model Contact */
+/* @var $model Subscribe */
 ?>
-<div class="contact-view">
+<div class="subscribe-view">
 
     <?=
     DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
-            [
-                'attribute' => 'title_id',
-                'value' => $model->title,
-            ],
-            'first_name',
-            'last_name',
             'email:email',
-            'phone',
-            'subject',
-            'description:ntext',
             [
                 'attribute' => 'status',
                 'value' => $model->getStatusWithStyle(),
