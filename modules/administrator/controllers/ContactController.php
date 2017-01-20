@@ -2,36 +2,19 @@
 
 namespace app\modules\administrator\controllers;
 
-use Yii;
 use app\models\Contact;
-use app\modules\administrator\models\ContactSearch;
 use app\modules\administrator\controllers\BaseController;
-use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
-use \yii\web\Response;
+use app\modules\administrator\models\ContactSearch;
+use Yii;
 use yii\helpers\Html;
+use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 /**
  * ContactController implements the CRUD actions for Contact model.
  */
 class ContactController extends BaseController
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['post'],
-                    'bulk-delete' => ['post'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all Contact models.
      * @return mixed

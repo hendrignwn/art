@@ -2,26 +2,43 @@
 
 namespace app\modules\administrator\controllers;
 
-use app\models\Gallery;
-use app\modules\administrator\controllers\BaseController;
-use app\modules\administrator\models\GallerySearch;
 use Yii;
-use yii\helpers\Html;
+use app\models\User;
+use app\modules\administrator\models\UserSearch;
+use app\modules\administrator\controllers\BaseController;
 use yii\web\NotFoundHttpException;
-use yii\web\Response;
+use yii\filters\VerbFilter;
+use \yii\web\Response;
+use yii\helpers\Html;
 
 /**
- * GalleryController implements the CRUD actions for Gallery model.
+ * UserController implements the CRUD actions for User model.
  */
-class GalleryController extends BaseController
+class UserController extends BaseController
 {
     /**
-     * Lists all Gallery models.
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['post'],
+                    'bulk-delete' => ['post'],
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * Lists all User models.
      * @return mixed
      */
     public function actionIndex()
     {    
-        $searchModel = new GallerySearch();
+        $searchModel = new UserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -32,7 +49,7 @@ class GalleryController extends BaseController
 
 
     /**
-     * Displays a single Gallery model.
+     * Displays a single User model.
      * @param integer $id
      * @return mixed
      */
@@ -42,7 +59,7 @@ class GalleryController extends BaseController
         if($request->isAjax){
             Yii::$app->response->format = Response::FORMAT_JSON;
             return [
-                    'title'=> "Gallery #".$id,
+                    'title'=> "User #".$id,
                     'content'=>$this->renderAjax('view', [
                         'model' => $this->findModel($id),
                     ]),
@@ -57,7 +74,7 @@ class GalleryController extends BaseController
     }
 
     /**
-     * Creates a new Gallery model.
+     * Creates a new User model.
      * For ajax request will return json object
      * and for non-ajax request if creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -65,7 +82,7 @@ class GalleryController extends BaseController
     public function actionCreate()
     {
         $request = Yii::$app->request;
-        $model = new Gallery();  
+        $model = new User();  
 
         if($request->isAjax){
             /*
@@ -74,7 +91,7 @@ class GalleryController extends BaseController
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> "Create new Gallery",
+                    'title'=> "Create new User",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -85,15 +102,15 @@ class GalleryController extends BaseController
             }else if($model->load($request->post()) && $model->save()){
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "Create new Gallery",
-                    'content'=>'<span class="text-success">Create Gallery success</span>',
+                    'title'=> "Create new User",
+                    'content'=>'<span class="text-success">Create User success</span>',
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                             Html::a('Create More',['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
         
                 ];         
             }else{           
                 return [
-                    'title'=> "Create new Gallery",
+                    'title'=> "Create new User",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -118,7 +135,7 @@ class GalleryController extends BaseController
     }
 
     /**
-     * Updates an existing Gallery model.
+     * Updates an existing User model.
      * For ajax request will return json object
      * and for non-ajax request if update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
@@ -136,7 +153,7 @@ class GalleryController extends BaseController
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> "Update Gallery #".$id,
+                    'title'=> "Update User #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -146,7 +163,7 @@ class GalleryController extends BaseController
             }else if($model->load($request->post()) && $model->save()){
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "Gallery #".$id,
+                    'title'=> "User #".$id,
                     'content'=>$this->renderAjax('view', [
                         'model' => $model,
                     ]),
@@ -155,7 +172,7 @@ class GalleryController extends BaseController
                 ];    
             }else{
                  return [
-                    'title'=> "Update Gallery #".$id,
+                    'title'=> "Update User #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -178,7 +195,7 @@ class GalleryController extends BaseController
     }
 
     /**
-     * Delete an existing Gallery model.
+     * Delete an existing User model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
@@ -206,7 +223,7 @@ class GalleryController extends BaseController
     }
 
      /**
-     * Delete multiple existing Gallery model.
+     * Delete multiple existing User model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
@@ -237,15 +254,15 @@ class GalleryController extends BaseController
     }
 
     /**
-     * Finds the Gallery model based on its primary key value.
+     * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Gallery the loaded model
+     * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Gallery::findOne($id)) !== null) {
+        if (($model = User::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

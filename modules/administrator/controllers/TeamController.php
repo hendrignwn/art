@@ -2,36 +2,20 @@
 
 namespace app\modules\administrator\controllers;
 
-use Yii;
 use app\models\Team;
-use app\modules\administrator\models\TeamSearch;
 use app\modules\administrator\controllers\BaseController;
-use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
-use \yii\web\Response;
+use app\modules\administrator\models\TeamSearch;
+use Yii;
 use yii\helpers\Html;
+use yii\web\NotFoundHttpException;
+use yii\web\Response;
+use yii\web\UploadedFile;
 
 /**
  * TeamController implements the CRUD actions for Team model.
  */
 class TeamController extends BaseController
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['post'],
-                    'bulk-delete' => ['post'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all Team models.
      * @return mixed
@@ -99,16 +83,20 @@ class TeamController extends BaseController
                                 Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
         
                 ];         
-            }else if($model->load($request->post()) && $model->save()){
-                return [
-                    'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "Create new Team",
-                    'content'=>'<span class="text-success">Create Team success</span>',
-                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
-                            Html::a('Create More',['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
-        
-                ];         
-            }else{           
+            }else if($model->load($request->post())){
+                $model->photoFile = UploadedFile::getInstance($model, 'photoFile');
+                if ($model->save()) {
+                    return [
+                        'forceReload' => '#crud-datatable-pjax',
+                        'title' => "Create new Team",
+                        'content' => '<span class="text-success">Create Team success</span>',
+                        'footer' => Html::button('Close', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
+                        Html::a('Create More', ['create'], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
+                    ];
+                }
+                goto render;
+            }else{
+                render:
                 return [
                     'title'=> "Create new Team",
                     'content'=>$this->renderAjax('create', [
@@ -160,18 +148,23 @@ class TeamController extends BaseController
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                                 Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
                 ];         
-            }else if($model->load($request->post()) && $model->save()){
-                return [
-                    'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "Team #".$id,
-                    'content'=>$this->renderAjax('view', [
-                        'model' => $model,
-                    ]),
-                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
-                            Html::a('Edit',['update','id'=>$id],['class'=>'btn btn-primary','role'=>'modal-remote'])
-                ];    
+            }else if($model->load($request->post())){
+                $model->photoFile = UploadedFile::getInstance($model, 'photoFile');
+                if ($model->save()) {
+                    return [
+                        'forceReload' => '#crud-datatable-pjax',
+                        'title' => "Team #" . $id,
+                        'content' => $this->renderAjax('view', [
+                            'model' => $model,
+                        ]),
+                        'footer' => Html::button('Close', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
+                        Html::a('Edit', ['update', 'id' => $id], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
+                    ];
+                }
+                goto render;
             }else{
-                 return [
+                render:
+                return [
                     'title'=> "Update Team #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,

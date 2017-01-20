@@ -2,36 +2,19 @@
 
 namespace app\modules\administrator\controllers;
 
-use Yii;
 use app\models\Portfolio;
-use app\modules\administrator\models\PortfolioSearch;
 use app\modules\administrator\controllers\BaseController;
-use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
-use \yii\web\Response;
+use app\modules\administrator\models\PortfolioSearch;
+use Yii;
 use yii\helpers\Html;
+use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 /**
  * PortfolioController implements the CRUD actions for Portfolio model.
  */
 class PortfolioController extends BaseController
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['post'],
-                    'bulk-delete' => ['post'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all Portfolio models.
      * @return mixed

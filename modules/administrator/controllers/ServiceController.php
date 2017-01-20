@@ -2,36 +2,19 @@
 
 namespace app\modules\administrator\controllers;
 
-use Yii;
 use app\models\Service;
-use app\modules\administrator\models\ServiceSearch;
 use app\modules\administrator\controllers\BaseController;
-use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
-use \yii\web\Response;
+use app\modules\administrator\models\ServiceSearch;
+use Yii;
 use yii\helpers\Html;
+use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 /**
  * ServiceController implements the CRUD actions for Service model.
  */
 class ServiceController extends BaseController
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['post'],
-                    'bulk-delete' => ['post'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all Service models.
      * @return mixed

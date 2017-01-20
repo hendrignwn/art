@@ -2,36 +2,19 @@
 
 namespace app\modules\administrator\controllers;
 
-use Yii;
 use app\models\Subscribe;
-use app\modules\administrator\models\SubscribeSearch;
 use app\modules\administrator\controllers\BaseController;
-use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
-use \yii\web\Response;
+use app\modules\administrator\models\SubscribeSearch;
+use Yii;
 use yii\helpers\Html;
+use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 /**
  * SubscribeController implements the CRUD actions for Subscribe model.
  */
 class SubscribeController extends BaseController
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['post'],
-                    'bulk-delete' => ['post'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all Subscribe models.
      * @return mixed
