@@ -12,6 +12,7 @@
                     ['label' => Yii::t('app.menu', 'Contact'), 'icon' => 'fa fa-file-o', 'url' => ['contact/index']],
                     ['label' => Yii::t('app.menu', 'Subscribe'), 'icon' => 'fa fa-users', 'url' => ['subscribe/index']],
                     ['label' => Yii::t('app.menu', 'Page'), 'icon' => 'fa fa-pagelines', 'url' => ['page/index']],
+                    ['label' => Yii::t('app.menu', 'Users'), 'icon' => 'fa fa-users', 'url' => ['user/index']],
                     [
                         'label' => Yii::t('app.menu', 'Master'),
                         'icon' => 'fa fa-folder-o',
