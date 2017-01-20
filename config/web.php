@@ -80,6 +80,15 @@ $config = [
         'administrator' => [
             'class' => 'app\modules\administrator\Module',
         ],
+        'social' => [
+            // the module class
+            'class' => 'kartik\social\Module',
+
+            // the global settings for the Disqus widget
+            'disqus' => [
+                'settings' => ['shortname' => 'hendrigunawan']
+            ],
+        ]
     ],
     'params' => $params,
 ];
