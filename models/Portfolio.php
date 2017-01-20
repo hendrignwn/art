@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\SluggableBehavior;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "portfolio".
@@ -26,8 +28,23 @@ use Yii;
  * @property Service[] $service
  * @property Gallery[] $galleries
  */
-class Portfolio extends \app\models\BaseActiveRecord
+class Portfolio extends BaseActiveRecord
 {
+    /**
+     * @inheritdoc
+     */
+    public function behaviors() 
+    {
+        return ArrayHelper::merge(parent::behaviors(), [
+            [
+                'class' => SluggableBehavior::className(),
+                'attribute' => 'name',
+                'slugAttribute' => 'slug',
+                'ensureUnique' => true,
+            ]
+        ]);
+    }
+    
     /**
      * @inheritdoc
      */
@@ -48,7 +65,10 @@ class Portfolio extends \app\models\BaseActiveRecord
             [['description'], 'string'],
             [['name', 'metakey'], 'string', 'max' => 200],
             [['slug', 'client', 'website', 'metadesc'], 'string', 'max' => 255],
+            [['metakey'], 'string', 'max' => 100],
+            [['metadesc'], 'string', 'max' => 150],
             [['slug'], 'unique'],
+            [['status'], 'default', 'value' => self::STATUS_ACTIVE],
         ];
     }
 
