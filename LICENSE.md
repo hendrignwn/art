@@ -1,2 +1,2 @@
 Art Techno Corporation
-Copyright © 2016 by Art Soft (http://www.atc.co.id)
+Copyright © 2016 by ArtSoft (http://www.atc.co.id)
