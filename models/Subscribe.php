@@ -32,6 +32,8 @@ class Subscribe extends \app\models\BaseActiveRecord
     {
         return [
             [['email'], 'required'],
+            [['email'], 'email'],
+            [['email'], 'unique'],
             [['status', 'created_by', 'updated_by'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['email'], 'string', 'max' => 100],
