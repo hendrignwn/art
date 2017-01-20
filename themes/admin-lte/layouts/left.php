@@ -17,7 +17,6 @@
                         'icon' => 'fa fa-folder-o',
                         'url' => '#',
                         'items' => [
-                            ['label' => Yii::t('app.menu', 'Banner'), 'icon' => 'fa fa-eercast', 'url' => ['banner/index']],
                             ['label' => Yii::t('app.menu', 'Service'), 'icon' => 'fa fa-server', 'url' => ['service/index']],
                             ['label' => Yii::t('app.menu', 'Team'), 'icon' => 'fa fa-id-card', 'url' => ['team/index']],
                             ['label' => Yii::t('app.menu', 'Portfolio'), 'icon' => 'fa fa-server', 'url' => ['portfolio/index']],
