@@ -22,6 +22,7 @@
                             ['label' => Yii::t('app.menu', 'Team'), 'icon' => 'fa fa-id-card', 'url' => ['team/index']],
                             ['label' => Yii::t('app.menu', 'Portfolio'), 'icon' => 'fa fa-server', 'url' => ['portfolio/index']],
                             ['label' => Yii::t('app.menu', 'Gallery'), 'icon' => 'fa fa-picture-o', 'url' => ['gallery/index']],
+                            ['label' => Yii::t('app.menu', 'Client'), 'icon' => 'fa fa-users', 'url' => ['client/index']],
                             ['label' => Yii::t('app.menu', 'Banner'), 'icon' => 'fa fa-flag', 'url' => ['banner/index']],
                         ],
                     ],
