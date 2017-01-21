@@ -1,39 +1,52 @@
 <?php
+
+use app\models\Banner;
+use app\widgets\CKEditor;
+use kartik\select2\Select2;
 use yii\helpers\Html;
+use yii\web\View;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Banner */
-/* @var $form yii\widgets\ActiveForm */
+/* @var $this View */
+/* @var $model Banner */
+/* @var $form ActiveForm */
 ?>
 
 <div class="banner-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+		'options' => [
+			'enctype' => 'multipart/form-data',
+		]
+	]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'is_absolute_url')->textInput() ?>
+    <?= $form->field($model, 'is_absolute_url')->checkbox() ?>
 
-    <?= $form->field($model, 'photo')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'photoFile')->fileInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'category')->textInput() ?>
+    <?php
+    $categories = Banner::categoryLabels();
+    $categoryOptions = ['data' => $categories, 'pluginOptions' => ['allowClear' => true], 'options' => ['prompt' => 'Choose One']];
+    ?>
+    <?= $form->field($model, 'category')->widget(Select2::className(), $categoryOptions) ?>
 
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'description')->widget(CKEditor::className(), [
+        'enableKCFinder' => false,
+        'clientOptions' => [
+            'row' => 6,
+        ],
+    ]); ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'created_by')->textInput() ?>
-
-    <?= $form->field($model, 'updated_by')->textInput() ?>
-
-  
+    <?php
+    $status = Banner::statusLabels();
+    $statusOptions = ['data' => $status, 'pluginOptions' => ['allowClear' => true], 'options' => ['prompt' => 'Choose One']];
+    ?>
+    <?= $form->field($model, 'status')->widget(Select2::className(), $statusOptions) ?>
+	
 	<?php if (!Yii::$app->request->isAjax){ ?>
 	  	<div class="form-group">
 	        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

@@ -1,10 +1,16 @@
 <?php
+
+use app\models\Banner;
+use app\models\Page;
+use app\widgets\CKEditor;
+use kartik\select2\Select2;
 use yii\helpers\Html;
+use yii\web\View;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Page */
-/* @var $form yii\widgets\ActiveForm */
+/* @var $this View */
+/* @var $model Page */
+/* @var $form ActiveForm */
 ?>
 
 <div class="page-form">
@@ -13,27 +19,29 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
+    <?php
+    $categories = Banner::categoryLabels();
+    $categoryOptions = ['data' => $categories, 'pluginOptions' => ['allowClear' => true], 'options' => ['prompt' => 'Choose One']];
+    ?>
+    <?= $form->field($model, 'category')->widget(Select2::className(), $categoryOptions) ?>
 
-    <?= $form->field($model, 'category')->textInput() ?>
-
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'description')->widget(CKEditor::className(), [
+        'enableKCFinder' => false,
+        'clientOptions' => [
+            'row' => 6,
+        ],
+    ]); ?>
 
     <?= $form->field($model, 'metakey')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'metadesc')->textInput(['maxlength' => true]) ?>
+    
+    <?php
+    $status = Page::statusLabels();
+    $statusOptions = ['data' => $status, 'pluginOptions' => ['allowClear' => true], 'options' => ['prompt' => 'Choose One']];
+    ?>
+    <?= $form->field($model, 'status')->widget(Select2::className(), $statusOptions) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'created_by')->textInput() ?>
-
-    <?= $form->field($model, 'updated_by')->textInput() ?>
-
-  
 	<?php if (!Yii::$app->request->isAjax){ ?>
 	  	<div class="form-group">
 	        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

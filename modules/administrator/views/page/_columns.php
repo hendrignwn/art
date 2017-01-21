@@ -1,4 +1,8 @@
 <?php
+
+use app\models\Page;
+use kartik\grid\GridView;
+use kartik\select2\Select2;
 use yii\helpers\Url;
 
 return [
@@ -18,21 +22,23 @@ return [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'name',
     ],
+//    [
+//        'class'=>'\kartik\grid\DataColumn',
+//        'attribute'=>'slug',
+//    ],
     [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'slug',
-    ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'category',
-    ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'description',
-    ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'metakey',
+        'attribute' => 'category',
+        'filterType' => GridView::FILTER_SELECT2,
+        'filter' => Page::statusLabels(),
+        'filterWidgetOptions' => [
+            'theme' => Select2::THEME_DEFAULT,
+            'pluginOptions' => ['allowClear' => true],
+        ],
+        'filterInputOptions' => ['placeholder' => '-- Select --'],
+        'format' => 'raw',
+        'content' => function ($model) {
+            return $model->getCategoryLabel();
+        }
     ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
@@ -42,10 +48,11 @@ return [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'status',
     // ],
-    // [
-        // 'class'=>'\kartik\grid\DataColumn',
-        // 'attribute'=>'created_at',
-    // ],
+     [
+         'class'=>'\kartik\grid\DataColumn',
+         'attribute'=>'created_at',
+         'width' => '20%'
+     ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'updated_at',

@@ -1,9 +1,12 @@
 <?php
 
+use app\helpers\DetailViewHelper;
+use app\models\Page;
+use yii\web\View;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Page */
+/* @var $this View */
+/* @var $model Page */
 ?>
 <div class="page-view">
  
@@ -13,15 +16,23 @@ use yii\widgets\DetailView;
             'id',
             'name',
             'slug',
-            'category',
             'description:ntext',
             'metakey',
             'metadesc',
-            'status',
+            [
+                'attribute' => 'category',
+                'value' => $model->getCategoryLabel(),
+                'format' => 'raw',
+            ],
+            [
+                'attribute' => 'status',
+                'value' => $model->getStatusWithStyle(),
+                'format' => 'raw',
+            ],
             'created_at',
             'updated_at',
-            'created_by',
-            'updated_by',
+            DetailViewHelper::author($model, 'created_by'),
+            DetailViewHelper::author($model, 'updated_by'),
         ],
     ]) ?>
 

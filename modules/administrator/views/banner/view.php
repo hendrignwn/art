@@ -1,9 +1,12 @@
 <?php
 
+use app\helpers\DetailViewHelper;
+use app\models\Banner;
+use yii\web\View;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Banner */
+/* @var $this View */
+/* @var $model Banner */
 ?>
 <div class="banner-view">
  
@@ -13,15 +16,27 @@ use yii\widgets\DetailView;
             'id',
             'name',
             'url:url',
-            'is_absolute_url:url',
-            'photo',
-            'category',
+            'is_absolute_url',
+            [
+                'attribute' => 'photo',
+                'value' => $model->getPhotoUrlHtml(),
+                'format' => 'raw',
+            ],
+            [
+                'attribute' => 'category',
+                'value' => $model->getCategoryLabel(),
+                'format' => 'raw',
+            ],
             'description:ntext',
-            'status',
+            [
+                'attribute' => 'status',
+                'value' => $model->getStatusWithStyle(),
+                'format' => 'raw',
+            ],
             'created_at',
             'updated_at',
-            'created_by',
-            'updated_by',
+            DetailViewHelper::author($model, 'created_by'),
+            DetailViewHelper::author($model, 'updated_by'),
         ],
     ]) ?>
 
