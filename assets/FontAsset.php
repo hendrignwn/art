@@ -10,22 +10,16 @@ namespace app\assets;
 use yii\web\AssetBundle;
 
 /**
- * @author Qiang Xue <qiang.xue@gmail.com>
- * @since 2.0
+ * @author Hendri <hendri.gnw@gmail.com>
  */
-class AppAsset extends AssetBundle
+class FontAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
     ];
     public $js = [
     ];
     public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
-        'app\assets\FontAsset',
-        'app\assets\FontAwesomeAsset',
     ];
 }
