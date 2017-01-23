@@ -66,24 +66,6 @@ class Page extends BaseActiveRecord
             [['status'], 'default', 'value' => self::STATUS_ACTIVE],
         ];
     }
-    
-    /**
-     * - delete photoFile
-     * 
-     * @return type
-     */
-    public function beforeDelete()
-    {
-        /* todo: delete the corresponding file in storage */
-        $this->deleteFile();
-        
-        return parent::beforeDelete();
-    }
-    
-    protected function deleteFile()
-    {
-        @unlink(Yii::getAlias('@app/' . $this->path) . $this->photo);
-    }
 
     /**
      * @inheritdoc
