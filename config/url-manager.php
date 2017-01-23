@@ -10,5 +10,21 @@ return [
     'enablePrettyUrl' => true,
     'showScriptName' => false,
     'rules' => [
+        [
+            'pattern' => 'blog/<year:\d{4}>/<month:\d{2}>/<slug:[\d\w\-\.]+>',
+            'route' => 'blog/detail',
+        ],
+
+        // for showing blog by category
+        [
+            'pattern' => 'blog/category/<slug:[\d\w\-\.]+>',
+            'route' => 'blog/category',
+        ],
+
+        // for showing blog by tag
+        [
+            'pattern' => 'blog/tag/<slug:[\d\w\-\.]+>',
+            'route' => 'blog/tag',
+        ],
     ],
 ];
