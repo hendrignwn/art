@@ -117,6 +117,7 @@ class Menu extends BaseActiveRecord
                     'category' => $category,
                     'parent_id' => null,
                 ])
+                ->ordered()
                 ->actived()
                 ->all();
         
