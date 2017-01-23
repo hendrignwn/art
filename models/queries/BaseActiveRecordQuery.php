@@ -40,5 +40,15 @@ class BaseActiveRecordQuery extends ActiveQuery
 			'status' => BaseActiveRecord::STATUS_ACTIVE,
 		]);
 	}
+    
+    /**
+     * @return query
+     */
+    public function ordered()
+    {
+        return $this->andWhere([
+            'order' => SORT_ASC,
+        ]);
+    }
 	
 }
