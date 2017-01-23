@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\SluggableBehavior;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "page".
@@ -20,8 +22,26 @@ use Yii;
  * @property integer $created_by
  * @property integer $updated_by
  */
-class Page extends \app\models\BaseActiveRecord
+class Page extends BaseActiveRecord
 {
+	const CATEGORY_FULL = 1;
+	const CATEGORY_PARTIAL = 2;
+   
+    /**
+     * @inheritdoc
+     */
+    public function behaviors() 
+    {
+        return ArrayHelper::merge(parent::behaviors(), [
+            [
+                'class' => SluggableBehavior::className(),
+                'attribute' => 'name',
+                'slugAttribute' => 'slug',
+                'ensureUnique' => true,
+            ]
+        ]);
+    }
+	
     /**
      * @inheritdoc
      */
@@ -43,7 +63,26 @@ class Page extends \app\models\BaseActiveRecord
             [['name', 'metakey'], 'string', 'max' => 200],
             [['slug', 'metadesc'], 'string', 'max' => 255],
             [['slug'], 'unique'],
+            [['status'], 'default', 'value' => self::STATUS_ACTIVE],
         ];
+    }
+    
+    /**
+     * - delete photoFile
+     * 
+     * @return type
+     */
+    public function beforeDelete()
+    {
+        /* todo: delete the corresponding file in storage */
+        $this->deleteFile();
+        
+        return parent::beforeDelete();
+    }
+    
+    protected function deleteFile()
+    {
+        @unlink(Yii::getAlias('@app/' . $this->path) . $this->photo);
     }
 
     /**
@@ -65,5 +104,18 @@ class Page extends \app\models\BaseActiveRecord
             'created_by' => Yii::t('app', 'Created By'),
             'updated_by' => Yii::t('app', 'Updated By'),
         ];
+    }
+	
+    public static function categoryLabels() 
+    {
+        return [
+            self::CATEGORY_FULL => Yii::t('app', 'Full'),
+            self::CATEGORY_PARTIAL => Yii::t('app', 'Partial'),
+        ];
+    }
+
+    public function getCategoryLabel() 
+    {
+        return self::categoryLabels()[$this->category] ? self::categoryLabels()[$this->category] : $this->category;
     }
 }

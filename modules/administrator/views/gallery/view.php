@@ -1,9 +1,12 @@
 <?php
 
+use app\helpers\DetailViewHelper;
+use app\models\Gallery;
+use yii\web\View;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Gallery */
+/* @var $this View */
+/* @var $model Gallery */
 ?>
 <div class="gallery-view">
  
@@ -11,17 +14,28 @@ use yii\widgets\DetailView;
         'model' => $model,
         'attributes' => [
             'id',
-            'portfolio_id',
+            [
+                'attribute' => 'portfolio_id',
+                'value' => $model->portfolio ? $model->portfolio->name : $model->portfolio_id,
+            ],
             'name',
-            'photo',
+            [
+                'attribute' => 'photo',
+                'value' => $model->getPhotoUrlHtml(),
+                'format' => 'raw',
+            ],
             'description:ntext',
-            'metakey',
+			'metakey',
             'metadesc',
-            'status',
+            [
+                'attribute' => 'status',
+                'value' => $model->getStatusWithStyle(),
+                'format' => 'raw',
+            ],
             'created_at',
             'updated_at',
-            'created_by',
-            'updated_by',
+            DetailViewHelper::author($model, 'created_by'),
+            DetailViewHelper::author($model, 'updated_by'),
         ],
     ]) ?>
 

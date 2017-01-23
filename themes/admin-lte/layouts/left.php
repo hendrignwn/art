@@ -31,8 +31,9 @@
                         'icon' => 'fa fa-folder-o',
                         'url' => '#',
                         'items' => [
-                            ['label' => Yii::t('app.menu', 'Post'), 'icon' => 'fa fa-plus-square-o', 'url' => ['/gii']],
-                            ['label' => Yii::t('app.menu', 'Post Categories'), 'icon' => 'fa fa-reorder', 'url' => ['/gii']],
+                            ['label' => Yii::t('app.menu', 'Post'), 'icon' => 'fa fa-plus-square-o', 'url' => ['blog-post/index']],
+                            ['label' => Yii::t('app.menu', 'Post Categories'), 'icon' => 'fa fa-reorder', 'url' => ['blog-category/index']],
+                            ['label' => Yii::t('app.menu', 'Post Tag'), 'icon' => 'fa fa-reorder', 'url' => ['blog-tag/index']],
                         ],
                     ],
                 ],

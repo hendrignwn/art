@@ -1,4 +1,8 @@
 <?php
+
+use app\models\Client;
+use kartik\select2\Select2;
+use kartik\grid\GridView;
 use yii\helpers\Url;
 
 return [
@@ -23,25 +27,31 @@ return [
         'attribute'=>'website',
     ],
     [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'photo',
+        'attribute' => 'status',
+        'filterType' => GridView::FILTER_SELECT2,
+        'filter' => Client::statusLabels(),
+        'filterWidgetOptions' => [
+            'theme' => Select2::THEME_DEFAULT,
+            'pluginOptions' => ['allowClear' => true],
+        ],
+        'filterInputOptions' => ['placeholder' => '-- Select --'],
+        'format' => 'raw',
+        'content' => function ($model) {
+            return $model->getStatusWithStyle();
+        }
     ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'status',
-    ],
-    // [
-        // 'class'=>'\kartik\grid\DataColumn',
-        // 'attribute'=>'created_at',
-    // ],
+     [
+         'class'=>'\kartik\grid\DataColumn',
+         'attribute'=>'created_at',
+     ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'updated_at',
     // ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'created_by',
-    ],
+//    [
+//        'class'=>'\kartik\grid\DataColumn',
+//        'attribute'=>'created_by',
+//    ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'updated_by',

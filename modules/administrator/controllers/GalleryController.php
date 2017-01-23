@@ -9,6 +9,7 @@ use Yii;
 use yii\helpers\Html;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
+use yii\web\UploadedFile;
 
 /**
  * GalleryController implements the CRUD actions for Gallery model.
@@ -82,16 +83,20 @@ class GalleryController extends BaseController
                                 Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
         
                 ];         
-            }else if($model->load($request->post()) && $model->save()){
-                return [
-                    'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "Create new Gallery",
-                    'content'=>'<span class="text-success">Create Gallery success</span>',
-                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
-                            Html::a('Create More',['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
-        
-                ];         
-            }else{           
+            }else if($model->load($request->post())){
+				$model->photoFile = UploadedFile::getInstance($model, 'photoFile');
+                if ($model->save()) {
+					return [
+						'forceReload' => '#crud-datatable-pjax',
+						'title' => "Create new Gallery",
+						'content' => '<span class="text-success">Create Gallery success</span>',
+						'footer' => Html::button('Close', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
+						Html::a('Create More', ['create'], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
+					];
+				}
+                goto render;
+            }else{          
+				render:
                 return [
                     'title'=> "Create new Gallery",
                     'content'=>$this->renderAjax('create', [
@@ -143,17 +148,22 @@ class GalleryController extends BaseController
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                                 Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
                 ];         
-            }else if($model->load($request->post()) && $model->save()){
-                return [
-                    'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "Gallery #".$id,
-                    'content'=>$this->renderAjax('view', [
-                        'model' => $model,
-                    ]),
-                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
-                            Html::a('Edit',['update','id'=>$id],['class'=>'btn btn-primary','role'=>'modal-remote'])
-                ];    
+            }else if($model->load($request->post())){
+				$model->photoFile = UploadedFile::getInstance($model, 'photoFile');
+                if ($model->save()) {
+					return [
+						'forceReload' => '#crud-datatable-pjax',
+						'title' => "Gallery #" . $id,
+						'content' => $this->renderAjax('view', [
+							'model' => $model,
+						]),
+						'footer' => Html::button('Close', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
+						Html::a('Edit', ['update', 'id' => $id], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
+					];
+				}
+                goto render;
             }else{
+				render:
                  return [
                     'title'=> "Update Gallery #".$id,
                     'content'=>$this->renderAjax('update', [

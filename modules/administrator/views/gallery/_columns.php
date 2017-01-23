@@ -1,4 +1,10 @@
 <?php
+
+use app\models\Gallery;
+use app\models\Portfolio;
+use kartik\grid\GridView;
+use kartik\select2\Select2;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 
 return [
@@ -15,41 +21,51 @@ return [
         // 'attribute'=>'id',
     // ],
     [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'portfolio_id',
+        'attribute' => 'portfolio_id',
+        'filterType' => GridView::FILTER_SELECT2,
+        'filter' => ArrayHelper::map(Portfolio::find()->actived()->all(), 'id', 'name'),
+        'filterWidgetOptions' => [
+            'theme' => Select2::THEME_DEFAULT,
+            'pluginOptions' => ['allowClear' => true],
+        ],
+        'filterInputOptions' => ['placeholder' => '-- Select --'],
+        'format' => 'raw',
+        'content' => function ($model) {
+            return $model->portfolio ? $model->portfolio->name : $model->portfolio_id;
+        }
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'name',
     ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'photo',
-    ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'description',
-    ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'metakey',
-    ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'metadesc',
     // ],
-    // [
-        // 'class'=>'\kartik\grid\DataColumn',
-        // 'attribute'=>'status',
-    // ],
-    // [
-        // 'class'=>'\kartik\grid\DataColumn',
-        // 'attribute'=>'created_at',
-    // ],
-    // [
-        // 'class'=>'\kartik\grid\DataColumn',
-        // 'attribute'=>'updated_at',
-    // ],
+    [
+        'attribute' => 'status',
+        'filterType' => GridView::FILTER_SELECT2,
+        'filter' => Gallery::statusLabels(),
+        'filterWidgetOptions' => [
+            'theme' => Select2::THEME_DEFAULT,
+            'pluginOptions' => ['allowClear' => true],
+        ],
+        'filterInputOptions' => ['placeholder' => '-- Select --'],
+        'format' => 'raw',
+        'content' => function ($model) {
+            return $model->getStatusWithStyle();
+        }
+    ],
+    [
+        'class' => '\kartik\grid\DataColumn',
+        'width' => '15%',
+        'attribute' => 'created_at',
+    ],
+    [
+        'class' => '\kartik\grid\DataColumn',
+        'width' => '15%',
+        'attribute' => 'updated_at',
+    ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'created_by',
