@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveQuery;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "menu".
@@ -23,7 +25,7 @@ use Yii;
  * @property Menu[] $parent
  * @property Menu[] $parents
  */
-class Menu extends \app\models\BaseActiveRecord
+class Menu extends BaseActiveRecord
 {
     const CATEGORY_MAIN = 1;
     const CATEGORY_MAIN_FOOTER = 2;
@@ -45,12 +47,16 @@ class Menu extends \app\models\BaseActiveRecord
     {
         return [
             [['parent_id', 'is_absolute_url', 'status', 'order', 'created_by', 'updated_by', 'category'], 'integer'],
-            [['name', 'url', 'order'], 'required'],
+            [['name', 'url'], 'required'],
             [['option'], 'string'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['created_at', 'updated_at', 'order'], 'safe'],
             [['name'], 'string', 'max' => 100],
             [['url'], 'string', 'max' => 255],
-            [['url'], 'unique'],
+            [['status'], 'default', 'value' => self::STATUS_ACTIVE],
+            [['order'], 'default', 'value' => 0],
+            [['parent_id'], 'in',
+                'range' => self::find()->select(['id'])->column(),
+                'message' => 'Menu "{value}" not found.'],
         ];
     }
 
@@ -79,7 +85,7 @@ class Menu extends \app\models\BaseActiveRecord
     /**
      * get menu parent
      * 
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getParent()
     {
@@ -89,7 +95,7 @@ class Menu extends \app\models\BaseActiveRecord
     /**
      * get menu children
      * 
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getParents()
     {
@@ -118,15 +124,20 @@ class Menu extends \app\models\BaseActiveRecord
         foreach ($query as $data) {
             $items[$data->id]['label'] = $data->name;
             $items[$data->id]['id'] = $data->id;
-            $items[$data->id]['url'] = $data->url;
+            $items[$data->id]['url'] = [$data->url];
             $items[$data->id]['options'] = $options;
             
             if ($data->parents != null) {
-                //var_dump($data->parents);continue;
                 $items[$data->id]['url'] = '#';
                 $items[$data->id]['options'] = $childOptions;
-                $items[$data->id]['items'] = $this->getChildren($items[$data->id]['items'], $data->parents);
+                $items[$data->id]['items'] = '';
+                $items[$data->id]['items'] = $this->getMenuChildren($items[$data->id]['items'], $data->parents);
             }
+            
+            if (!empty($data->getOption())) {
+                $items[$data->id] = ArrayHelper::merge($items[$data->id], $data->getOption());
+            }
+            
         }
         
         return $items;
@@ -144,12 +155,17 @@ class Menu extends \app\models\BaseActiveRecord
         foreach ($parents as $data) {
             $items[$data->id]['label'] = $data->name;
             $items[$data->id]['id'] = $data->id;
-            $items[$data->id]['url'] = $data->url;
+            $items[$data->id]['url'] = [$data->url];
             $items[$data->id]['options'] = $options;
             if ($data->parents != null) {
                 $items[$data->id]['url'] = '#';
                 $items[$data->id]['options'] = $childOptions;
+                $items[$data->id]['items'] = '';
                 $items[$data->id]['items'] = $this->getMenuChildren($items[$data->id]['items'], $data->parents, $options, $childOptions);
+            }
+            
+            if (!empty($data->getOption())) {
+                $items[$data->id] = ArrayHelper::merge($items[$data->id], $data->getOption());
             }
         }
         
@@ -164,5 +180,27 @@ class Menu extends \app\models\BaseActiveRecord
     public function getOption()
     {
         return eval($this->option);
+    }
+    
+    /**
+     * @return string
+     */
+    public function getCategoryWithName()
+    {
+        return $this->getCategoryLabel() .' - '. $this->name;
+    }
+    
+    public static function categoryLabels() 
+    {
+        return [
+            self::CATEGORY_MAIN => Yii::t('app', 'Main'),
+            self::CATEGORY_MAIN_FOOTER => Yii::t('app', 'Main Footer'),
+            self::CATEGORY_BACKEND => Yii::t('app', 'Backend'),
+        ];
+    }
+
+    public function getCategoryLabel() 
+    {
+        return self::categoryLabels()[$this->category] ? self::categoryLabels()[$this->category] : $this->category;
     }
 }
