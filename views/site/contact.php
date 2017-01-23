@@ -5,6 +5,8 @@
 /* @var $model ContactForm */
 
 use app\models\ContactForm;
+use iutbay\yii2kcfinder\KCFinderInputWidget;
+use stenyo\ckeditor\CKEditor;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 use yii\helpers\Html;
