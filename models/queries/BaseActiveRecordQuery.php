@@ -46,7 +46,7 @@ class BaseActiveRecordQuery extends ActiveQuery
      */
     public function ordered()
     {
-        return $this->andWhere([
+        return $this->orderBy([
             'order' => SORT_ASC,
         ]);
     }
