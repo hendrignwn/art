@@ -83,6 +83,7 @@ class UserController extends BaseController
     {
         $request = Yii::$app->request;
         $model = new User();  
+        $model->scenario = User::SCENARIO_INSERT;
 
         if($request->isAjax){
             /*
@@ -144,7 +145,7 @@ class UserController extends BaseController
     public function actionUpdate($id)
     {
         $request = Yii::$app->request;
-        $model = $this->findModel($id);       
+        $model = $this->findModel($id);    
 
         if($request->isAjax){
             /*

@@ -23,6 +23,11 @@ use Yii;
  */
 class User extends BaseActiveRecord implements \yii\web\IdentityInterface
 {
+    /**
+     * @var string $password
+     */
+    public $password;
+    
     public function init() 
     {
         parent::init();
@@ -45,13 +50,17 @@ class User extends BaseActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['email', 'username', 'password_hash', 'auth_key'], 'required'],
+            [['email', 'username', 'password'], 'required', 'on' => self::SCENARIO_INSERT],
             [['status', 'created_by', 'updated_by'], 'integer'],
-            [['last_login', 'join_at', 'blocked_at', 'created_at', 'updated_at'], 'safe'],
-            [['email', 'username'], 'string', 'max' => 100],
-            [['password_hash', 'auth_key'], 'string', 'max' => 255],
-            [['email'], 'unique'],
-            [['username'], 'unique'],
+            [['auth_key', 'last_login', 'join_at', 'blocked_at', 'created_at', 'updated_at', 'password_hash'], 'safe'],
+            [['email'], 'unique', 'message' => \Yii::t('app', 'This email address has already been taken')],
+            [['email'], 'email'],
+            [['username'], 'unique', 'message' => \Yii::t('app', 'This username has already been taken')],
+            [['username'], 'match', 'pattern' => '/^[-a-zA-Z0-9_\.@]+$/'],
+            [['username'], 'string', 'min' => 3, 'max' => 100],
+            [['password'], 'string', 'min' => 6, 'max' => 72],
+            [['auth_key'], 'default', 'value' => $this->generateAuthKey()],
+            [['status'], 'default', 'value' => self::STATUS_ACTIVE],
         ];
     }
 
@@ -99,6 +108,21 @@ class User extends BaseActiveRecord implements \yii\web\IdentityInterface
         return true;
     }
     
+    /**
+     * event before save
+     * 
+     * @param type $insert
+     * @return type
+     */
+    public function beforeSave($insert) 
+    {
+        if (!empty($this->password)) {
+            $this->setPassword($this->password);
+        }
+        
+        return parent::beforeSave($insert);
+    }
+    
 	/**
 	 * update last login when login is successful
 	 * 
@@ -134,7 +158,7 @@ class User extends BaseActiveRecord implements \yii\web\IdentityInterface
      */
     public static function findByUsername($username)
     {
-        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['username' => $username]);
     }
 
     /**
@@ -188,5 +212,15 @@ class User extends BaseActiveRecord implements \yii\web\IdentityInterface
     public function setPassword($password)
     {
         $this->password_hash = Yii::$app->security->generatePasswordHash($password);
+    }
+    
+    /**
+     * return boolean whether status active or not.
+     * 
+     * @return boolean
+     */
+    public function isActive()
+    {
+        return $this->status === self::STATUS_ACTIVE;
     }
 }

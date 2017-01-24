@@ -1,9 +1,12 @@
 <?php
 
+use app\helpers\DetailViewHelper;
+use app\models\User;
+use yii\web\View;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\User */
+/* @var $this View */
+/* @var $model User */
 ?>
 <div class="user-view">
  
@@ -15,14 +18,18 @@ use yii\widgets\DetailView;
             'username',
             'password_hash',
             'auth_key',
-            'status',
             'last_login',
             'join_at',
             'blocked_at',
+            [
+                'attribute' => 'status',
+                'value' => $model->getStatusWithStyle(),
+                'format' => 'raw',
+            ],
             'created_at',
             'updated_at',
-            'created_by',
-            'updated_by',
+            DetailViewHelper::author($model, 'created_by'),
+            DetailViewHelper::author($model, 'updated_by'),
         ],
     ]) ?>
 

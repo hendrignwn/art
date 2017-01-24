@@ -1,4 +1,8 @@
 <?php
+
+use app\models\User;
+use kartik\grid\GridView;
+use kartik\select2\Select2;
 use yii\helpers\Url;
 
 return [
@@ -22,22 +26,32 @@ return [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'username',
     ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'password_hash',
-    ],
+//    [
+//        'class'=>'\kartik\grid\DataColumn',
+//        'attribute'=>'password_hash',
+//    ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'auth_key',
     ],
     [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'status',
+        'attribute' => 'status',
+        'filterType' => GridView::FILTER_SELECT2,
+        'filter' => User::statusLabels(),
+        'filterWidgetOptions' => [
+            'theme' => Select2::THEME_DEFAULT,
+            'pluginOptions' => ['allowClear' => true],
+        ],
+        'filterInputOptions' => ['placeholder' => '-- Select --'],
+        'format' => 'raw',
+        'content' => function ($model) {
+            return $model->getStatusWithStyle();
+        }
     ],
-    // [
-        // 'class'=>'\kartik\grid\DataColumn',
-        // 'attribute'=>'last_login',
-    // ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'last_login',
+    ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'join_at',
