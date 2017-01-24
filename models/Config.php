@@ -394,4 +394,44 @@ class Config extends \yii\db\ActiveRecord
     {
         return self::getValueJsonByName('titles');
     }
+    
+    /**
+     * returns meta keywords for home
+     * 
+     * @return string
+     */
+    public static function getAppMetaKey()
+    {
+        return self::getValueByName('app_metakey');
+    }
+    
+    /**
+     * returns meta description for home
+     * 
+     * @return string
+     */
+    public static function getAppMetaDescription()
+    {
+        return self::getValueByName('app_metadesc');
+    }
+    
+    /**
+     * returns seo image url for home
+     * 
+     * @return string
+     */
+    public static function getAppSeoImageUrl()
+    {
+        return self::getValueByName('app_seo_image_url');
+    }
+    
+    /**
+     * returns seo alt image for home
+     * 
+     * @return string
+     */
+    public static function getAppSeoAltImage()
+    {
+        return self::getValueByName('app_seo_alt_image');
+    }
 }
