@@ -28,6 +28,7 @@ class m170123_155046_add_new_data_to_menu_table extends Migration
         $this->insert('{{%menu}}',['id'=>'21','parent_id'=>'20','name'=>'Post','url'=>'blog-post/index','is_absolute_url'=>'0','option'=>'return [\'icon\'=>\'fa fa-plus-square-o\'];','category'=>'10','status'=>'1','order'=>'0','created_at'=>'2017-01-23 16:05:09','updated_at'=>'','created_by'=>'1','updated_by'=>'1']);
         $this->insert('{{%menu}}',['id'=>'23','parent_id'=>'20','name'=>'Categories','url'=>'blog-category/index','is_absolute_url'=>'0','option'=>'return [\'icon\'=>\'fa fa-list\'];','category'=>'10','status'=>'1','order'=>'15','created_at'=>'2017-01-23 16:11:57','updated_at'=>'','created_by'=>'1','updated_by'=>'1']);
         $this->insert('{{%menu}}',['id'=>'24','parent_id'=>'20','name'=>'Tag','url'=>'blog-tag/index','is_absolute_url'=>'0','option'=>'return [\'icon\'=>\'fa fa-list\'];','category'=>'10','status'=>'1','order'=>'20','created_at'=>'2017-01-23 16:12:21','updated_at'=>'','created_by'=>'1','updated_by'=>'1']);
+        $this->insert('{{%menu}}',['id'=>'25','parent_id'=>'','name'=>'Subscribe','url'=>'subscribe/index','is_absolute_url'=>'0','option'=>'return [\'icon\'=>\'fa fa-users\'];','category'=>'10','status'=>'1','order'=>'20','created_at'=>'2017-01-23 16:12:21','updated_at'=>'','created_by'=>'1','updated_by'=>'1']);
     }
 
     public function safeDown()
