@@ -58,6 +58,7 @@ $config = [
         'db' => require(__DIR__ . '/db.php'),
         'urlManager' => require(__DIR__ . '/url-manager.php'),
         'view' => [
+            'class' => 'app\components\View',
 			'theme' => [
 				'pathMap' => [
 					/** for administrator module */
