@@ -53,40 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <?= $form->field($model, 'subject') ?>
                 
-                <?= $form->field($model, 'body')->widget(app\widgets\CKEditor::className(), [
-                    'kcfOptions' => [
-                        'uploadURL' => '@web/uploads',
-                        'uploadDir' => '@app/web/uploads/images',
-                        'maxImageWidth' => 100,
-                        'maxImageHeight' => 100,
-                        'access' => array(
-                            'files' => array(
-                                'upload' => true,
-                                'delete' => true,
-                                'copy' => true,
-                                'move' => true,
-                                'rename' => true
-                            ),
-                            'dirs' => array(
-                                'create' => true,
-                                'delete' => true,
-                                'rename' => true
-                            )
-                        ),
-                        'types' => array(
-
-                            // (F)CKEditor types
-                                'files'   =>  "!pdf",
-                                'flash'   =>  "swf",
-                                'images'  =>  "*img",
-
-                            // TinyMCE types
-                                'file'    =>  "!pdf",
-                                'media'   =>  "swf flv avi mpg mpeg qt mov wmv asf rm",
-                                'image'   =>  "*img",
-                            ),
-                    ]
-]); ?>
+                    <?= $form->field($model, 'body')->widget(app\widgets\CKEditor::className()); ?>
 
                 
 
