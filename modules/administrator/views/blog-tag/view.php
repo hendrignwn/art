@@ -1,9 +1,12 @@
 <?php
 
+use app\helpers\DetailViewHelper;
+use app\models\BlogTag;
+use yii\web\View;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\BlogTag */
+/* @var $this View */
+/* @var $model BlogTag */
 ?>
 <div class="blog-tag-view">
  
@@ -14,8 +17,8 @@ use yii\widgets\DetailView;
             'name',
             'created_at',
             'updated_at',
-            'created_by',
-            'updated_by',
+            DetailViewHelper::author($model, 'created_by'),
+            DetailViewHelper::author($model, 'updated_by'),
         ],
     ]) ?>
 

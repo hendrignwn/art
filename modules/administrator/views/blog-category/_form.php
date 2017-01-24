@@ -1,10 +1,14 @@
 <?php
+
+use app\models\BlogCategory;
+use kartik\select2\Select2;
 use yii\helpers\Html;
+use yii\web\View;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\BlogCategory */
-/* @var $form yii\widgets\ActiveForm */
+/* @var $this View */
+/* @var $model BlogCategory */
+/* @var $form ActiveForm */
 ?>
 
 <div class="blog-category-form">
@@ -13,22 +17,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'metakey')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'metadesc')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'metadesc')->textarea(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'created_by')->textInput() ?>
-
-    <?= $form->field($model, 'updated_by')->textInput() ?>
-
+    <?php
+    $status = BlogCategory::statusLabels();
+    $statusOptions = ['data' => $status, 'pluginOptions' => ['allowClear' => true], 'options' => ['prompt' => 'Choose One']];
+    ?>
+    <?= $form->field($model, 'status')->widget(Select2::className(), $statusOptions) ?>
   
 	<?php if (!Yii::$app->request->isAjax){ ?>
 	  	<div class="form-group">

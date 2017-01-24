@@ -45,6 +45,11 @@ class TeamSearch extends Team
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'first_name' => SORT_ASC,
+                ],
+            ]
         ]);
 
         $this->load($params);

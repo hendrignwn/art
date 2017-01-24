@@ -1,9 +1,12 @@
 <?php
 
+use app\helpers\DetailViewHelper;
+use app\models\BlogCategory;
+use yii\web\View;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\BlogCategory */
+/* @var $this View */
+/* @var $model BlogCategory */
 ?>
 <div class="blog-category-view">
  
@@ -15,11 +18,15 @@ use yii\widgets\DetailView;
             'slug',
             'metakey',
             'metadesc',
-            'status',
+            [
+                'attribute' => 'status',
+                'value' => $model->getStatusWithStyle(),
+                'format' => 'raw',
+            ],
             'created_at',
             'updated_at',
-            'created_by',
-            'updated_by',
+            DetailViewHelper::author($model, 'created_by'),
+            DetailViewHelper::author($model, 'updated_by'),
         ],
     ]) ?>
 

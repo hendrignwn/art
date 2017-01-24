@@ -45,6 +45,11 @@ class UserSearch extends User
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'join_at' => SORT_DESC,
+                ],
+            ]
         ]);
 
         $this->load($params);

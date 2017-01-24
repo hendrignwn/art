@@ -45,6 +45,11 @@ class GallerySearch extends Gallery
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'portfolio_id' => SORT_DESC,
+                ],
+            ]
         ]);
 
         $this->load($params);

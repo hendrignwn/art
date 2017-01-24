@@ -47,9 +47,9 @@ class MenuSearch extends Menu
             'query' => $query,
             'sort' => [
 				'defaultOrder' => [
-					'category' => SORT_ASC,
-				],
-			]
+                    'category' => SORT_ASC,
+                ],
+            ]
         ]);
 
         $this->load($params);

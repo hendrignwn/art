@@ -3,6 +3,9 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\SluggableBehavior;
+use yii\db\ActiveQuery;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "blog_category".
@@ -20,8 +23,23 @@ use Yii;
  *
  * @property BlogPost[] $blogPosts
  */
-class BlogCategory extends \app\models\BaseActiveRecord
+class BlogCategory extends BaseActiveRecord
 {
+    /**
+     * @inheritdoc
+     */
+    public function behaviors() 
+    {
+        return ArrayHelper::merge(parent::behaviors(), [
+            [
+                'class' => SluggableBehavior::className(),
+                'attribute' => 'name',
+                'slugAttribute' => 'slug',
+                'ensureUnique' => true,
+            ]
+        ]);
+    }
+    
     /**
      * @inheritdoc
      */
@@ -36,8 +54,8 @@ class BlogCategory extends \app\models\BaseActiveRecord
     public function rules()
     {
         return [
-            [['name', 'slug'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['name'], 'required'],
+            [['slug', 'created_at', 'updated_at'], 'safe'],
             [['created_by', 'updated_by'], 'integer'],
             [['name', 'slug'], 'string', 'max' => 64],
             [['metakey'], 'string', 'max' => 150],
@@ -68,7 +86,7 @@ class BlogCategory extends \app\models\BaseActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getBlogPosts()
     {

@@ -27,7 +27,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'metakey')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'metadesc')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'metadesc')->textarea(['maxlength' => true]) ?>
 
     <?php
     $status = Service::statusLabels();

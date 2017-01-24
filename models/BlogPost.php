@@ -5,6 +5,9 @@ namespace app\models;
 use app\helpers\FormatConverter;
 use app\helpers\Url;
 use Yii;
+use yii\behaviors\SluggableBehavior;
+use yii\db\ActiveQuery;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "blog_post".
@@ -32,6 +35,21 @@ class BlogPost extends BaseActiveRecord
     /**
      * @inheritdoc
      */
+    public function behaviors() 
+    {
+        return ArrayHelper::merge(parent::behaviors(), [
+            [
+                'class' => SluggableBehavior::className(),
+                'attribute' => 'title',
+                'slugAttribute' => 'slug',
+                'ensureUnique' => true,
+            ]
+        ]);
+    }
+    
+    /**
+     * @inheritdoc
+     */
     public static function tableName()
     {
         return 'blog_post';
@@ -43,9 +61,9 @@ class BlogPost extends BaseActiveRecord
     public function rules()
     {
         return [
-            [['title', 'slug', 'content', 'blog_category_id'], 'required'],
+            [['title', 'content', 'blog_category_id'], 'required'],
             [['lead_text', 'content'], 'string'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['slug', 'created_at', 'updated_at'], 'safe'],
             [['created_by', 'updated_by', 'blog_category_id'], 'integer'],
             [['title', 'slug'], 'string', 'max' => 128],
             [['photo'], 'string', 'max' => 100],
@@ -82,7 +100,7 @@ class BlogPost extends BaseActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getBlogCategory()
     {
@@ -90,7 +108,7 @@ class BlogPost extends BaseActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getBlogPostTags()
     {

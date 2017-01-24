@@ -1,4 +1,9 @@
 <?php
+
+use app\models\User;
+use kartik\grid\GridView;
+use kartik\select2\Select2;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 
 return [
@@ -18,22 +23,33 @@ return [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'name',
     ],
-    // [
-        // 'class'=>'\kartik\grid\DataColumn',
-        // 'attribute'=>'created_at',
-    // ],
+    [
+        'class' => '\kartik\grid\DataColumn',
+        'attribute' => 'created_at',
+    ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'updated_at',
     // ],
     [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'created_by',
+        'class' => '\kartik\grid\DataColumn',
+        'attribute' => 'created_by',
+        'filterType' => GridView::FILTER_SELECT2,
+        'filter' => ArrayHelper::map(User::find()->all(), 'id', 'username'),
+        'filterWidgetOptions' => [
+            'theme' => Select2::THEME_DEFAULT,
+            'pluginOptions' => ['allowClear' => true],
+        ],
+        'filterInputOptions' => ['placeholder' => '-- Select --'],
+        'format' => 'raw',
+        'content' => function ($model) {
+            return $model->createdBy ? $model->createdBy->username : $model->created_by;
+        }
     ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'updated_by',
-    ],
+//    [
+//        'class'=>'\kartik\grid\DataColumn',
+//        'attribute'=>'updated_by',
+//    ],
     [
         'class' => 'kartik\grid\ActionColumn',
         'dropdown' => false,
