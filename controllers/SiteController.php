@@ -2,12 +2,13 @@
 
 namespace app\controllers;
 
+use app\models\Config;
+use app\models\ContactForm;
+use app\models\LoginForm;
 use Yii;
 use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
+use yii\web\Controller;
 
 class SiteController extends Controller
 {
@@ -60,6 +61,28 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $view = $this->view;
+        $view->title = 'My Yii Application';
+        
+        $view->registerMetaTag([
+            'http-equiv' => 'Content-Type',
+            'content' => 'text/html; charset=utf-8'
+        ]);
+        $view->registerLinkAlternate();
+        $view->registerLinkCanonical();
+        $view->registerMetaTitle();
+        $view->registerMetaKeywords(Config::getAppMetaKey());
+        $view->registerMetaDescription(Config::getAppMetaDescription());
+        $view->registerMetaTag([
+            'name' => 'robots',
+            'content' => 'noindex,nofollow',
+        ]);
+        $socialMedia = [
+			'title' => $this->view->title .' - '. Yii::$app->name,
+			'description' => Config::getAppMetaDescription(),
+		];
+		$view->registerMetaSocialMedia($socialMedia);
+        
         return $this->render('index');
     }
 
