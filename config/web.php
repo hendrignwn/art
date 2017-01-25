@@ -2,6 +2,9 @@
 
 $params = require(__DIR__ . '/params.php');
 
+$activeFrontTheme = $params['activeFrontTheme'];
+$activeAdminTheme = $params['activeAdminTheme'];
+
 $config = [
     'id' => 'atc-art-techno',
     'basePath' => dirname(__DIR__),
@@ -61,8 +64,9 @@ $config = [
             'class' => 'app\components\View',
 			'theme' => [
 				'pathMap' => [
+                    '@app/views' => '@app/themes/'.$activeFrontTheme.'/views',
 					/** for administrator module */
-				   '@app/modules/administrator/views' => '@app/themes/admin-lte',
+				   '@app/modules/administrator/views' => '@app/themes/'.$activeAdminTheme,
 				],
 			],
 		],
