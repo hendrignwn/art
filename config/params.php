@@ -6,4 +6,6 @@ return [
     'mobileUrl' => 'http://m.atc.co.id',
     'jsBlock' => 0,
     'modalBlock' => 0,
+    'activeFrontTheme' => 'v1',
+    'activeAdminTheme' => 'admin-lte',
 ];
