@@ -61,8 +61,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout = 'home';
         $view = $this->view;
-        $view->title = 'My Yii Application';
+        $view->title = Config::getAppMotto();
         
         $view->registerMetaTag([
             'http-equiv' => 'Content-Type',
