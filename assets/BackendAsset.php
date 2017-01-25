@@ -12,16 +12,17 @@ use yii\web\AssetBundle;
 /**
  * @author Hendri <hendri.gnw@gmail.com>
  */
-class FontAsset extends AssetBundle
+class BackendAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'https://fonts.googleapis.com/css?family=Raleway:400,300,500,700,900',
-        'themes/v1/fonts/iconfont/material-icons.css',
+        'site/css.css'
     ];
     public $js = [
     ];
     public $depends = [
+        'yii\web\YiiAsset',
+        'yii\bootstrap\BootstrapAsset',
     ];
 }
