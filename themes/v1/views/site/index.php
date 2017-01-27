@@ -777,8 +777,17 @@
                 <div class="col-md-8">
                     <?php
                     $model = new \app\models\ContactForm();
-                    $form = yii\bootstrap\ActiveForm::begin();
-                    echo $form->field($model, 'first_name')->textInput(['class'=>'validate', 'type'=>'email']);
+                    $form = yii\bootstrap\ActiveForm::begin([
+								'id' => 'main-contact-form',
+								'fieldConfig' => [
+									'template' => "<div class=\"input-field\">\n{input}\n{label}\n{error}</div>",
+									'labelOptions' => ['class'=>null],
+									'inputOptions' => ['class' => 'validate', 'required' => true],
+									'errorOptions' => ['style' => 'position:absolute !important;color:#fff !important;font-weight:normal !important;', 'class'=>'help-block help-block-error label label-danger'],
+								]
+							]);
+                    
+                    echo $form->field($model, 'email')->textInput(['maxlength'=>true, 'type'=>'email']);
                     yii\bootstrap\ActiveForm::end();
                     ?>
                     <form name="contact-form" id="contactForm" class="clearfix" action="https://trendytheme.net/demo/matrox/sendemail.php" method="POST">
