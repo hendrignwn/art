@@ -2,7 +2,11 @@
 
 namespace app\models;
 
+use app\helpers\Url;
 use Yii;
+use yii\behaviors\SluggableBehavior;
+use yii\db\ActiveQuery;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "blog_tag".
@@ -16,8 +20,23 @@ use Yii;
  *
  * @property BlogPostTag[] $blogPostTags
  */
-class BlogTag extends \app\models\BaseActiveRecord
+class BlogTag extends BaseActiveRecord
 {
+    /**
+     * @inheritdoc
+     */
+    public function behaviors() 
+    {
+        return ArrayHelper::merge(parent::behaviors(), [
+            [
+                'class' => SluggableBehavior::className(),
+                'attribute' => 'title',
+                'slugAttribute' => 'slug',
+                'ensureUnique' => true,
+            ]
+        ]);
+    }
+    
     /**
      * @inheritdoc
      */
@@ -37,6 +56,7 @@ class BlogTag extends \app\models\BaseActiveRecord
             [['created_by', 'updated_by'], 'integer'],
             [['name'], 'string', 'max' => 64],
             [['name'], 'unique'],
+            [['slug'], 'unique'],
         ];
     }
 
@@ -56,10 +76,21 @@ class BlogTag extends \app\models\BaseActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getBlogPostTags()
     {
         return $this->hasMany(BlogPostTag::className(), ['blog_tag_id' => 'id']);
+    }
+    
+    /**
+     * returns url
+     * 
+     * @param type $isAbsolute is false
+     * @return type
+     */
+    public function getUrl($isAbsolute = false)
+    {
+        return Url::to(['blog/tag', 'slug' => $this->slug], $isAbsolute);
     }
 }
