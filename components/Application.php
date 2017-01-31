@@ -9,6 +9,7 @@
 namespace app\components;
 
 use app\models\Config;
+use yii\helpers\ArrayHelper;
 
 /**
  * Description of Application
@@ -24,4 +25,20 @@ class Application extends \yii\web\Application
 		
 		return true;
 	}
+    
+    public function run() 
+    {
+        $configs = Config::getByNames([
+            'credential_googlemap_api',
+            'map_location_latitude',
+            'map_location_longitude',
+            'map_marker_description',
+        ]);
+        $configs['map_location_latitude'] = (float) $configs['map_location_latitude'];
+        $configs['map_location_longitude'] = (float) $configs['map_location_longitude'];
+
+        $this->params = ArrayHelper::merge($this->params, $configs);
+        
+        return parent::run();
+    }
 }
