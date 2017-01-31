@@ -2,12 +2,15 @@
 
 namespace app\controllers;
 
+use app\models\BlogPost;
+use yii\data\Pagination;
+
 /**
  * BlogController
  * 
  * @author Hendri <hendri.gnw@gmail.com>
  */
-class BlogController extends \app\controllers\BaseController
+class BlogController extends BaseController
 {
     /**
      * displays listing blog
@@ -16,7 +19,21 @@ class BlogController extends \app\controllers\BaseController
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $params = [
+            'result' => 'query',
+        ];
+
+        $query = BlogPost::getSearch($params);
+
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize'=>1]);
+        $blogPosts = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        
+        return $this->render('index', [
+            'blogPosts' => $blogPosts,
+            'pages' => $pages,
+        ]);
     }
     
     /**
