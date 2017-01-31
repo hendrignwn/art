@@ -19,7 +19,7 @@ class BlogPostSearch extends BlogPost
     {
         return [
             [['id', 'status', 'created_by', 'updated_by', 'blog_category_id'], 'integer'],
-            [['title', 'slug', 'photo', 'lead_text', 'content', 'metakey', 'metadesc', 'created_at', 'updated_at'], 'safe'],
+            [['title', 'slug', 'photo', 'lead_text', 'content', 'metakey', 'metadesc', 'post_date', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -73,6 +73,7 @@ class BlogPostSearch extends BlogPost
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'slug', $this->slug])
             ->andFilterWhere(['like', 'photo', $this->photo])
+            ->andFilterWhere(['like', 'post_date', $this->post_date])
             ->andFilterWhere(['like', 'lead_text', $this->lead_text])
             ->andFilterWhere(['like', 'content', $this->content])
             ->andFilterWhere(['like', 'metakey', $this->metakey])

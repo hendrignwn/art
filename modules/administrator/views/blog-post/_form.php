@@ -29,6 +29,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'photo')->textInput(['maxlength' => true]) ?>
+    
+    <?= $form->field($model, 'post_date')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'lead_text')->textarea(['rows' => 6]) ?>
 

@@ -45,11 +45,11 @@ return [
 //    ],
 //    [
 //        'class'=>'\kartik\grid\DataColumn',
-//        'attribute'=>'photo',
+//        'attribute'=>'lead_text',
 //    ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'lead_text',
+        'attribute'=>'post_date',
     ],
 //    [
 //        'class'=>'\kartik\grid\DataColumn',
