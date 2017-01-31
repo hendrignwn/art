@@ -1,3 +1,13 @@
+<?php
+
+use app\models\BlogTag;
+use app\models\Config;
+use app\models\Menu as Menu2;
+use yii\helpers\Html;
+use yii\widgets\Menu;
+
+?>
+
 <!--footer 1 start -->
 <footer class="footer footer-one">
     <div class="primary-footer brand-bg">
@@ -12,42 +22,53 @@
                     <address class="white-text">
                         <i class="material-icons pull-left" style="margin-right:10px;margin-bottom:10px;"></i>
                         <div class="address">
-                            <p style="margin-bottom:10px">1355 Market Street, Suite 900
-                                San Francisco, CA 94103</p>
+                            <p style="margin-bottom:10px"><?= Config::getAppContactAddress() ?></p>
                         </div>
 
                         <i class="material-icons pull-left" style="margin-right:10px;margin-bottom:10px;"></i>
                         <div class="phone">
-                            <p style="margin-bottom:10px">Phone: (123) 456-7890</p>
+                            <p style="margin-bottom:10px">Phone: <?= Config::getAppContactPhone() ?></p>
                         </div>
 
                         <i class="material-icons pull-left" style="margin-right:10px;margin-bottom:10px;"></i>
                         <div class="mail">
-                            <p style="margin-bottom:10px">first.last@example.com</p>
+                            <p style="margin-bottom:10px"><?= Config::getAppContactEmail() ?></p>
                         </div>
                     </address>
 
-                    <ul class="social-link tt-animate ltr">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                    </ul>
+                    <?= Menu::widget([
+                        'options' => ['class' => 'social-link tt-animate ltr'],
+                        'items' => [
+                            [
+                                'label' => '<i class=\'fa fa-facebook\'></i>',
+                                'url' => Config::getAppAccountFacebook(),
+                                'options' => ['target'=>'_blank'],
+                                'encode' => false,
+                            ],
+                            [
+                                'label' => '<i class=\'fa fa-twitter\'></i>',
+                                'url' => Config::getAppAccountTwitter(),
+                                'options' => ['target'=>'_blank'],
+                                'encode' => false,
+                            ],
+                            [
+                                'label' => '<i class=\'fa fa-google-plus\'></i>',
+                                'url' => Config::getAppAccountGooglePlus(),
+                                'options' => ['target'=>'_blank'],
+                                'encode' => false,
+                            ],
+                        ],
+                    ]) ?>
                 </div><!-- /.col-md-3 -->
 
                 <div class="col-md-3 widget">
                     <h2 class="white-text">Imporant links</h2>
 
-                    <ul class="footer-list">
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
+                    <?= Menu::widget([
+                        'options' => ['class' => 'footer-list'],
+                        'items' => (new Menu2())->getMenus(Menu2::CATEGORY_MAIN_FOOTER),
+                    ]) ?>
+                    
                 </div><!-- /.col-md-3 -->
 
                 <div class="col-md-3 widget">
@@ -70,14 +91,13 @@
 
 
                     <div class="widget-tags">
-                        <h2 class="white-text">Blog Tag</h2>
-                        <a href="#">Material</a>
-                        <a href="#">Design</a>
-                        <a href="#">Google</a>
-                        <a href="#">Gallery</a>
-                        <a href="#">Flat Design</a>
-                        <a href="#">Clean</a>
-                        <a href="#">Portfolio</a>
+                        <h2 class="white-text">Blog Tags</h2>
+                        <?php
+                        $tags = BlogTag::find()->limit(9)->all();
+                        foreach($tags as $tag) {
+                            echo Html::a($tag->name, $tag->getUrl());
+                        }
+                        ?>
                     </div><!-- /.widget-tags -->
                 </div><!-- /.col-md-3 -->
             </div><!-- /.row -->
@@ -86,7 +106,7 @@
 
     <div class="secondary-footer brand-bg darken-2">
         <div class="container">
-            <span class="copy-text">Copyright &copy; 2016 <a href="#">Materialize</a> &nbsp;  | &nbsp;  All Rights Reserved &nbsp;  | &nbsp;  Designed By <a href="#">TrendyTheme</a></span>
+            <span class="copy-text">Copyright &copy; 2016 <?= Html::a(Config::getAppCopyright(), \Yii::$app->getHomeUrl()) ?> &nbsp;  | &nbsp;  All Rights Reserved</span>
         </div><!-- /.container -->
     </div><!-- /.secondary-footer -->
 </footer>
