@@ -15,6 +15,7 @@ class m170117_081345_create_new_data_to_table_config extends Migration
         $this->insert("{{config}}", ['name'=>'app_account_twitter', 'value'=>'https://www.twitter.com', 'label'=>null, 'notes'=>null]);
         $this->insert("{{config}}", ['name'=>'app_account_googleplus', 'value'=>'https://plus.google.com', 'label'=>null, 'notes'=>null]);
         $this->insert("{{config}}", ['name'=>'app_contact_email', 'value'=>'hello@art.co.id', 'label'=>null, 'notes'=>null]);
+        $this->insert("{{config}}", ['name'=>'email_subject', 'value'=>'ATC', 'label'=>null, 'notes'=>null]);
         $this->insert("{{config}}", ['name'=>'email_admin', 'value'=>'hendrigunawan195@gmail.com', 'label'=>null, 'notes'=>null]);
         $this->insert("{{config}}", ['name'=>'email_developers', 'value'=>'hendrigunawan195@gmail.com,winatasandi05@gmail.com', 'label'=>null, 'notes'=>'Pakai comma (,) sebagai pemisah email dan jangan pakai spasi']);
         $this->insert("{{config}}", ['name'=>'email_noreply', 'value'=>'no-reply@atc.co.id', 'label'=>null, 'notes'=>null]);

@@ -15,6 +15,7 @@ class m170123_024012_create_blog_tag_table extends Migration
         $this->createTable('blog_tag', [
             'id' => $this->primaryKey(),
             'name' => $this->string(64)->notNull()->unique(),
+            'slug' => $this->string(64)->notNull()->unique(),
             'created_at' => $this->dateTime()->null(),
             'updated_at' => $this->dateTime()->null(),
             'created_by' => $this->integer()->null(),
