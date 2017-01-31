@@ -46,10 +46,10 @@ class BlogController extends \app\controllers\BaseController
     /**
      * displays listing blog by tag
      * 
-     * @param type $name w+
+     * @param type $slug w+
      * @return type
      */
-    public function actionTag($name)
+    public function actionTag($slug)
     {
         return $this->render('tag', []);
     }
