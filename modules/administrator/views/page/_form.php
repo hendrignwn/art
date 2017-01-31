@@ -26,7 +26,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'category')->widget(Select2::className(), $categoryOptions) ?>
 
     <?= $form->field($model, 'description')->widget(CKEditor::className(), [
-        'enableKCFinder' => false,
+        'preset' => 'full',
+        'autoParagraph' => true,
         'clientOptions' => [
             'row' => 6,
         ],
