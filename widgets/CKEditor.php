@@ -100,6 +100,8 @@ class CKEditor extends BaseCKEditor
             'filebrowserImageUploadUrl' => $kcfinderUrl . '/upload.php?opener=ckeditor&type=images',
             'filebrowserFlashUploadUrl' => $kcfinderUrl . '/upload.php?opener=ckeditor&type=flash',
             'autoParagraph' => $this->autoParagraph,
+            'allowedContent' => true,
+            'removeFormatAttributes' => '',
         ]);
 
         $this->clientOptions = ArrayHelper::merge($browseOptions, $this->clientOptions);
