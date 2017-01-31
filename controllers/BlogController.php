@@ -10,7 +10,7 @@ namespace app\controllers;
 class BlogController extends \app\controllers\BaseController
 {
     /**
-     * show listing blog
+     * displays listing blog
      * 
      * @return string
      */
@@ -20,7 +20,7 @@ class BlogController extends \app\controllers\BaseController
     }
     
     /**
-     * show blog detail
+     * displays blog detail
      * 
      * @param type $year d+ {4}
      * @param type $month d+ {2}
@@ -33,7 +33,7 @@ class BlogController extends \app\controllers\BaseController
     }
     
     /**
-     * show listing blog by category
+     * displays listing blog by category
      * 
      * @param type $slug w+
      * @return type
@@ -44,7 +44,7 @@ class BlogController extends \app\controllers\BaseController
     }
     
     /**
-     * show listing blog by tag
+     * displays listing blog by tag
      * 
      * @param type $name w+
      * @return type
