@@ -2,13 +2,14 @@
 
 namespace app\controllers;
 
-use app\models\Config;
 use app\models\ContactForm;
 use app\models\LoginForm;
+use app\models\Page;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
+use const YII_ENV_TEST;
 
 class SiteController extends Controller
 {
@@ -18,17 +19,6 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout'],
-                'rules' => [
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -45,7 +35,7 @@ class SiteController extends Controller
     {
         return [
             'error' => [
-                'class' => 'yii\web\ErrorAction',
+                'class' => 'app\components\ErrorAction',
             ],
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
@@ -61,62 +51,17 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $this->layout = 'home';
-        $view = $this->view;
-        $view->title = Config::getAppMotto();
+        $this->layout = '//home';
         
-        $view->registerMetaTag([
-            'http-equiv' => 'Content-Type',
-            'content' => 'text/html; charset=utf-8'
-        ]);
-        $view->registerLinkAlternate();
-        $view->registerLinkCanonical();
-        $view->registerMetaTitle();
-        $view->registerMetaKeywords(Config::getAppMetaKey());
-        $view->registerMetaDescription(Config::getAppMetaDescription());
-        $view->registerMetaTag([
-            'name' => 'robots',
-            'content' => 'noindex,nofollow',
-        ]);
-        $socialMedia = [
-			'title' => $this->view->title .' - '. Yii::$app->name,
-			'description' => Config::getAppMetaDescription(),
-		];
-		$view->registerMetaSocialMedia($socialMedia);
+        $contactModel = new ContactForm();
+        if ($contactModel->load(Yii::$app->request->post()) && $contactModel->contact()) {
+            Yii::$app->session->setFlash('contactFormSubmitted');
+            return $this->refresh('#contact');
+        }
         
-        return $this->render('index');
-    }
-
-    /**
-     * Login action.
-     *
-     * @return string
-     */
-    public function actionLogin()
-    {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-        return $this->render('login', [
-            'model' => $model,
+        return $this->render('index', [
+            'contactModel' => $contactModel
         ]);
-    }
-
-    /**
-     * Logout action.
-     *
-     * @return string
-     */
-    public function actionLogout()
-    {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
     }
 
     /**
@@ -127,7 +72,7 @@ class SiteController extends Controller
     public function actionContact()
     {
         $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
+        if ($model->load(Yii::$app->request->post()) && $model->contact()) {
             Yii::$app->session->setFlash('contactFormSubmitted');
 
             return $this->refresh();
@@ -144,9 +89,18 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-        return $this->render('about');
+        $model = Page::findOne(Page::PAGE_ABOUT);
+        
+        return $this->render('about', [
+            'model' => $model
+        ]);
     }
     
+    /**
+     * displays maintenance page.
+     * 
+     * @return string
+     */
     public function actionMaintenance()
     {
         return $this->render('maintenance');
