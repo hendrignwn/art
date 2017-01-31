@@ -58,8 +58,6 @@ class HomeAsset extends AssetBundle
         'themes/v1/revolution/js/extensions/revolution.extension.navigation.min.js',
         'themes/v1/revolution/js/extensions/revolution.extension.migration.min.js',
         'themes/v1/revolution/js/extensions/revolution.extension.parallax.min.js',
-        'https://maps.googleapis.com/maps/api/js',
-        'themes/v1/js/google.maps.config.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

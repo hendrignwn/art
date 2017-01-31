@@ -44,8 +44,6 @@ class AppAsset extends AssetBundle
         'themes/v1/magnific-popup/jquery.magnific-popup.min.js',
         'themes/v1/js/twitterFetcher.min.js',
         'themes/v1/js/scriptsae52.js?v=5',
-        'https://maps.googleapis.com/maps/api/js',
-        'themes/v1/js/google.maps.config.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
