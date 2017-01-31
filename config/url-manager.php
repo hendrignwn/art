@@ -11,6 +11,30 @@ return [
     'showScriptName' => false,
     'rules' => [
         [
+            'pattern' => 'about-us',
+            'route' => 'site/about',
+        ],
+        [
+            'pattern' => 'contact-us',
+            'route' => 'site/contact',
+        ],
+        
+        [
+            'pattern' => 'page/<slug:[\d\w\-\.]+>',
+            'route' => 'page/index',
+        ],
+        
+        [
+            'pattern' => 'portfolio',
+            'route' => 'portfolio/index',
+        ],
+        
+        [
+            'pattern' => 'portfolio/<slug:[\d\w\-\.]+>',
+            'route' => 'portfolio/detail',
+        ],
+        
+        [
             'pattern' => 'blog/<year:\d{4}>/<month:\d{2}>/<slug:[\d\w\-\.]+>',
             'route' => 'blog/detail',
         ],
