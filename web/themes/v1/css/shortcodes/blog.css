@@ -520,7 +520,7 @@ Blog Pagination
 .post-pagination>li>a:hover, 
 .post-pagination>li>span:focus, 
 .post-pagination>li>span:hover,
-.post-pagination>li>span.current {
+.post-pagination>li.current>a {
     color: #fff;
     background-color: #03a9f4;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
