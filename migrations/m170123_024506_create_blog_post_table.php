@@ -17,6 +17,7 @@ class m170123_024506_create_blog_post_table extends Migration
             'title' => $this->string(128)->notNull()->unique(),
             'slug' => $this->string(128)->notNull()->unique(),
             'photo' => $this->string(100)->null(),
+            'post_date' => $this->dateTime()->notNull(),
             'lead_text' => $this->text()->null(),
             'content' => $this->text()->notNull(),
             'metakey' => $this->string(150)->null(),

@@ -9,7 +9,7 @@ class m170117_081345_create_new_data_to_table_config extends Migration
         $this->insert("{{config}}", ['name'=>'app_name', 'value'=>'Art Techno Corporation', 'label'=>null, 'notes'=>null]);
         $this->insert("{{config}}", ['name'=>'app_motto', 'value'=>'Global knowledge in your hand', 'label'=>null, 'notes'=>null]);
         $this->insert("{{config}}", ['name'=>'app_copyright', 'value'=>'ATC', 'label'=>null, 'notes'=>null]);
-        $this->insert("{{config}}", ['name'=>'app_contact_address', 'value'=>'Jl Kebon Kopi Raya, Ciampea Bogor 16620', 'label'=>null, 'notes'=>null]);
+        $this->insert("{{config}}", ['name'=>'app_contact_address', 'value'=>'Jl. Purnawarman No.11, Ciampea, Bogor, Jawa Barat 16620', 'label'=>null, 'notes'=>null]);
         $this->insert("{{config}}", ['name'=>'app_contact_phone', 'value'=>'(021) 0099 029', 'label'=>null, 'notes'=>null]);
         $this->insert("{{config}}", ['name'=>'app_account_facebook', 'value'=>'https://www.facebook.com/', 'label'=>null, 'notes'=>null]);
         $this->insert("{{config}}", ['name'=>'app_account_twitter', 'value'=>'https://www.twitter.com', 'label'=>null, 'notes'=>null]);
