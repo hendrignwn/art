@@ -43,15 +43,17 @@ class Contact extends BaseActiveRecord
     public function rules()
     {
         return [
-            [['title_id', 'first_name', 'last_name', 'email', 'phone', 'subject', 'description'], 'required'],
+            [['first_name', 'last_name', 'email', 'phone', 'subject', 'description'], 'required'],
             [['title_id', 'status', 'created_by', 'updated_by'], 'integer'],
             [['description'], 'string'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['title_id', 'created_at', 'updated_at'], 'safe'],
             [['first_name'], 'string', 'max' => 30],
             [['last_name'], 'string', 'max' => 50],
             [['email'], 'string', 'max' => 100],
             [['phone'], 'string', 'max' => 15],
             [['subject'], 'string', 'max' => 150],
+            [['title_id'], 'default', 'value' => 1],
+            [['status'], 'default', 'value' => self::STATUS_ACTIVE],
         ];
     }
 
