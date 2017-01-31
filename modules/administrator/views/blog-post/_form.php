@@ -33,6 +33,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'lead_text')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'content')->widget(CKEditor::className(), [
+        'preset' => 'full',
         'enableKCFinder' => true,
         'clientOptions' => [
             'row' => 6,
