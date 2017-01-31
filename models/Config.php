@@ -346,6 +346,16 @@ class Config extends \yii\db\ActiveRecord
     }
     
     /**
+     * return value email subject
+     * 
+     * @return type
+     */
+    public static function getEmailSubject()
+    {
+        return self::getValueByName('email_subject');
+    }
+    
+    /**
      * return value email web support
      * 
      * @return type
