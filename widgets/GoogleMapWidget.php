@@ -21,8 +21,26 @@ class GoogleMapWidget extends Widget
     
     public function run()
     {
+        //var_dump(\Yii::$app->params);die;
         return $this->render('google-map', [
-            //'model' => $this->model,
+            'latitude' => $this->getLatitude(),
+            'longitude' => $this->getLongitude(),
+            'markerDescription' => $this->getMarkerDescription(),
         ]);
+    }
+    
+    private function getLatitude()
+    {
+        return \Yii::$app->params['map_location_latitude'];
+    }
+    
+    private function getLongitude()
+    {
+        return \Yii::$app->params['map_location_longitude'];
+    }
+    
+    private function getMarkerDescription()
+    {
+        return \Yii::$app->params['map_marker_description'];
     }
 }
