@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\helpers\MailHelper;
 use Yii;
 use yii\base\Model;
 
@@ -10,7 +11,6 @@ use yii\base\Model;
  */
 class ContactForm extends Model
 {
-    public $title_id;
     public $first_name;
     public $last_name;
     public $email;
@@ -27,10 +27,10 @@ class ContactForm extends Model
     {
         return [
             // name, email, subject and body are required
-            [['title_id', 'first_name', 'email', 'subject', 'description'], 'required'],
+            [['first_name', 'last_name', 'email', 'subject', 'description'], 'required'],
             // email has to be a valid email address
             ['email', 'email'],
-            [['title_id', 'phone'], 'integer'],
+            [['phone'], 'integer'],
             // verifyCode needs to be entered correctly
             ['verifyCode', 'captcha'],
         ];
@@ -49,19 +49,28 @@ class ContactForm extends Model
 
     /**
      * Sends an email to the specified email address using the information collected by this model.
-     * @param string $email the target email address
+     * 
      * @return bool whether the model passes validation
      */
-    public function contact($email)
+    public function contact()
     {
+        //var_dump($this->errors, $this->validate());die;
         if ($this->validate()) {
-            Yii::$app->mailer->compose()
-                ->setTo($email)
-                ->setFrom([$this->email => $this->name])
-                ->setSubject($this->subject)
-                ->setTextBody($this->body)
-                ->send();
-
+            $model = new Contact();
+            $model->attributes = $this->attributes;
+            
+            if ($model->validate()) {
+                $model->save();
+            }
+            
+            MailHelper::sendMail([
+                'to' => Config::getEmailAdmin(),
+                'subject' => '['.Config::getEmailSubject().'] | New Contact from '. $this->first_name,
+                'view' => ['html' => 'contact/new-contact-to-admin'],
+                'viewParams' => ['model' => $this],
+                'replyTo' => $this->email,
+            ]);
+            
             return true;
         }
         return false;
