@@ -1,6 +1,9 @@
 <?php
 
-/* @var $this app\components\View */
+use app\components\View;
+use yii\widgets\LinkPager;
+
+/* @var $this View */
 
 $this->title = 'Blog Posts';
 $this->params['breadcrumbs'][] = $this->title;
@@ -33,7 +36,8 @@ $this->registerMetaSocialMedia($socialMedia);
 
         <div class="row">
             <div id="blogGrid">
-
+                
+                <?php foreach ($blogPosts as $post) : ?>
                 <div class="col-xs-12 col-sm-6 col-md-4 blog-grid-item">
                     <article class="post-wrapper">
 
@@ -73,8 +77,9 @@ $this->registerMetaSocialMedia($socialMedia);
 
                     </article><!-- /.post-wrapper -->
                 </div><!-- /.col-md-4 -->
+                <?php endforeach; ?>
 
-                <div class="col-xs-12 col-sm-6 col-md-4 blog-grid-item">
+<!--                <div class="col-xs-12 col-sm-6 col-md-4 blog-grid-item">
                     <article class="post-wrapper">
 
                         <div class="thumb-wrapper waves-effect waves-block waves-light">
@@ -82,7 +87,7 @@ $this->registerMetaSocialMedia($socialMedia);
                             <div class="post-date">
                                 25<span>Jun</span>
                             </div>
-                        </div><!-- .post-thumb -->
+                        </div> .post-thumb 
 
                         <div class="blog-content">
 
@@ -101,18 +106,18 @@ $this->registerMetaSocialMedia($socialMedia);
                                                 In <a href="#">Technology</a>
                                             </li>
                                         </ul>
-                                    </div><!-- .entry-meta -->
-                                </div><!-- /.entry-header -->
-                            </header><!-- /.entry-header-wrapper -->
+                                    </div> .entry-meta 
+                                </div> /.entry-header 
+                            </header> /.entry-header-wrapper 
 
                             <div class="entry-content">
                                 <p>Maecenas varius finibus orci vel dignissim. Nam posuere, magna pellentesque accumsan tincidunt, libero lorem convallis lectus</p>
-                            </div><!-- .entry-content -->
+                            </div> .entry-content 
 
-                        </div><!-- /.blog-content -->
+                        </div> /.blog-content 
 
-                    </article><!-- /.post-wrapper -->
-                </div><!-- /.col-md-4 -->
+                    </article> /.post-wrapper 
+                </div> /.col-md-4 
 
                 <div class="col-xs-12 col-sm-6 col-md-4 blog-grid-item">
                     <article class="post-wrapper">
@@ -122,7 +127,7 @@ $this->registerMetaSocialMedia($socialMedia);
                             <div class="post-date">
                                 25<span>Jun</span>
                             </div>
-                        </div><!-- .post-thumb -->
+                        </div> .post-thumb 
 
                         <div class="blog-content">
 
@@ -141,18 +146,18 @@ $this->registerMetaSocialMedia($socialMedia);
                                                 In <a href="#">Technology</a>
                                             </li>
                                         </ul>
-                                    </div><!-- .entry-meta -->
-                                </div><!-- /.entry-header -->
-                            </header><!-- /.entry-header-wrapper -->
+                                    </div> .entry-meta 
+                                </div> /.entry-header 
+                            </header> /.entry-header-wrapper 
 
                             <div class="entry-content">
                                 <p>Maecenas varius finibus orci vel dignissim. Nam posuere, magna pellentesque accumsan tincidunt, libero lorem convallis lectus</p>
-                            </div><!-- .entry-content -->
+                            </div> .entry-content 
 
-                        </div><!-- /.blog-content -->
+                        </div> /.blog-content 
 
-                    </article><!-- /.post-wrapper -->
-                </div><!-- /.col-md-4 -->
+                    </article> /.post-wrapper 
+                </div> /.col-md-4 
 
                 <div class="col-xs-12 col-sm-6 col-md-4 blog-grid-item">
                     <article class="post-wrapper">
@@ -162,7 +167,7 @@ $this->registerMetaSocialMedia($socialMedia);
                             <div class="post-date">
                                 25<span>Jun</span>
                             </div>
-                        </div><!-- .post-thumb -->
+                        </div> .post-thumb 
 
                         <div class="blog-content">
 
@@ -181,18 +186,18 @@ $this->registerMetaSocialMedia($socialMedia);
                                                 In <a href="#">Technology</a>
                                             </li>
                                         </ul>
-                                    </div><!-- .entry-meta -->
-                                </div><!-- /.entry-header -->
-                            </header><!-- /.entry-header-wrapper -->
+                                    </div> .entry-meta 
+                                </div> /.entry-header 
+                            </header> /.entry-header-wrapper 
 
                             <div class="entry-content">
                                 <p>Maecenas varius finibus orci vel dignissim. Nam posuere, magna pellentesque accumsan tincidunt, libero lorem convallis lectus</p>
-                            </div><!-- .entry-content -->
+                            </div> .entry-content 
 
-                        </div><!-- /.blog-content -->
+                        </div> /.blog-content 
 
-                    </article><!-- /.post-wrapper -->
-                </div><!-- /.col-md-4 -->
+                    </article> /.post-wrapper 
+                </div> /.col-md-4 
 
                 <div class="col-xs-12 col-sm-6 col-md-4 blog-grid-item">
                     <article class="post-wrapper">
@@ -202,7 +207,7 @@ $this->registerMetaSocialMedia($socialMedia);
                             <div class="post-date">
                                 25<span>Jun</span>
                             </div>
-                        </div><!-- .post-thumb -->
+                        </div> .post-thumb 
 
                         <div class="blog-content">
 
@@ -221,18 +226,18 @@ $this->registerMetaSocialMedia($socialMedia);
                                                 In <a href="#">Technology</a>
                                             </li>
                                         </ul>
-                                    </div><!-- .entry-meta -->
-                                </div><!-- /.entry-header -->
-                            </header><!-- /.entry-header-wrapper -->
+                                    </div> .entry-meta 
+                                </div> /.entry-header 
+                            </header> /.entry-header-wrapper 
 
                             <div class="entry-content">
                                 <p>Maecenas varius finibus orci vel dignissim. Nam posuere, magna pellentesque accumsan tincidunt, libero lorem convallis lectus</p>
-                            </div><!-- .entry-content -->
+                            </div> .entry-content 
 
-                        </div><!-- /.blog-content -->
+                        </div> /.blog-content 
 
-                    </article><!-- /.post-wrapper -->
-                </div><!-- /.col-md-4 -->
+                    </article> /.post-wrapper 
+                </div> /.col-md-4 
 
                 <div class="col-xs-12 col-sm-6 col-md-4 blog-grid-item">
                     <article class="post-wrapper">
@@ -242,7 +247,7 @@ $this->registerMetaSocialMedia($socialMedia);
                             <div class="post-date">
                                 25<span>Jun</span>
                             </div>
-                        </div><!-- .post-thumb -->
+                        </div> .post-thumb 
 
                         <div class="blog-content">
 
@@ -261,18 +266,18 @@ $this->registerMetaSocialMedia($socialMedia);
                                                 In <a href="#">Technology</a>
                                             </li>
                                         </ul>
-                                    </div><!-- .entry-meta -->
-                                </div><!-- /.entry-header -->
-                            </header><!-- /.entry-header-wrapper -->
+                                    </div> .entry-meta 
+                                </div> /.entry-header 
+                            </header> /.entry-header-wrapper 
 
                             <div class="entry-content">
                                 <p>Maecenas varius finibus orci vel dignissim. Nam posuere, magna pellentesque accumsan tincidunt, libero lorem convallis lectus</p>
-                            </div><!-- .entry-content -->
+                            </div> .entry-content 
 
-                        </div><!-- /.blog-content -->
+                        </div> /.blog-content 
 
-                    </article><!-- /.post-wrapper -->
-                </div><!-- /.col-md-4 -->
+                    </article> /.post-wrapper 
+                </div> /.col-md-4 
 
                 <div class="col-xs-12 col-sm-6 col-md-4 blog-grid-item">
                     <article class="post-wrapper">
@@ -282,7 +287,7 @@ $this->registerMetaSocialMedia($socialMedia);
                             <div class="post-date">
                                 25<span>Jun</span>
                             </div>
-                        </div><!-- .post-thumb -->
+                        </div> .post-thumb 
 
                         <div class="blog-content">
 
@@ -301,18 +306,18 @@ $this->registerMetaSocialMedia($socialMedia);
                                                 In <a href="#">Technology</a>
                                             </li>
                                         </ul>
-                                    </div><!-- .entry-meta -->
-                                </div><!-- /.entry-header -->
-                            </header><!-- /.entry-header-wrapper -->
+                                    </div> .entry-meta 
+                                </div> /.entry-header 
+                            </header> /.entry-header-wrapper 
 
                             <div class="entry-content">
                                 <p>Maecenas varius finibus orci vel dignissim. Nam posuere, magna pellentesque accumsan tincidunt, libero lorem convallis lectus</p>
-                            </div><!-- .entry-content -->
+                            </div> .entry-content 
 
-                        </div><!-- /.blog-content -->
+                        </div> /.blog-content 
 
-                    </article><!-- /.post-wrapper -->
-                </div><!-- /.col-md-4 -->
+                    </article> /.post-wrapper 
+                </div> /.col-md-4 
 
                 <div class="col-xs-12 col-sm-6 col-md-4 blog-grid-item">
                     <article class="post-wrapper">
@@ -322,7 +327,7 @@ $this->registerMetaSocialMedia($socialMedia);
                             <div class="post-date">
                                 25<span>Jun</span>
                             </div>
-                        </div><!-- .post-thumb -->
+                        </div> .post-thumb 
 
                         <div class="blog-content">
 
@@ -341,18 +346,18 @@ $this->registerMetaSocialMedia($socialMedia);
                                                 In <a href="#">Technology</a>
                                             </li>
                                         </ul>
-                                    </div><!-- .entry-meta -->
-                                </div><!-- /.entry-header -->
-                            </header><!-- /.entry-header-wrapper -->
+                                    </div> .entry-meta 
+                                </div> /.entry-header 
+                            </header> /.entry-header-wrapper 
 
                             <div class="entry-content">
                                 <p>Maecenas varius finibus orci vel dignissim. Nam posuere, magna pellentesque accumsan tincidunt, libero lorem convallis lectus</p>
-                            </div><!-- .entry-content -->
+                            </div> .entry-content 
 
-                        </div><!-- /.blog-content -->
+                        </div> /.blog-content 
 
-                    </article><!-- /.post-wrapper -->
-                </div><!-- /.col-md-4 -->
+                    </article> /.post-wrapper 
+                </div> /.col-md-4 
 
                 <div class="col-xs-12 col-sm-6 col-md-4 blog-grid-item">
                     <article class="post-wrapper">
@@ -362,7 +367,7 @@ $this->registerMetaSocialMedia($socialMedia);
                             <div class="post-date">
                                 25<span>Jun</span>
                             </div>
-                        </div><!-- .post-thumb -->
+                        </div> .post-thumb 
 
                         <div class="blog-content">
 
@@ -381,29 +386,34 @@ $this->registerMetaSocialMedia($socialMedia);
                                                 In <a href="#">Technology</a>
                                             </li>
                                         </ul>
-                                    </div><!-- .entry-meta -->
-                                </div><!-- /.entry-header -->
-                            </header><!-- /.entry-header-wrapper -->
+                                    </div> .entry-meta 
+                                </div> /.entry-header 
+                            </header> /.entry-header-wrapper 
 
                             <div class="entry-content">
                                 <p>Maecenas varius finibus orci vel dignissim. Nam posuere, magna pellentesque accumsan tincidunt, libero lorem convallis lectus</p>
-                            </div><!-- .entry-content -->
+                            </div> .entry-content 
 
-                        </div><!-- /.blog-content -->
+                        </div> /.blog-content 
 
-                    </article><!-- /.post-wrapper -->
-                </div><!-- /.col-md-4 -->
+                    </article> /.post-wrapper 
+                </div> /.col-md-4 -->
 
             </div><!-- /#blogGrid -->
 
         </div><!-- /.row -->
-
-        <ul class="pagination post-pagination text-center mt-50">
-            <li><a href="#." class="waves-effect waves-light"><i class="fa fa-angle-left"></i></a></li>
-            <li><span class="current waves-effect waves-light">1</span></li>
-            <li><a href="#." class="waves-effect waves-light">2</a></li>
-            <li><a href="#." class="waves-effect waves-light"><i class="fa fa-angle-right"></i></a></li>
-        </ul>
+        
+        <?= LinkPager::widget([
+            'pagination' => $pages,
+            'options' => [
+                'class' => 'pagination post-pagination text-center mt-50',
+            ],
+            'linkOptions' => [
+                'class' => 'waves-effect waves-light',
+            ],
+            'disabledPageCssClass' => 'waves-effect waves-light',
+            'activePageCssClass' => 'current',
+        ]) ?>
 
 
     </div><!-- /.container -->
