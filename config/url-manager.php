@@ -35,6 +35,11 @@ return [
         ],
         
         [
+            'pattern' => 'blog',
+            'route' => 'blog/index',
+        ],
+        
+        [
             'pattern' => 'blog/<year:\d{4}>/<month:\d{2}>/<slug:[\d\w\-\.]+>',
             'route' => 'blog/detail',
         ],
