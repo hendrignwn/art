@@ -26,6 +26,8 @@ class Page extends BaseActiveRecord
 {
 	const CATEGORY_FULL = 1;
 	const CATEGORY_PARTIAL = 2;
+    
+    const PAGE_ABOUT = 1;
    
     /**
      * @inheritdoc
