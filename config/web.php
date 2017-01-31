@@ -52,6 +52,7 @@ $config = [
                     'fileMap' => [
                         'app' => 'app.php',
                         'app.menu' => 'app.menu.php',
+                        'app.message' => 'app.message.php',
                         'app.button' => 'app.button.php',
                         'app.static' => 'app.static.php',
                     ],
