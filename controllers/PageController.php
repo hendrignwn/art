@@ -2,15 +2,30 @@
 
 namespace app\controllers;
 
+use app\models\Page;
+use yii\web\NotFoundHttpException;
+
 /**
  * PageController
  * 
  * @author Hendri <hendri.gnw@gmail.com>
  */
-class PageController extends \app\controllers\BaseController
+class PageController extends BaseController
 {
     public function actionIndex($slug = '')
     {
-        return $this->render('index', []);
+        $page = Page::findOne([
+            'slug' => $slug,
+            'status' => Page::STATUS_ACTIVE,
+            'category' => Page::CATEGORY_PARTIAL,
+        ]);
+        
+        if (!$page) {
+            throw new NotFoundHttpException('Sorry, Page is not found.');
+        }
+        
+        return $this->render('index', [
+            'model' => $page
+        ]);
     }
 }

@@ -35,6 +35,6 @@ $this->registerMetaSocialMedia($socialMedia);
 
 ?>
 
-<section id="page" class="section-padding">
+<section id="<?= $model->slug ?>" class="section-padding">
     <?= $model->description ?>
 </section>
