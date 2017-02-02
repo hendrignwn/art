@@ -15,6 +15,7 @@ use yii\widgets\DetailView;
         'attributes' => [
             'id',
             'name',
+            'icon',
             'slug',
             'description:ntext',
             'metakey',

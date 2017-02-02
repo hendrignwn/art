@@ -16,14 +16,10 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    
+    <?= $form->field($model, 'icon')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->widget(app\widgets\CKEditor::className(), [
-        'enableKCFinder' => false,
-        'clientOptions' => [
-            'row' => 6,
-        ],
-    ]);
-    ?>
+    <?= $form->field($model, 'description')->textarea(['row' => 6]) ?>
 
     <?= $form->field($model, 'metakey')->textInput(['maxlength' => true]) ?>
 
