@@ -27,7 +27,8 @@
         "johnitvn/yii2-ajaxcrud": "*",
         "dmstr/yii2-adminlte-asset": "2.*",
         "2amigos/yii2-ckeditor-widget": "^2.0",
-        "iutbay/yii2-kcfinder" : "dev-master"
+        "iutbay/yii2-kcfinder" : "dev-master",
+        "kop/yii2-scroll-pager": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
