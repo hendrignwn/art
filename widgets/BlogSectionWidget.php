@@ -8,7 +8,8 @@
 
 namespace app\widgets;
 
-use yii\base\Widget;
+use app\models\BlogPost;
+use yii\jui\Widget;
 
 /**
  * Description of BlogSectionWidget
@@ -17,12 +18,20 @@ use yii\base\Widget;
  */
 class BlogSectionWidget extends Widget
 {
-    public $model;
-    
     public function run()
     {
         return $this->render('blog-section', [
-            //'model' => $this->model,
+            'blogPosts' => $this->getBlogPosts(),
         ]);
+    }
+    
+    public function getBlogPosts()
+    {
+        $params = [
+            'result' => 'result',
+            'limit' => 3,
+        ];
+
+        return BlogPost::getSearch($params);
     }
 }

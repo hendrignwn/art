@@ -22,7 +22,7 @@ class SubscribeFormWidget extends Widget
     public function run()
     {
         return $this->render('subscribe-form', [
-            //'model' => $this->model,
+            'model' => $this->model,
         ]);
     }
 }

@@ -1,5 +1,10 @@
 <?php
 
+use app\models\BlogPost;
+use app\helpers\FormatConverter;
+use yii\helpers\Html;
+
+/* @var $blogPosts BlogPost */
 
 ?>
 
@@ -7,125 +12,59 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-4">
-                <article class="post-wrapper">
+            <?php foreach($blogPosts as $post) : ?>
+            
+                <div class="col-md-4">
+                    <article class="post-wrapper">
 
-                    <div class="thumb-wrapper waves-effect waves-block waves-light">
-                        <a href="#"><img src="assets/img/corporate/blog-8.jpg" class="img-responsive" alt="" ></a>
-                        <div class="post-date">
-                            25<span>Jun</span>
-                        </div>
-                    </div><!-- .post-thumb -->
+                        <div class="thumb-wrapper waves-effect waves-block waves-light">
+                            <?= Html::a(
+                                    Html::img($post->getPhotoUrl(), [
+                                        'alt' => $post->title,
+                                        'class' => 'img-responsive',
+                                    ]),
+                                    $post->getDetailUrl(),
+                                    []
+                                ) ?>
+                            <div class="post-date">
+                                <?= FormatConverter::dateFormat($post->post_date, 'd') ?><span><?= FormatConverter::dateFormat($post->post_date, 'M') ?></span>
+                            </div>
+                        </div><!-- .post-thumb -->
 
-                    <div class="blog-content">
+                        <div class="blog-content">
 
-                        <div class="hover-overlay light-blue"></div>
+                            <div class="hover-overlay light-blue"></div>
 
-                        <header class="entry-header-wrapper">
-                            <div class="entry-header">
-                                <h2 class="entry-title"><a href="#">Ideas That Moved Us in 2017</a></h2>
+                            <header class="entry-header-wrapper">
+                                <div class="entry-header">
+                                    <h2 class="entry-title">
+                                        <?= Html::a($post->title, $post->getDetailUrl()) ?>
+                                    </h2>
 
-                                <div class="entry-meta">
-                                    <ul class="list-inline">
-                                        <li>
-                                            By <a href="#">Admin</a>
-                                        </li>
-                                        <li>
-                                            In <a href="#">Technology</a>
-                                        </li>
-                                    </ul>
-                                </div><!-- .entry-meta -->
-                            </div><!-- /.entry-header -->
-                        </header><!-- /.entry-header-wrapper -->
+                                    <div class="entry-meta">
+                                        <ul class="list-inline">
+                                            <li>
+                                                By <a href="#"><?= $post->createdBy ? $post->createdBy->username : 'Anonymous' ?></a>
+                                            </li>
+                                            <li>
+                                                In <?= Html::a($post->blogCategory->name, $post->blogCategory->getUrl()) ?>
+                                            </li>
+                                        </ul>
+                                    </div><!-- .entry-meta -->
+                                </div><!-- /.entry-header -->
+                            </header><!-- /.entry-header-wrapper -->
 
-                        <div class="entry-content">
-                            <p>Maecenas varius finibus orci vel dignissim. Nam posuere, magna pellentesque accumsan tincidunt, libero lorem convallis lectus</p>
-                        </div><!-- .entry-content -->
+                            <div class="entry-content">
+                                <p><?= $post->lead_text ?></p>
+                            </div><!-- .entry-content -->
 
-                    </div><!-- /.blog-content -->
+                        </div><!-- /.blog-content -->
 
-                </article><!-- /.post-wrapper -->
-            </div><!-- /.col-md-4 -->
-
-            <div class="col-md-4">
-                <article class="post-wrapper">
-
-                    <div class="thumb-wrapper waves-effect waves-block waves-light">
-                        <a href="#"><img src="assets/img/corporate/blog-7.jpg" class="img-responsive" alt="" ></a>
-                        <div class="post-date">
-                            25<span>Jun</span>
-                        </div>
-                    </div><!-- .post-thumb -->
-
-                    <div class="blog-content">
-
-                        <div class="hover-overlay light-blue"></div>
-
-                        <header class="entry-header-wrapper">
-                            <div class="entry-header">
-                                <h2 class="entry-title"><a href="#">Ideas That Moved Us in 2017</a></h2>
-
-                                <div class="entry-meta">
-                                    <ul class="list-inline">
-                                        <li>
-                                            By <a href="#">Admin</a>
-                                        </li>
-                                        <li>
-                                            In <a href="#">Technology</a>
-                                        </li>
-                                    </ul>
-                                </div><!-- .entry-meta -->
-                            </div><!-- /.entry-header -->
-                        </header><!-- /.entry-header-wrapper -->
-
-                        <div class="entry-content">
-                            <p>Maecenas varius finibus orci vel dignissim. Nam posuere, magna pellentesque accumsan tincidunt, libero lorem convallis lectus</p>
-                        </div><!-- .entry-content -->
-
-                    </div><!-- /.blog-content -->
-
-                </article><!-- /.post-wrapper -->
-            </div><!-- /.col-md-4 -->
-
-            <div class="col-md-4">
-                <article class="post-wrapper">
-
-                    <div class="thumb-wrapper waves-effect waves-block waves-light">
-                        <a href="#"><img src="assets/img/corporate/blog-9.jpg" class="img-responsive" alt="" ></a>
-                        <div class="post-date">
-                            25<span>Jun</span>
-                        </div>
-                    </div><!-- .post-thumb -->
-
-                    <div class="blog-content">
-
-                        <div class="hover-overlay light-blue"></div>
-
-                        <header class="entry-header-wrapper">
-                            <div class="entry-header">
-                                <h2 class="entry-title"><a href="#">Ideas That Moved Us in 2017</a></h2>
-
-                                <div class="entry-meta">
-                                    <ul class="list-inline">
-                                        <li>
-                                            By <a href="#">Admin</a>
-                                        </li>
-                                        <li>
-                                            In <a href="#">Technology</a>
-                                        </li>
-                                    </ul>
-                                </div><!-- .entry-meta -->
-                            </div><!-- /.entry-header -->
-                        </header><!-- /.entry-header-wrapper -->
-
-                        <div class="entry-content">
-                            <p>Maecenas varius finibus orci vel dignissim. Nam posuere, magna pellentesque accumsan tincidunt, libero lorem convallis lectus</p>
-                        </div><!-- .entry-content -->
-
-                    </div><!-- /.blog-content -->
-
-                </article><!-- /.post-wrapper -->
-            </div><!-- /.col-md-4 -->
+                    </article><!-- /.post-wrapper -->
+                </div><!-- /.col-md-4 -->
+                
+            <?php endforeach; ?>
+            
         </div><!-- /.row -->
 
     </div><!-- /.container -->

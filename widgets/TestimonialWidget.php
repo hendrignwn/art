@@ -17,12 +17,17 @@ use yii\base\Widget;
  */
 class TestimonialWidget extends Widget
 {
-    public $model;
-    
     public function run()
     {
         return $this->render('testimonial', [
-            //'model' => $this->model,
+            'testimonials' => $this->getData(),
         ]);
+    }
+    
+    public function getData()
+    {
+        $query = \app\models\Testimonial::find()->actived()->all();
+        
+        return $query;
     }
 }
