@@ -2,8 +2,11 @@
 
 namespace app\controllers;
 
+use app\models\BlogCategory;
 use app\models\BlogPost;
+use app\models\BlogTag;
 use yii\data\Pagination;
+use yii\web\NotFoundHttpException;
 
 /**
  * BlogController
@@ -46,7 +49,14 @@ class BlogController extends BaseController
      */
     public function actionDetail($year, $month, $slug)
     {
-        return $this->render('detail', []);
+        $postDetail = BlogPost::findOne([
+            'slug' => $slug,
+            'status' => BlogPost::STATUS_ACTIVE
+        ]);
+        
+        return $this->render('detail', [
+            'postDetail' => $postDetail,
+        ]);
     }
     
     /**
@@ -57,7 +67,28 @@ class BlogController extends BaseController
      */
     public function actionCategory($slug)
     {
-        return $this->render('category', []);
+        $category = BlogCategory::findOne(['slug' => $slug, 'status' => BlogCategory::STATUS_ACTIVE]);
+        if (!$category) {
+            throw new NotFoundHttpException('Page is not found.');
+        }
+        
+        $params = [
+            'result' => 'query',
+            'category' => $category->id,
+        ];
+
+        $query = BlogPost::getSearch($params);
+
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize'=>1]);
+        $blogPosts = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        
+        return $this->render('category', [
+            'blogPosts' => $blogPosts,
+            'pages' => $pages,
+            'blogCategory' => $category,
+        ]);
     }
     
     /**
@@ -68,6 +99,27 @@ class BlogController extends BaseController
      */
     public function actionTag($slug)
     {
-        return $this->render('tag', []);
+        $tag = BlogTag::findOne(['slug' => $slug]);
+        if (!$tag) {
+            throw new NotFoundHttpException('Page is not found.');
+        }
+        
+        $params = [
+            'result' => 'query',
+            'tag' => $tag->id,
+        ];
+
+        $query = BlogPost::getSearch($params);
+
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize'=>1]);
+        $blogPosts = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        
+        return $this->render('tag', [
+            'blogPosts' => $blogPosts,
+            'pages' => $pages,
+            'blogTag' => $tag,
+        ]);
     }
 }
