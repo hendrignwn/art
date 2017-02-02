@@ -1,9 +1,12 @@
 <?php
 
+use app\helpers\DetailViewHelper;
+use app\models\Menu;
+use yii\web\View;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Menu */
+/* @var $this View */
+/* @var $model Menu */
 ?>
 <div class="menu-view">
  
@@ -14,15 +17,22 @@ use yii\widgets\DetailView;
             'parent_id',
             'name',
             'url:url',
-            'is_absolute_url:url',
+            'is_absolute_url:boolean',
             'option:ntext',
-            'category',
-            'status',
+            [
+                'attribute' => 'category',
+                'value' => $model->getCategoryLabel(),
+            ],
             'order',
+            [
+                'attribute' => 'status',
+                'value' => $model->getStatusWithStyle(),
+                'format' => 'raw',
+            ],
             'created_at',
             'updated_at',
-            'created_by',
-            'updated_by',
+            DetailViewHelper::author($model, 'created_by'),
+            DetailViewHelper::author($model, 'updated_by'),
         ],
     ]) ?>
 
