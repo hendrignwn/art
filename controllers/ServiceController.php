@@ -2,15 +2,21 @@
 
 namespace app\controllers;
 
+use app\models\Service;
+
 /**
  * ServiceController
  * 
  * @author Hendri <hendri.gnw@gmail.com>
  */
-class ServiceController extends \app\controllers\BaseController
+class ServiceController extends BaseController
 {
     public function actionIndex()
     {
-        return $this->render('index', []);
+        $services = Service::find()->actived()->all();
+        
+        return $this->render('index', [
+            'services' => $services
+        ]);
     }
 }
