@@ -37,6 +37,7 @@ class Subscribe extends \app\models\BaseActiveRecord
             [['status', 'created_by', 'updated_by'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['email'], 'string', 'max' => 100],
+            [['status'], 'default', 'value' => self::STATUS_ACTIVE],
         ];
     }
 
