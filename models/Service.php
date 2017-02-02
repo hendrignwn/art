@@ -11,6 +11,7 @@ use yii\helpers\ArrayHelper;
  *
  * @property integer $id
  * @property string $name
+ * @property string $icon
  * @property string $slug
  * @property string $description
  * @property string $metakey
@@ -57,11 +58,12 @@ class Service extends BaseActiveRecord
             [['name', 'description'], 'required'],
             [['description'], 'string'],
             [['status', 'created_by', 'updated_by'], 'integer'],
-            [['slug', 'created_at', 'updated_at'], 'safe'],
+            [['slug', 'created_at', 'updated_at', 'icon'], 'safe'],
             [['name'], 'string', 'max' => 200],
             [['slug'], 'string', 'max' => 255],
             [['metakey'], 'string', 'max' => 100],
             [['metadesc'], 'string', 'max' => 150],
+            [['icon'], 'string', 'max' => 20],
             [['slug'], 'unique'],
             [['status'], 'default', 'value' => self::STATUS_ACTIVE],
         ];
@@ -75,6 +77,7 @@ class Service extends BaseActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
+            'icon' => Yii::t('app', 'Icon'),
             'slug' => Yii::t('app', 'Slug'),
             'description' => Yii::t('app', 'Description'),
             'metakey' => Yii::t('app', 'Metakey'),
