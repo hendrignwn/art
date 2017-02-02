@@ -25,6 +25,11 @@ return [
         ],
         
         [
+            'pattern' => 'services',
+            'route' => 'service/index',
+        ],
+        
+        [
             'pattern' => 'portfolio',
             'route' => 'portfolio/index',
         ],
