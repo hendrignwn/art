@@ -16,7 +16,11 @@ use yii\widgets\ActiveForm;
 
 <div class="blog-post-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+		'options' => [
+			'enctype' => 'multipart/form-data',
+		]
+	]); ?>
     
     <?php
     $categories = ArrayHelper::map(BlogCategory::find()->actived()->all(), 'id', 'name');
@@ -28,11 +32,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'photo')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'photoFile')->fileInput(['maxlength' => true]) ?>
     
     <?= $form->field($model, 'post_date')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'lead_text')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'lead_text')->textarea(['rows' => 6, 'maxlength' => true]) ?>
 
     <?= $form->field($model, 'content')->widget(CKEditor::className(), [
         'preset' => 'full',
@@ -45,6 +49,12 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'metakey')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'metadesc')->textarea(['maxlength' => true]) ?>
+    
+    <?php
+    $tags = ArrayHelper::map(BlogCategory::find()->actived()->all(), 'id', 'name');
+    $tagOptions = ['data' => $tags, 'pluginOptions' => ['allowClear' => true], 'options' => ['prompt' => 'Choose One', 'multiple' => true]];
+    ?>
+    <?= $form->field($model, 'blogTag')->widget(Select2::className(), $tagOptions) ?>
 
     <?php
     $status = BlogPost::statusLabels();
