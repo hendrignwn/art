@@ -2,20 +2,40 @@
 
 namespace app\controllers;
 
+use app\models\Portfolio;
+use yii\data\Pagination;
+
 /**
  * PortfolioController
  * 
  * @author Hendri <hendri.gnw@gmail.com>
  */
-class PortfolioController extends \app\controllers\BaseController
+class PortfolioController extends BaseController
 {
     public function actionIndex()
     {
-        return $this->render('index', []);
+        $query = Portfolio::find()->actived()->orderCreatedAt();
+
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize'=>9]);
+        $portfolios = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        
+        return $this->render('index', [
+            'portfolios' => $portfolios,
+            'pages' => $pages,
+        ]);
     }
     
     public function actionDetail($slug)
     {
-        return $this->render('detail', []);
+        $portfolio = Portfolio::findOne([
+            'slug' => $slug,
+            'status' => Portfolio::STATUS_ACTIVE,
+        ]);
+        
+        return $this->render('detail', [
+            'model' => $portfolio
+        ]);
     }
 }
