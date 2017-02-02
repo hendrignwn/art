@@ -2,6 +2,7 @@
 
 use app\models\BlogCategory;
 use app\models\BlogPost;
+use app\models\BlogTag;
 use app\widgets\CKEditor;
 use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
@@ -51,7 +52,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'metadesc')->textarea(['maxlength' => true]) ?>
     
     <?php
-    $tags = ArrayHelper::map(BlogCategory::find()->actived()->all(), 'id', 'name');
+    $tags = ArrayHelper::map(BlogTag::find()->all(), 'id', 'name');
     $tagOptions = ['data' => $tags, 'pluginOptions' => ['allowClear' => true], 'options' => ['prompt' => 'Choose One', 'multiple' => true]];
     ?>
     <?= $form->field($model, 'blogTag')->widget(Select2::className(), $tagOptions) ?>
