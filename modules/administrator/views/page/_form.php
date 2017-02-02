@@ -1,6 +1,5 @@
 <?php
 
-use app\models\Banner;
 use app\models\Page;
 use app\widgets\CKEditor;
 use kartik\select2\Select2;
@@ -20,7 +19,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?php
-    $categories = Banner::categoryLabels();
+    $categories = Page::categoryLabels();
     $categoryOptions = ['data' => $categories, 'pluginOptions' => ['allowClear' => true], 'options' => ['prompt' => 'Choose One']];
     ?>
     <?= $form->field($model, 'category')->widget(Select2::className(), $categoryOptions) ?>
