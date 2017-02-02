@@ -1,7 +1,10 @@
 <?php
 
+use app\models\Portfolio;
+use yii\helpers\Html;
 use yii\helpers\Url;
 
+/* @var $portfolios Portfolio */
 
 ?>
 
@@ -16,136 +19,39 @@ use yii\helpers\Url;
         <div class="portfolio-container text-center">
             <ul class="portfolio-filter brand-filter">
                 <li class="active waves-effect waves-light" data-group="all">All</li>
-                <li class="waves-effect waves-light" data-group="websites">Websites</li>
-                <li class="waves-effect waves-light" data-group="branding">Branding</li>
-                <li class="waves-effect waves-light" data-group="marketing">Marketing</li>
-                <li class="waves-effect waves-light" data-group="photography">Photography</li>
+                <?php foreach($services as $service) : ?>
+                    <li class="waves-effect waves-light" data-group="<?= $service->slug ?>"><?= $service->name ?></li>
+                <?php endforeach; ?>
             </ul>
 
             <div class="portfolio portfolio-with-title col-3 gutter mt-50">
+                
+                <?php foreach($portfolios as $portfolio) : ?>
+                    <div class="portfolio-item" data-groups='["<?= $portfolio->service ? $portfolio->service->slug : 'all' ?>"]'>
+                        <div class="portfolio-wrapper">
 
-                <div class="portfolio-item" data-groups='["all", "branding", "photography"]'>
-                    <div class="portfolio-wrapper">
+                            <div class="thumb">
+                                <div class="bg-overlay brand-overlay"></div>
+                                <?= $portfolio->getIsGallery() ?
+                                        Html::img($portfolio->getFirstGallery()->getPhotoUrl(), ['alt' => $portfolio->getFirstGallery()->name]) :
+                                        Html::img(['themes/v1/img/portfolio/portfolio-1.jpg'], [])
+                                 ?>
 
-                        <div class="thumb">
-                            <div class="bg-overlay brand-overlay"></div>
-                            <img src="<?= Url::to(['themes/v1/img/portfolio/portfolio-1.jpg']) ?>" alt="">
-
-                            <div class="portfolio-intro">
-                                <div class="action-btn">
-                                    <a href="<?= Url::to(['themes/v1/img/portfolio/portfolio-1.jpg']) ?>" class="tt-lightbox" title="iOS Game Design"> <i class="fa fa-search"></i></a>
+                                <div class="portfolio-intro">
+                                    <div class="action-btn">
+                                        <a href="<?= Url::to(['themes/v1/img/portfolio/portfolio-1.jpg']) ?>" class="tt-lightbox" title="iOS Game Design"> <i class="fa fa-search"></i></a>
+                                    </div>
                                 </div>
+                            </div><!-- thumb -->
+
+                            <div class="portfolio-title">
+                                <h2><?= Html::a($portfolio->name, $portfolio->getDetailUrl()) ?></h2>
+                                <p><?= $portfolio->service ? $portfolio->service->name : 'All' ?></p>
                             </div>
-                        </div><!-- thumb -->
 
-                        <div class="portfolio-title">
-                            <h2><a href="#">Portfolio Title 1</a></h2>
-                            <p><a href="#">iOS Design</a> </p>
-                        </div>
-
-                    </div><!-- /.portfolio-wrapper -->
-                </div><!-- /.portfolio-item -->
-
-                <div class="portfolio-item" data-groups='["all", "marketing", "websites"]'> 
-                    <div class="portfolio-wrapper">
-                        <div class="thumb">
-                            <div class="bg-overlay brand-overlay"></div>
-                            <img src="assets/img/portfolio/portfolio-2.jpg" alt="">
-
-                            <div class="portfolio-intro">
-                                <div class="action-btn">
-                                    <a href="assets/img/portfolio/portfolio-2.jpg" class="tt-lightbox" title=""> <i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portfolio-title">
-                            <h2><a href="#">Portfolio Title</a></h2>
-                            <p><a href="#">Branding</a> </p>
-                        </div>
-
-                    </div><!-- /.portfolio-wrapper -->
-                </div><!-- /.portfolio-item -->
-
-                <div class="portfolio-item" data-groups='["all", "photography", "branding"]'>
-
-                    <div class="portfolio-wrapper">
-                        <div class="thumb">
-                            <div class="bg-overlay brand-overlay"></div>
-                            <img src="assets/img/portfolio/portfolio-3.jpg" alt="">
-
-                            <div class="portfolio-intro">
-                                <div class="action-btn">
-                                    <a href="assets/img/portfolio/portfolio-3.jpg" class="tt-lightbox" title=""> <i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portfolio-title">
-                            <h2><a href="#">Portfolio Title</a></h2>
-                            <p><a href="#">Branding</a> </p>
-                        </div>
-
-                    </div><!-- /.portfolio-wrapper -->
-                </div><!-- /.portfolio-item -->
-
-                <div class="portfolio-item" data-groups='["all", "websites", "branding"]'>
-                    <div class="portfolio-wrapper">
-                        <div class="thumb">
-                            <div class="bg-overlay brand-overlay"></div>
-                            <img src="assets/img/portfolio/portfolio-4.jpg" alt="">
-
-                            <div class="portfolio-intro">
-                                <div class="action-btn">
-                                    <a href="assets/img/portfolio/portfolio-4.jpg" class="tt-lightbox" title=""> <i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portfolio-title">
-                            <h2><a href="#">Portfolio Title</a></h2>
-                            <p><a href="#">Branding</a> </p>
-                        </div>
-
-                    </div><!-- /.portfolio-wrapper -->
-                </div><!-- /.portfolio-item -->
-
-                <div class="portfolio-item" data-groups='["all", "photography", "marketing"]'>
-                    <div class="portfolio-wrapper">
-                        <div class="thumb">
-                            <div class="bg-overlay brand-overlay"></div>
-                            <img src="assets/img/portfolio/portfolio-5.jpg" alt="">
-
-                            <div class="portfolio-intro">
-                                <div class="action-btn">
-                                    <a href="assets/img/portfolio/portfolio-5.jpg" class="tt-lightbox" title=""> <i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portfolio-title">
-                            <h2><a href="#">Portfolio Title</a></h2>
-                            <p><a href="#">Branding</a> </p>
-                        </div>
-
-                    </div><!-- /.portfolio-wrapper -->
-                </div><!-- /.portfolio-item -->
-
-                <div class="portfolio-item" data-groups='["all", "websites",  "marketing"]'>
-                    <div class="portfolio-wrapper">
-                        <div class="thumb">
-                            <div class="bg-overlay brand-overlay"></div>
-                            <img src="assets/img/portfolio/portfolio-6.jpg" alt="">
-
-                            <div class="portfolio-intro">
-                                <div class="action-btn">
-                                    <a href="#."> <i class="fa fa-link"></i>  </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portfolio-title">
-                            <h2><a href="#">Portfolio Title</a></h2>
-                            <p><a href="#">Branding</a> </p>
-                        </div>
-
-                    </div><!-- /.portfolio-wrapper -->
-                </div><!-- /.portfolio-item -->
+                        </div><!-- /.portfolio-wrapper -->
+                    </div><!-- /.portfolio-item -->
+                <?php endforeach; ?>
 
             </div><!-- /.portfolio -->
 

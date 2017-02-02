@@ -8,6 +8,7 @@
 
 namespace app\widgets;
 
+use app\models\Service;
 use yii\base\Widget;
 
 /**
@@ -17,12 +18,25 @@ use yii\base\Widget;
  */
 class PortfolioWidget extends Widget
 {
-    public $model;
+    public $portfolios;
+    public $pages;
     
     public function run()
     {
         return $this->render('portfolio', [
-            //'model' => $this->model,
+            'portfolios' => $this->portfolios,
+            'pages' => $this->pages,
+            'services' => $this->getMenuServices(),
         ]);
+    }
+    
+    /**
+     * returns service
+     * 
+     * @return array
+     */
+    protected function getMenuServices()
+    {
+        return Service::find()->actived()->all();
     }
 }
