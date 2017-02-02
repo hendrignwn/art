@@ -307,6 +307,17 @@ class BlogPost extends BaseActiveRecord
     {
         $this->processUploadFile();
         
+        if (
+            empty($this->title) ||
+            empty($this->slug) ||
+            empty($this->content) ||
+            empty($this->lead_text) ||
+            empty($this->photo) ||
+            empty($this->blog_category_id)
+        ) {
+            $this->status = self::STATUS_INACTIVE;
+        }
+        
         return parent::beforeSave($insert);
     }
     
