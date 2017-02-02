@@ -32,12 +32,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'photoFile')->fileInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->widget(CKEditor::className(), [
-        'enableKCFinder' => false,
-        'clientOptions' => [
-            'row' => 6,
-        ],
-    ]); ?>
+    <?= $form->field($model, 'description')->textarea(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'metakey')->textInput(['maxlength' => true]) ?>
 

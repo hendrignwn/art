@@ -21,6 +21,7 @@ use yii\widgets\DetailView;
             'name',
             'slug',
             'completed_on',
+            'technology',
             'client',
             'website',
             'description:ntext',

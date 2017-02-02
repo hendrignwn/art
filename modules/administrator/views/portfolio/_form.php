@@ -26,13 +26,15 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'service_id')->widget(Select2::className(), $serviceOptions) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-
+    
     <?= $form->field($model, 'completed_on')->widget(DatePicker::className(), [
         'pluginOptions' => [
             'format' => 'yyyy-mm-dd',
             'todayHighlight' => true
         ]
     ]) ?>
+    
+    <?= $form->field($model, 'technology')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'client')->textInput(['maxlength' => true]) ?>
 
