@@ -30,7 +30,7 @@ class BlogTag extends BaseActiveRecord
         return ArrayHelper::merge(parent::behaviors(), [
             [
                 'class' => SluggableBehavior::className(),
-                'attribute' => 'title',
+                'attribute' => 'name',
                 'slugAttribute' => 'slug',
                 'ensureUnique' => true,
             ]

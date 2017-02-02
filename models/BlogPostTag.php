@@ -16,6 +16,11 @@ use Yii;
  */
 class BlogPostTag extends \app\models\BaseActiveRecord
 {
+    public function behaviors()
+    {
+        return [];
+    }
+    
     /**
      * @inheritdoc
      */

@@ -92,4 +92,9 @@ class BlogCategory extends BaseActiveRecord
     {
         return $this->hasMany(BlogPost::className(), ['blog_category_id' => 'id']);
     }
+    
+    public function getUrl($isAbsolute = false)
+    {
+        return \app\helpers\Url::to(['blog/category', 'slug' => $this->slug], $isAbsolute);
+    }
 }

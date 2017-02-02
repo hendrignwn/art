@@ -8,6 +8,9 @@ use Yii;
 use yii\behaviors\SluggableBehavior;
 use yii\db\ActiveQuery;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
+use yii\helpers\Inflector;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "blog_post".
@@ -33,6 +36,27 @@ use yii\helpers\ArrayHelper;
  */
 class BlogPost extends BaseActiveRecord
 {
+    /**
+     * @var UploadedFile
+     */
+    public $photoFile;
+    
+    private $_path;
+    
+    public $blogTag;
+    
+    public function init()
+    {
+        parent::init();
+        
+        $this->path = 'web/uploads/blog-post/';
+        if (!is_dir(Yii::getAlias('@app/' . $this->path))) {
+            mkdir(Yii::getAlias('@app/' . $this->path));
+        }
+
+        return true;
+    }
+    
     /**
      * @inheritdoc
      */
@@ -62,7 +86,7 @@ class BlogPost extends BaseActiveRecord
     public function rules()
     {
         return [
-            [['title', 'content', 'blog_category_id', 'post_date'], 'required'],
+            [['title', 'content', 'blog_category_id', 'post_date', 'blogTag'], 'required'],
             [['lead_text', 'content'], 'string'],
             [['slug', 'created_at', 'updated_at'], 'safe'],
             [['post_date'],'datetime', 'format' => 'php: Y-m-d H:i:s', 'message' => Yii::t('app.message', 'Datetime format must be `Y-m-d H:i:s` eg: 2017-01-30 19:00:50')],
@@ -71,11 +95,40 @@ class BlogPost extends BaseActiveRecord
             [['photo'], 'string', 'max' => 100],
             [['metakey'], 'string', 'max' => 150],
             [['metadesc'], 'string', 'max' => 160],
+            [['lead_text'], 'string', 'max' => 200],
             [['title'], 'unique'],
             [['slug'], 'unique'],
             [['blog_category_id'], 'exist', 'skipOnError' => true, 'targetClass' => BlogCategory::className(), 'targetAttribute' => ['blog_category_id' => 'id']],
             [['status'], 'default', 'value' => self::STATUS_ACTIVE],
+            [['photoFile'], 'file', 'skipOnEmpty' => true, 'checkExtensionByMimeType' => false,
+                'extensions' => ['jpg', 'jpeg', 'png'],
+                'maxSize' => 1024 * 1024 * 1],
         ];
+    }
+    
+    public function afterFind() 
+    {
+        $this->blogTag = $this->getBlogPostTags()->select('id')->indexBy('id')->column();
+        
+        return parent::afterFind();
+    }
+            
+    /**
+     * - delete photoFile
+     * 
+     * @return type
+     */
+    public function beforeDelete()
+    {
+        /* todo: delete the corresponding file in storage */
+        $this->deleteFile();
+        
+        return parent::beforeDelete();
+    }
+    
+    protected function deleteFile()
+    {
+        @unlink(Yii::getAlias('@app/' . $this->path) . $this->photo);
     }
 
     /**
@@ -116,6 +169,25 @@ class BlogPost extends BaseActiveRecord
     public function getBlogPostTags()
     {
         return $this->hasMany(BlogPostTag::className(), ['blog_post_id' => 'id']);
+    }
+    
+    /**
+     * returns list blog post has tags
+     * 
+     * @return array
+     */
+    public function getListBlogPostTags()
+    {
+        if (!$this->blogPostTags) {
+            return [];
+        }
+        
+        $result = [];
+        foreach ($this->blogPostTags as $tag) {
+            $result[$tag->id] = $tag->blogTag ? $tag->blogTag->name : '';
+        }
+        
+        return $result;
     }
     
     /**
@@ -160,9 +232,14 @@ class BlogPost extends BaseActiveRecord
             $query->andFilterWhere(['like','post_date',$params['post_date']]);
         }
 
-        // Filter by taxonomy it could be categories or tag
+        // Filter by taxonomy it could be categories
         if(isset($params['category'])) {
             $query->andFilterWhere(['blog_category_id' => $params['category']]);
+        }
+        
+        // Filter by taxonomy it could be tag
+        if(isset($params['tag'])) {
+            $query->andFilterWhere(['blog_tag_id' => $params['tag']]);
         }
 
         if(isset($params['limit'])) {
@@ -192,5 +269,116 @@ class BlogPost extends BaseActiveRecord
         }
 
         return $results;
+    }
+    
+    public function afterSave($insert, $changedAttributes) 
+    {
+        $this->savePostTags();
+        
+        return parent::afterSave($insert, $changedAttributes);
+    }
+    
+    /**
+     * process save post tags
+     * 
+     * @return boolean
+     */
+    protected function savePostTags()
+    {
+        BlogPostTag::deleteAll('blog_post_id = ' . $this->id);
+        foreach($this->blogTag as $tag) {
+            $postTag = new BlogPostTag();
+            $postTag->blog_post_id = $this->id;
+            $postTag->blog_tag_id = $tag;
+            
+            $postTag->save();
+        }
+        
+        return true;
+    }
+    
+    /**
+     * - process upload file
+     * 
+     * @param type $insert
+     * @return type
+     */
+    public function beforeSave($insert) 
+    {
+        $this->processUploadFile();
+        
+        return parent::beforeSave($insert);
+    }
+    
+    /**
+     * process uploaded file
+     * 
+     * @return boolean
+     */
+    public function processUploadFile()
+    {
+        if (!empty($this->photoFile)) {
+            $this->deleteFile();
+
+            $path = str_replace('web/', '', $this->path);
+            
+            // generate filename
+            $filename = Inflector::slug($this->slug . '-' . Yii::$app->security->generateRandomString(20));
+            $filename = $filename . '.' . $this->photoFile->extension;
+            
+            $this->photoFile->saveAs($path . $filename);
+            $this->photo = $filename;
+        }
+
+        return true;
+    }
+    
+    /**
+     * get url file
+     * 
+     * @return type
+     */
+    public function getPhotoUrl() 
+    {
+        if (empty($this->photo)) {
+            return null;
+        }
+
+        $path = $this->path . $this->photo;
+
+        if (!file_exists(Yii::getAlias('@app/' . $path))) {
+            return null;
+        }
+
+        return Url::to('@' . $path, true);
+    }
+
+    public function getPhotoUrlHtml($name = null, $options = ['target' => '_blank']) 
+    {
+        $name = $name ? $name : $this->title;
+
+        if (!$this->getPhotoUrl()) {
+            return $name;
+        }
+
+        return Html::a($name, $this->getPhotoUrl(), $options);
+    }
+
+    /**
+     * set path
+     * 
+     * @param type $value
+     */
+    public function setPath($value)
+    {
+        $this->_path = $value;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->_path;
     }
 }
