@@ -17,22 +17,6 @@ use yii\helpers\Html;
 class BlogCategoryController extends BaseController
 {
     /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['post'],
-                    'bulk-delete' => ['post'],
-                ],
-            ],
-        ];
-    }
-
-    /**
      * Lists all BlogCategory models.
      * @return mixed
      */

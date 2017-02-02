@@ -2,27 +2,43 @@
 
 namespace app\modules\administrator\controllers;
 
-use app\models\BlogPost;
-use app\modules\administrator\controllers\BaseController;
-use app\modules\administrator\models\BlogPostSearch;
 use Yii;
-use yii\helpers\Html;
+use app\models\Testimonial;
+use app\modules\administrator\models\TestimonialSearch;
+use app\modules\administrator\controllers\BaseController;
 use yii\web\NotFoundHttpException;
-use yii\web\Response;
-use yii\web\UploadedFile;
+use yii\filters\VerbFilter;
+use \yii\web\Response;
+use yii\helpers\Html;
 
 /**
- * BlogPostController implements the CRUD actions for BlogPost model.
+ * TestimonialController implements the CRUD actions for Testimonial model.
  */
-class BlogPostController extends BaseController
+class TestimonialController extends BaseController
 {
     /**
-     * Lists all BlogPost models.
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['post'],
+                    'bulk-delete' => ['post'],
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * Lists all Testimonial models.
      * @return mixed
      */
     public function actionIndex()
     {    
-        $searchModel = new BlogPostSearch();
+        $searchModel = new TestimonialSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -33,7 +49,7 @@ class BlogPostController extends BaseController
 
 
     /**
-     * Displays a single BlogPost model.
+     * Displays a single Testimonial model.
      * @param integer $id
      * @return mixed
      */
@@ -43,7 +59,7 @@ class BlogPostController extends BaseController
         if($request->isAjax){
             Yii::$app->response->format = Response::FORMAT_JSON;
             return [
-                    'title'=> "BlogPost #".$id,
+                    'title'=> "Testimonial #".$id,
                     'content'=>$this->renderAjax('view', [
                         'model' => $this->findModel($id),
                     ]),
@@ -58,7 +74,7 @@ class BlogPostController extends BaseController
     }
 
     /**
-     * Creates a new BlogPost model.
+     * Creates a new Testimonial model.
      * For ajax request will return json object
      * and for non-ajax request if creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -66,7 +82,7 @@ class BlogPostController extends BaseController
     public function actionCreate()
     {
         $request = Yii::$app->request;
-        $model = new BlogPost();  
+        $model = new Testimonial();  
 
         if($request->isAjax){
             /*
@@ -75,7 +91,7 @@ class BlogPostController extends BaseController
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> "Create new BlogPost",
+                    'title'=> "Create new Testimonial",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -83,22 +99,18 @@ class BlogPostController extends BaseController
                                 Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
         
                 ];         
-            }else if($model->load($request->post())){
-				$model->photoFile = UploadedFile::getInstance($model, 'photoFile');
-                if ($model->save()) {
-                    return [
-                        'forceReload' => '#crud-datatable-pjax',
-                        'title' => "Create new BlogPost",
-                        'content' => '<span class="text-success">Create BlogPost success</span>',
-                        'footer' => Html::button('Close', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
-                        Html::a('Create More', ['create'], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
-                    ];
-                }
-                goto render;
-            }else{          
-				render:
+            }else if($model->load($request->post()) && $model->save()){
                 return [
-                    'title'=> "Create new BlogPost",
+                    'forceReload'=>'#crud-datatable-pjax',
+                    'title'=> "Create new Testimonial",
+                    'content'=>'<span class="text-success">Create Testimonial success</span>',
+                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                            Html::a('Create More',['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
+        
+                ];         
+            }else{           
+                return [
+                    'title'=> "Create new Testimonial",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -123,7 +135,7 @@ class BlogPostController extends BaseController
     }
 
     /**
-     * Updates an existing BlogPost model.
+     * Updates an existing Testimonial model.
      * For ajax request will return json object
      * and for non-ajax request if update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
@@ -141,31 +153,26 @@ class BlogPostController extends BaseController
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> "Update BlogPost #".$id,
+                    'title'=> "Update Testimonial #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                     ]),
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                                 Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
                 ];         
-            }else if($model->load($request->post())){
-				$model->photoFile = UploadedFile::getInstance($model, 'photoFile');
-                if ($model->save()) {
-                    return [
-                        'forceReload'=>'#crud-datatable-pjax',
-                        'title'=> "BlogPost #".$id,
-                        'content'=>$this->renderAjax('view', [
-                            'model' => $model,
-                        ]),
-                        'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
-                                Html::a('Edit',['update','id'=>$id],['class'=>'btn btn-primary','role'=>'modal-remote'])
-                    ];    
-                }
-                goto render;
-            }else{
-                render:
+            }else if($model->load($request->post()) && $model->save()){
                 return [
-                    'title'=> "Update BlogPost #".$id,
+                    'forceReload'=>'#crud-datatable-pjax',
+                    'title'=> "Testimonial #".$id,
+                    'content'=>$this->renderAjax('view', [
+                        'model' => $model,
+                    ]),
+                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                            Html::a('Edit',['update','id'=>$id],['class'=>'btn btn-primary','role'=>'modal-remote'])
+                ];    
+            }else{
+                 return [
+                    'title'=> "Update Testimonial #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -188,7 +195,7 @@ class BlogPostController extends BaseController
     }
 
     /**
-     * Delete an existing BlogPost model.
+     * Delete an existing Testimonial model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
@@ -216,7 +223,7 @@ class BlogPostController extends BaseController
     }
 
      /**
-     * Delete multiple existing BlogPost model.
+     * Delete multiple existing Testimonial model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
@@ -247,15 +254,15 @@ class BlogPostController extends BaseController
     }
 
     /**
-     * Finds the BlogPost model based on its primary key value.
+     * Finds the Testimonial model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return BlogPost the loaded model
+     * @return Testimonial the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = BlogPost::findOne($id)) !== null) {
+        if (($model = Testimonial::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
