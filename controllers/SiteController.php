@@ -3,10 +3,9 @@
 namespace app\controllers;
 
 use app\models\ContactForm;
-use app\models\LoginForm;
 use app\models\Page;
+use app\models\Subscribe;
 use Yii;
-use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use const YII_ENV_TEST;
@@ -59,8 +58,18 @@ class SiteController extends Controller
             return $this->refresh('#contact');
         }
         
+        $subscribe = new Subscribe();
+        if ($subscribe->load(Yii::$app->request->post()) && $subscribe->save()) {
+            Yii::$app->session->setFlash('SubscribeFormSubmitted');
+            return $this->refresh('#subscribe-form');
+        }
+        
+        $shortService = Page::findOne(['id' => Page::PAGE_SERVICE_PARTIAL, 'status' => Page::STATUS_ACTIVE]);
+        
         return $this->render('index', [
-            'contactModel' => $contactModel
+            'contactModel' => $contactModel,
+            'shortService' => $shortService,
+            'subscribeForm' => $subscribe,
         ]);
     }
 
