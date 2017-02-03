@@ -135,7 +135,7 @@ class Menu extends BaseActiveRecord
                 $items[$data->id]['items'] = $this->getMenuChildren($items[$data->id]['items'], $data->parents);
             }
             
-            if (!empty($data->getOption())) {
+            if (!empty($data->option)) {
                 $items[$data->id] = ArrayHelper::merge($items[$data->id], $data->getOption());
             }
             
@@ -165,7 +165,7 @@ class Menu extends BaseActiveRecord
                 $items[$data->id]['items'] = $this->getMenuChildren($items[$data->id]['items'], $data->parents, $options, $childOptions);
             }
             
-            if (!empty($data->getOption())) {
+            if (!empty($data->option)) {
                 $items[$data->id] = ArrayHelper::merge($items[$data->id], $data->getOption());
             }
         }
