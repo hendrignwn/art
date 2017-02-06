@@ -35,7 +35,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'photoFile')->fileInput(['maxlength' => true]) ?>
     
-    <?= $form->field($model, 'post_date')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'post_date')->textInput(['maxlength' => true, 'value' => $model->post_date ? $model->post_data : date('Y-m-d H:i:s')]) ?>
 
     <?= $form->field($model, 'lead_text')->textarea(['rows' => 6, 'maxlength' => true]) ?>
 
