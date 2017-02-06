@@ -24,12 +24,12 @@ HomeAsset::register($this);
 
     <?= $this->render('_header') ?>
     
-    <?= $content ?>
+    <?= $this->render('_content', ['content' => $content]) ?>
     
     <?= $this->render('_footer') ?>
     
     <?= $this->render('_preloader') ?>
-
+    
 <?php $this->endBody() ?>
 </body>
 </html>
