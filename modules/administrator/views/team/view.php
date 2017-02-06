@@ -23,6 +23,11 @@ use yii\widgets\DetailView;
                 'format' => 'raw',
             ],
             'social_account',
+            'social_facebook',
+            'social_twitter',
+            'social_linked_in',
+            'social_dribbble',
+            'social_email',
             'description:ntext',
             [
                 'attribute' => 'status',

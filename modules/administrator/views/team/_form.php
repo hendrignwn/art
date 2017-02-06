@@ -28,7 +28,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'photoFile')->fileInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'social_account')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'social_facebook')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'social_twitter')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'social_linked_in')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'social_dribbble')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'social_email')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->widget(CKEditor::className(), [
         'enableKCFinder' => false,
