@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Client;
 use app\models\ContactForm;
 use app\models\Page;
 use app\models\Portfolio;
@@ -110,8 +111,14 @@ class SiteController extends Controller
     {
         $model = Page::findOne(Page::PAGE_ABOUT);
         
+        $clients = Client::find()
+                ->actived()
+                ->orderBy(['name'=>SORT_ASC])
+                ->all();
+        
         return $this->render('about', [
-            'model' => $model
+            'model' => $model,
+            'clients' => $clients,
         ]);
     }
     
