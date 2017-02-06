@@ -13,8 +13,8 @@ use yii\widgets\Menu;
             <div id="materialize-menu" class="menuzord">
                 <!--logo start-->
                 <?= Html::a(
-                        Html::img(['themes/v1/img/logo.png'], ['alt'=>'Logo ATC', 'class'=>'logo-dark']) .
-                        Html::img(['themes/v1/img/logo-white.png'], ['alt'=>'Logo ATC', 'class'=>'logo-light']),
+                        Html::img(['data/img/logo.png'], ['alt'=>'Logo ATC', 'class'=>'logo-dark']) .
+                        Html::img(['data/img/logo-white.png'], ['alt'=>'Logo ATC', 'class'=>'logo-light']),
                         ['/site/index'], 
                         [
                             'class' =>'logo-brand',
