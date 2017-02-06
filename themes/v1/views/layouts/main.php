@@ -26,22 +26,22 @@ AppAsset::register($this);
     <?= $this->render('_header') ?>
     
     <!--page title start-->
-        <section class="page-title page-title-center cover-3 padding-top-220 padding-bottom-120 overlay purple-5 fixed-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2 class="white-text font-40 text-bold"><?= $this->title ?></h2>
-                        <?= Breadcrumbs::widget([
-                            'tag' => 'ol',
-                            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                        ]) ?>
-                    </div>
+    <section class="page-title page-title-center cover-3 padding-top-220 padding-bottom-120 overlay purple-5 fixed-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="white-text font-40 text-bold"><?= $this->title ?></h2>
+                    <?= Breadcrumbs::widget([
+                        'tag' => 'ol',
+                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                    ]) ?>
                 </div>
             </div>
-        </section>
-        <!--page title end-->
+        </div>
+    </section>
+    <!--page title end-->
     
-    <?= $content ?>
+    <?= $this->render('_content', ['content' => $content]) ?>
     
     <?= $this->render('_footer') ?>
     
