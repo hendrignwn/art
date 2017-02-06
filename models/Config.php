@@ -336,6 +336,111 @@ class Config extends \yii\db\ActiveRecord
     }
     
     /**
+     * returns progress web analyst
+     * 
+     * @return type
+     */
+    public static function getProgressWebAnalyst()
+    {
+        return self::findByName('progress_web_analyst');
+    }
+    
+    /**
+     * set value of progress web analyst
+     * 
+     * @param type $value
+     * @return type
+     */
+    public static function setValueProgressWebAnalyst($value)
+    {
+        return self::setValueByName('progress_web_analyst', $value);
+    }
+    
+    /**
+     * returns progress web development
+     * 
+     * @return type
+     */
+    public static function getProgressWebDevelopment()
+    {
+        return self::findByName('progress_web_development');
+    }
+    
+    /**
+     * set value of progress web development
+     * 
+     * @param type $value
+     * @return type
+     */
+    public static function setValueProgressWebDevelopment($value)
+    {
+        return self::setValueByName('progress_web_development', $value);
+    }
+    
+    /**
+     * returns progress mobile hybrid
+     * 
+     * @return type
+     */
+    public static function getProgressMobileHybrid()
+    {
+        return self::findByName('progress_mobile_hybrid');
+    }
+    
+    /**
+     * set value of progress mobile hybrid
+     * 
+     * @param type $value
+     * @return type
+     */
+    public static function setValueProgressMobileHybrid($value)
+    {
+        return self::setValueByName('progress_mobile_hybrid', $value);
+    }
+    
+    /**
+     * returns progress network analyst
+     * 
+     * @return type
+     */
+    public static function getProgressNetworkAnalyst()
+    {
+        return self::findByName('progress_network_analyst');
+    }
+    
+    /**
+     * set value of progress network analyst
+     * 
+     * @param type $value
+     * @return type
+     */
+    public static function setValueProgressNetworkAnalyst($value)
+    {
+        return self::setValueByName('progress_network_analyst', $value);
+    }
+    
+    /**
+     * returns progress network development
+     * 
+     * @return type
+     */
+    public static function getProgressNetworkDevelopment()
+    {
+        return self::findByName('progress_network_development');
+    }
+    
+    /**
+     * set value of progress network development
+     * 
+     * @param type $value
+     * @return type
+     */
+    public static function setValueProgressNetworkDevelopment($value)
+    {
+        return self::setValueByName('progress_network_development', $value);
+    }
+    
+    /**
      * return value email admin
      * 
      * @return type

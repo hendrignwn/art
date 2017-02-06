@@ -35,6 +35,13 @@ class Team extends BaseActiveRecord
     
     private $_path;
     
+    /** social */
+    public $social_facebook;
+    public $social_twitter;
+    public $social_linked_in;
+    public $social_dribbble;
+    public $social_email;
+    
     public function init()
     {
         parent::init();
@@ -64,7 +71,8 @@ class Team extends BaseActiveRecord
             [['first_name', 'last_name', 'professional', 'description'], 'required'],
             [['description'], 'string'],
             [['status', 'created_by', 'updated_by'], 'integer'],
-            [['photo', 'created_at', 'updated_at'], 'safe'],
+            [['social_account', 'photo', 'created_at', 'updated_at', 
+                'social_facebook', 'social_twitter', 'social_linked_in', 'social_dribbble', 'social_email'], 'safe'],
             [['first_name'], 'string', 'max' => 30],
             [['last_name'], 'string', 'max' => 50],
             [['professional'], 'string', 'max' => 100],
@@ -74,6 +82,31 @@ class Team extends BaseActiveRecord
                 'extensions' => ['jpg', 'jpeg', 'png'],
                 'maxSize' => 1024 * 1024 * 1],
         ];
+    }
+    
+    public function afterFind()
+    {
+        $this->normalizeSocialAccounts();
+        
+        return parent::afterFind();
+    }
+    
+    /**
+     * normalize social accounts to another variables
+     * 
+     * @return boolean
+     */
+    protected function normalizeSocialAccounts()
+    {
+        $socialAccounts = json_decode($this->social_account, true);
+        
+        $this->social_facebook = $socialAccounts['facebook'];
+        $this->social_twitter = $socialAccounts['twitter'];
+        $this->social_linked_in = $socialAccounts['linked_in'];
+        $this->social_dribbble = $socialAccounts['dribbble'];
+        $this->social_email = $socialAccounts['email'];
+        
+        return true;
     }
     
     /**
@@ -106,6 +139,11 @@ class Team extends BaseActiveRecord
             'professional' => Yii::t('app', 'Professional'),
             'photo' => Yii::t('app', 'Photo'),
             'social_account' => Yii::t('app', 'Social Account'),
+            'social_facebook' => Yii::t('app', 'Social Facebook Url'),
+            'social_twitter' => Yii::t('app', 'Social Twitter Url'),
+            'social_linked_in' => Yii::t('app', 'Social Linked In Url'),
+            'social_dribbble' => Yii::t('app', 'Social Dribbble Url'),
+            'social_email' => Yii::t('app', 'Social Email'),
             'description' => Yii::t('app', 'Description'),
             'status' => Yii::t('app', 'Status'),
             'created_at' => Yii::t('app', 'Created At'),
@@ -124,8 +162,27 @@ class Team extends BaseActiveRecord
     public function beforeSave($insert) 
     {
         $this->processUploadFile();
+        $this->social_account = $this->mergeSocialAccount();
         
         return parent::beforeSave($insert);
+    }
+    
+    /**
+     * returns merge social accounts
+     * 
+     * @return array
+     */
+    protected function mergeSocialAccount($json = true)
+    {
+        $values = [
+            'facebook' => $this->social_facebook,
+            'twitter' => $this->social_twitter,
+            'linked_in' => $this->social_linked_in,
+            'dribbble' => $this->social_dribbble,
+            'email' => $this->social_email,
+        ];
+        
+        return ($json == true) ? json_encode($values) : $values;
     }
     
     /**
@@ -198,5 +255,15 @@ class Team extends BaseActiveRecord
     public function getPath()
     {
         return $this->_path;
+    }
+    
+    /**
+     * returns full name
+     * 
+     * @return string
+     */
+    public function getFullName()
+    {
+        return $this->first_name .' '. $this->last_name;
     }
 }
