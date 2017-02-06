@@ -15,7 +15,7 @@ $this->registerJs('
             $map_zoom = 16 /* ZOOM SETTING */
 
         //google map custom marker icon 
-        var $marker_url = \'themes/v1/img/pin.png\';
+        var $marker_url = \'data/img/pin.png\';
 
         //we define here the style of the map
         var style = [{
