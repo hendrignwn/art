@@ -64,23 +64,11 @@ $this->registerMetaSocialMedia($socialMedia);
 
         </div><!-- /.row -->
 
-        <div class="row padding-top-100">
-            <div class="col-md-7">
-                <h2 class="text-bold mb-30"><?= $this->title ?></h2>
-
-                <p>Quickly procrastinate functionalized human capital with equity invested experiences. Rapidiously provide access to extensible solutions after pandemic supply chains. Credibly supply resource sucking channels before areas Dynamically harness cooperative partnerships rather than just in time total linkage. Dramatically syndicate plug and play <a href="#">professional with focused</a>. Credibly supply resource sucking channels before areas.</p>
-
-                <p>Lorem ipsum dolor sit amet cr adipiscing elit. In maximus ligula semper <a href="#">metus pellentesque</a> mattis.</p>
-            </div>
-
-            <div class="col-md-5">
-                <?= Html::img(['themes/v1/img/mockup/ipad-2.png'], ['class' => 'img-responsive']) ?>
-            </div>
-        </div>
+        <?= $pageService->description ?>
 
     </div><!-- /.container -->
 
     <div class="mocup-wrapper text-center">
-        <?= Html::img(['themes/v1/img/mockup/landscap-mockup.jpg'], []) ?>
+        <?= Html::img(['data/img/landscap-mockup.jpg'], []) ?>
     </div>
 </section>
