@@ -3,7 +3,7 @@
 use app\models\Menu as Menu2;
 use yii\helpers\Html;
 use yii\widgets\Menu;
-
+return;
 ?>
 
 <!--header start-->

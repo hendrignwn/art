@@ -28,6 +28,9 @@ class User extends BaseActiveRecord implements \yii\web\IdentityInterface
      */
     public $password;
     
+    /** @var UserProfile|null */
+    private $_userProfile;
+    
     public function init() 
     {
         parent::init();
@@ -87,6 +90,14 @@ class User extends BaseActiveRecord implements \yii\web\IdentityInterface
     }
     
     /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserProfile()
+    {
+        return $this->hasOne(UserProfile::className, ['user_id' => 'id']);
+    }
+    
+    /**
      * event after insert
      * 
      * @return boolean
@@ -121,6 +132,17 @@ class User extends BaseActiveRecord implements \yii\web\IdentityInterface
         }
         
         return parent::beforeSave($insert);
+    }
+    
+    public function afterSave($insert, $changedAttributes) 
+    {
+        parent::afterSave($insert, $changedAttributes);
+        if ($insert) {
+            if ($this->_userProfile == null) {
+                $this->setUserProfile(\Yii::createObject(UserProfile::className()));
+            }
+            $this->_userProfile->link('user', $this);
+        }
     }
     
 	/**
@@ -222,5 +244,15 @@ class User extends BaseActiveRecord implements \yii\web\IdentityInterface
     public function isActive()
     {
         return $this->status === self::STATUS_ACTIVE;
+    }
+    
+    /**
+     * set user profile
+     * 
+     * @param \app\models\UserProfile $userProfile
+     */
+    public function setUserProfile(UserProfile $userProfile)
+    {
+        $this->_userProfile = $userProfile;
     }
 }
