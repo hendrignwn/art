@@ -2,21 +2,19 @@
 
 use app\components\View;
 use app\helpers\FormatConverter;
-use app\models\BlogCategory;
 use app\models\BlogPost;
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 
 /* @var $this View */
 /* @var $blogPosts BlogPost */
-/* @var $blogCategory BlogCategory */
 
-$this->title = $blogCategory->name;
-$this->params['breadcrumbs'][] = ['label' => 'Blog', 'url' =>['/blog/index']];
-$this->params['breadcrumbs'][] = Yii::t('app.label', 'Category');
+$get = Yii::$app->request->get('query');
+
+$this->title = 'Blog Search: '.$get;
 $this->params['breadcrumbs'][] = $this->title;
 
-$description = $blogCategory->metadesc;
+$description = 'This is a list Blog Posts, you will be know about us in here';
 
 /** SEO */
 $this->registerMetaTag([
@@ -26,14 +24,14 @@ $this->registerMetaTag([
 $this->registerLinkAlternate();
 $this->registerLinkCanonical();
 $this->registerMetaTitle();
-$this->registerMetaKeywords($blogCategory->metakey);
+$this->registerMetaKeywords($this->title);
 $this->registerMetaDescription($description);
 $this->registerMetaTag([
     'name' => 'robots',
     'content' => 'noindex,nofollow',
 ]);
 $socialMedia = [
-    'title' => $blogCategory->metakey .' - '. Yii::$app->name,
+    'title' => $this->title .' - '. Yii::$app->name,
     'description' => $description,
 ];
 $this->registerMetaSocialMedia($socialMedia);
@@ -52,7 +50,7 @@ $this->registerMetaSocialMedia($socialMedia);
             </div><!-- /.icon-wrap -->
 
             <div class="info-wrap">
-                <strong>Info Message: Blog is empty</strong>
+                <strong>Info Message: Blog search is empty</strong>
                 <span>Please subscribe us for get the blog updates</span>
             </div><!-- /.info-wrap -->
         </div>
