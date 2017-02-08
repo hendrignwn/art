@@ -54,7 +54,6 @@ class ContactForm extends Model
      */
     public function contact()
     {
-        //var_dump($this->errors, $this->validate());die;
         if ($this->validate()) {
             $model = new Contact();
             $model->attributes = $this->attributes;
@@ -65,9 +64,9 @@ class ContactForm extends Model
             
             MailHelper::sendMail([
                 'to' => Config::getEmailAdmin(),
-                'subject' => '['.Config::getEmailSubject().'] | New Contact from '. $this->first_name,
+                'subject' => 'New Contact | '.$this->subject.' from '. $this->first_name,
                 'view' => ['html' => 'contact/new-contact-to-admin'],
-                'viewParams' => ['model' => $this],
+                'viewParams' => ['model' => $model],
                 'replyTo' => $this->email,
             ]);
             

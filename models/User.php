@@ -3,6 +3,9 @@
 namespace app\models;
 
 use Yii;
+use yii\base\NotSupportedException;
+use yii\db\ActiveQuery;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "user".
@@ -20,8 +23,10 @@ use Yii;
  * @property string $updated_at
  * @property integer $created_by
  * @property integer $updated_by
+ * 
+ * @property UserProfile $userProfile
  */
-class User extends BaseActiveRecord implements \yii\web\IdentityInterface
+class User extends BaseActiveRecord implements IdentityInterface
 {
     /**
      * @var string $password
@@ -90,11 +95,11 @@ class User extends BaseActiveRecord implements \yii\web\IdentityInterface
     }
     
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getUserProfile()
     {
-        return $this->hasOne(UserProfile::className, ['user_id' => 'id']);
+        return $this->hasOne(UserProfile::className(), ['user_id' => 'id']);
     }
     
     /**
@@ -249,10 +254,19 @@ class User extends BaseActiveRecord implements \yii\web\IdentityInterface
     /**
      * set user profile
      * 
-     * @param \app\models\UserProfile $userProfile
+     * @param UserProfile $userProfile
      */
     public function setUserProfile(UserProfile $userProfile)
     {
         $this->_userProfile = $userProfile;
+    }
+    
+    public function getName()
+    {
+        if (!$this->userProfile->name) {
+            return $this->username;
+        }
+        
+        return $this->userProfile->name;
     }
 }

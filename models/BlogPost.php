@@ -246,6 +246,21 @@ class BlogPost extends BaseActiveRecord
             $query->limit($params['limit']);
         }
         
+        if (isset($params['search'])) {
+            $search = $params['search'];
+            if (isset($search['post_title'])) {
+                $query->andFilterWhere(['like','title',$search['post_title']]);
+            }
+            if (isset($search['category'])) {
+                $query->orFilterWhere(['like','blog_category.name',$search['category']]);
+            }
+            if (isset($search['content'])) {
+                $query->orFilterWhere(['like','content',$search['content']]);
+            }
+            if (isset($search['lead_text'])) {
+                $query->orFilterWhere(['like','lead_text',$search['lead_text']]);
+            }
+        }
 
         $query->orderBy([
             'post_date' => SORT_DESC

@@ -3,6 +3,10 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveQuery;
+use yii\helpers\Html;
+use yii\helpers\Inflector;
+use yii\helpers\Url;
 use yii\web\UploadedFile;
 
 /**
@@ -42,6 +46,26 @@ class UserProfile extends BaseActiveRecord
     /**
      * @inheritdoc
      */
+    public function behaviors() 
+    {
+        return [];
+    }
+    
+    public function init()
+    {
+        parent::init();
+        
+        $this->path = 'web/uploads/user/';
+        if (!is_dir(Yii::getAlias('@app/' . $this->path))) {
+            mkdir(Yii::getAlias('@app/' . $this->path));
+        }
+
+        return true;
+    }
+    
+    /**
+     * @inheritdoc
+     */
     public static function tableName()
     {
         return 'user_profile';
@@ -57,12 +81,62 @@ class UserProfile extends BaseActiveRecord
             [['name'], 'string', 'max' => 50],
             [['proffesional', 'photo', 'photo_background'], 'string', 'max' => 100],
             [['bio', 'social_account'], 'string', 'max' => 255],
-            [['photo', 'photo_background'], 'safe'],
+            [['photo', 'photo_background', 
+                'social_facebook', 'social_twitter', 'social_linked_in', 'social_dribbble', 'social_email'], 'safe'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
             [['photoFile', 'photoBackgroundFile'], 'file', 'skipOnEmpty' => true, 'checkExtensionByMimeType' => false,
                 'extensions' => ['jpg', 'jpeg', 'png'],
                 'maxSize' => 1024 * 1024 * 1],
         ];
+    }
+    
+    public function afterFind()
+    {
+        $this->normalizeSocialAccounts();
+        
+        return parent::afterFind();
+    }
+    
+    /**
+     * normalize social accounts to another variables
+     * 
+     * @return boolean
+     */
+    protected function normalizeSocialAccounts()
+    {
+        $socialAccounts = json_decode($this->social_account, true);
+        
+        $this->social_facebook = $socialAccounts['facebook'];
+        $this->social_twitter = $socialAccounts['twitter'];
+        $this->social_linked_in = $socialAccounts['linked_in'];
+        $this->social_dribbble = $socialAccounts['dribbble'];
+        $this->social_email = $socialAccounts['email'];
+        
+        return true;
+    }
+    
+    /**
+     * - delete photoFile
+     * 
+     * @return type
+     */
+    public function beforeDelete()
+    {
+        /* todo: delete the corresponding file in storage */
+        $this->deleteFile();
+        
+        return parent::beforeDelete();
+    }
+    
+    protected function deleteFile($value = null)
+    {
+        if ($value == null) {
+            @unlink(Yii::getAlias('@app/' . $this->path) . $this->photo);
+            @unlink(Yii::getAlias('@app/' . $this->path) . $this->photo_background);
+        } else {
+            @unlink(Yii::getAlias('@app/' . $this->path) . $value);
+        }
+        
     }
 
     /**
@@ -80,9 +154,41 @@ class UserProfile extends BaseActiveRecord
             'social_account' => Yii::t('app', 'Social Account'),
         ];
     }
+    
+    /**
+     * - process upload file
+     * 
+     * @param type $insert
+     * @return type
+     */
+    public function beforeSave($insert) 
+    {
+        $this->processUploadFile();
+        $this->social_account = $this->mergeSocialAccount();
+        
+        return parent::beforeSave($insert);
+    }
+    
+    /**
+     * returns merge social accounts
+     * 
+     * @return array
+     */
+    protected function mergeSocialAccount($json = true)
+    {
+        $values = [
+            'facebook' => $this->social_facebook,
+            'twitter' => $this->social_twitter,
+            'linked_in' => $this->social_linked_in,
+            'dribbble' => $this->social_dribbble,
+            'email' => $this->social_email,
+        ];
+        
+        return ($json == true) ? json_encode($values) : $values;
+    }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getUser()
     {
@@ -116,16 +222,29 @@ class UserProfile extends BaseActiveRecord
     public function processUploadFile()
     {
         if (!empty($this->photoFile)) {
-            $this->deleteFile();
+            $this->deleteFile($this->photo);
 
             $path = str_replace('web/', '', $this->path);
             
             // generate filename
-            $filename = Inflector::slug($this->first_name . '-' . Yii::$app->security->generateRandomString(20));
+            $filename = Inflector::slug($this->name . '-' . Yii::$app->security->generateRandomString(20));
             $filename = $filename . '.' . $this->photoFile->extension;
             
             $this->photoFile->saveAs($path . $filename);
             $this->photo = $filename;
+        }
+        
+        if (!empty($this->photoBackgroundFile)) {
+            $this->deleteFile($this->photo_background);
+
+            $path = str_replace('web/', '', $this->path);
+            
+            // generate filename
+            $filename = Inflector::slug($this->name . '-' . Yii::$app->security->generateRandomString(20));
+            $filename = $filename . '.' . $this->photoBackgroundFile->extension;
+            
+            $this->photoBackgroundFile->saveAs($path . $filename);
+            $this->photo_background = $filename;
         }
 
         return true;
@@ -153,12 +272,43 @@ class UserProfile extends BaseActiveRecord
 
     public function getPhotoUrlHtml($name = null, $options = ['target' => '_blank']) 
     {
-        $name = $name ? $name : $this->first_name;
+        $name = $name ? $name : $this->name;
 
         if (!$this->getPhotoUrl()) {
             return $name;
         }
 
         return Html::a($name, $this->getPhotoUrl(), $options);
+    }
+    
+    /**
+     * get url file
+     * 
+     * @return type
+     */
+    public function getPhotoBackgroundUrl() 
+    {
+        if (empty($this->photo_background)) {
+            return null;
+        }
+
+        $path = $this->path . $this->photo_background;
+
+        if (!file_exists(Yii::getAlias('@app/' . $path))) {
+            return null;
+        }
+
+        return Url::to('@' . $path, true);
+    }
+
+    public function getPhotoBackgroundUrlHtml($name = null, $options = ['target' => '_blank']) 
+    {
+        $name = $name ? $name : $this->name;
+
+        if (!$this->getPhotoBackgroundUrl()) {
+            return $name;
+        }
+
+        return Html::a($name, $this->getPhotoBackgroundUrl(), $options);
     }
 }

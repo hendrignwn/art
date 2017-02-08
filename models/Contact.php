@@ -114,4 +114,9 @@ class Contact extends BaseActiveRecord
        $list = Config::getTitles();
        return $list[$this->title_id];
     }
+    
+    public function getFullName()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
 }
