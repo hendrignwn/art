@@ -5,7 +5,7 @@ use yii\db\Migration;
 /**
  * Handles the creation of table `user_profile`.
  */
-class m170206_034015_create_user_profile_table extends Migration
+class m170117_084123_create_user_profile_table extends Migration
 {
     /**
      * @inheritdoc
