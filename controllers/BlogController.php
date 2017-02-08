@@ -16,6 +16,37 @@ use yii\web\NotFoundHttpException;
 class BlogController extends BaseController
 {
     /**
+     * displays listing blog by search
+     * 
+     * @return string
+     */
+    public function actionSearch()
+    {
+        $get = \Yii::$app->request->get('query');
+        $params = [
+            'result' => 'query',
+            'search' => [
+                'post_title' => $get,
+                'content' => $get,
+                'lead_text' => $get,
+                'category' => $get,
+            ]
+        ];
+
+        $query = BlogPost::getSearch($params);
+        
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize'=>1]);
+        $blogPosts = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        
+        return $this->render('search', [
+            'blogPosts' => $blogPosts,
+            'pages' => $pages,
+        ]);
+    }
+    
+    /**
      * displays listing blog
      * 
      * @return string
