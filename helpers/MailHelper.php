@@ -87,6 +87,7 @@ class MailHelper
 	public static function clearMailer()
 	{
 		Yii::$app->mailer->adapter->clearAllRecipients();
+		Yii::$app->mailer->adapter->clearReplyTos();
 		Yii::$app->mailer->adapter->clearAttachments();
 	}
 }
