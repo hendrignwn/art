@@ -2,14 +2,15 @@
 
 namespace app\modules\administrator\controllers;
 
-use Yii;
 use app\models\User;
-use app\modules\administrator\models\UserSearch;
 use app\modules\administrator\controllers\BaseController;
-use yii\web\NotFoundHttpException;
+use app\modules\administrator\models\UserSearch;
+use Yii;
 use yii\filters\VerbFilter;
-use \yii\web\Response;
 use yii\helpers\Html;
+use yii\web\NotFoundHttpException;
+use yii\web\Response;
+use yii\web\UploadedFile;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -64,6 +65,7 @@ class UserController extends BaseController
                         'model' => $this->findModel($id),
                     ]),
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                            Html::a('Edit Profile',['update-profile','id'=>$id],['class'=>'btn btn-success','role'=>'modal-remote']).
                             Html::a('Edit',['update','id'=>$id],['class'=>'btn btn-primary','role'=>'modal-remote'])
                 ];    
         }else{
@@ -169,6 +171,7 @@ class UserController extends BaseController
                         'model' => $model,
                     ]),
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                            Html::a('Edit Profile',['update-profile','id'=>$id],['class'=>'btn btn-success','role'=>'modal-remote']).
                             Html::a('Edit',['update','id'=>$id],['class'=>'btn btn-primary','role'=>'modal-remote'])
                 ];    
             }else{
@@ -178,6 +181,7 @@ class UserController extends BaseController
                         'model' => $model,
                     ]),
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                                Html::a('Edit Profile',['update-profile','id'=>$id],['class'=>'btn btn-success','role'=>'modal-remote']).
                                 Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
                 ];        
             }
@@ -268,5 +272,70 @@ class UserController extends BaseController
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+    
+    public function actionUpdateProfile($id)
+    {
+        $request = Yii::$app->request;
+        $model = $this->findModel($id);    
+
+        if($request->isAjax){
+            /*
+            *   Process for ajax request
+            */
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            if($request->isGet){
+                return [
+                    'title'=> "Update User Profile #".$id,
+                    'content'=>$this->renderAjax('update-profile', [
+                        'model' => $model,
+                        'profile' => $model->userProfile,
+                    ]),
+                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                                Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
+                ];
+            }else if($model->userProfile->load($request->post())){
+                $model->userProfile->photoFile = UploadedFile::getInstance($model->userProfile, 'photoFile');
+                $model->userProfile->photoBackgroundFile = UploadedFile::getInstance($model->userProfile, 'photoBackgroundFile');
+                if ($model->userProfile->save()) {
+                    return [
+                        'forceReload'=>'#crud-datatable-pjax',
+                        'title'=> "User #".$id,
+                        'content'=>$this->renderAjax('view', [
+                            'model' => $model,
+                        ]),
+                        'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                                Html::a('Edit Profile',['update-profile','id'=>$id],['class'=>'btn btn-success','role'=>'modal-remote']).
+                                Html::a('Edit',['update','id'=>$id],['class'=>'btn btn-primary','role'=>'modal-remote'])
+                    ];    
+                }
+                goto render;
+            }else{
+                render:
+                 return [
+                    'title'=> "Update User Profile #".$id,
+                    'content'=>$this->renderAjax('update-profile', [
+                        'model' => $model,
+                        'profile' => $model->userProfile,
+                    ]),
+                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                                Html::a('Edit Profile',['update-profile','id'=>$id],['class'=>'btn btn-success','role'=>'modal-remote']).
+                                Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
+                ];        
+            }
+        }else{
+            /*
+            *   Process for non-ajax request
+            */
+            if ($model->userProfile->load($request->post()) && $model->userProfile->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                return $this->render('update-profile', [
+                    'model' => $model,
+                    'profile' => $model->userProfile,
+                ]);
+            }
+        }
+        
     }
 }

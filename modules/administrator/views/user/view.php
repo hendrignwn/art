@@ -32,5 +32,30 @@ use yii\widgets\DetailView;
             DetailViewHelper::author($model, 'updated_by'),
         ],
     ]) ?>
+    
+    <?= DetailView::widget([
+        'model' => $model->userProfile,
+        'attributes' => [
+            'name',
+            'proffesional',
+            [
+                'attribute' => 'photo',
+                'value' => $model->userProfile->getPhotoUrlHtml(),
+                'format' => 'raw',
+            ],
+            [
+                'attribute' => 'photo_background',
+                'value' => $model->userProfile->getPhotoBackgroundUrlHtml(),
+                'format' => 'raw',
+            ],
+            'bio',
+            'social_account',
+            'social_facebook',
+            'social_twitter',
+            'social_linked_in',
+            'social_dribbble',
+            'social_email',
+        ],
+    ]) ?>
 
 </div>
