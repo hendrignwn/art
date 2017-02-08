@@ -1,11 +1,18 @@
 <?php
 
 use app\models\BlogPost;
+use app\models\User;
 use yii\helpers\Html;
-use yii\helpers\Url;
 use yii\widgets\Menu;
 
 /* @var $latestBlogs BlogPost */
+/* @var $model BlogPost */
+/* @var $createdBy User */
+
+$createdBy = $model->createdBy;
+
+$imgAuthor = $createdBy->userProfile->getPhotoUrl() ? $createdBy->userProfile->getPhotoUrl() : ['data/img/working-man.png'];
+$imgBackgroundAuthor = $createdBy->userProfile->getPhotoBackgroundUrl() ? $createdBy->userProfile->getPhotoBackgroundUrl() : ['themes/v1/img/blog/author-large-thumb.jpg'];
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,10 +22,10 @@ use yii\widgets\Menu;
 ?>
 <div class="tt-sidebar-wrapper" role="complementary">
     <div class="widget widget_search">
-        <form role="search" method="get" class="search-form" >
-            <input type="text" class="form-control" value="" name="s" id="s" placeholder="Write any keywords">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
+        <?= Html::beginForm(['/blog/search'], 'get', ['class'=>'search-form']) ?>
+        <?= Html::input('text', 'query', null, ['placeholder'=>'Write any keywords', 'class'=>'form-control']) ?>
+        <?= Html::submitButton('<i class=\'fa fa-search\'></i>') ?>
+        <?= Html::endForm() ?>
     </div><!-- /.widget_search -->
 
 
@@ -27,25 +34,32 @@ use yii\widgets\Menu;
         <div class="author-info-wrapper">
 
             <div class="author-cover">
-                <img src="<?= Url::to(['themes/v1/img/blog/author-large-thumb.jpg']) ?>" alt="">
+                <?= Html::img($imgBackgroundAuthor, ['alt'=>$createdBy->getName()]) ?>
             </div>
 
             <div class="author-avatar">
-                <img src="<?= Url::to(['themes/v1/img/blog/author-2.jpg']) ?>" alt="">
+                <?= Html::img($imgAuthor, ['alt'=>$createdBy->getName()]) ?>
 
-                <h2>John Doe</h2>
-                <span>User Interface Designer</span>
+                <h2><?= $createdBy->getName() ?></h2>
+                <span><?= $createdBy->userProfile->proffesional ?></span>
             </div>
 
-            <p>All these men were men of conviction. They deeply believed in what they were doing and put their reputations.</p>
+            <p><?= $createdBy->userProfile->bio ?></p>
 
             <div class="author-social-links">
                 <ul class="list-inline">
-                    <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="#" target="_blank"><i class="fa fa-instagram"></i></a></li>            
+                    <?php
+                    $facebook = $createdBy->userProfile->social_facebook ? $createdBy->userProfile->social_facebook : '#';
+                    $twitter = $createdBy->userProfile->social_twitter ? $createdBy->userProfile->social_twitter : '#';
+                    $linkedIn = $createdBy->userProfile->social_linked_in ? $createdBy->userProfile->social_linked_in : '#';
+                    $dribbble = $createdBy->userProfile->social_dribbble ? $createdBy->userProfile->social_dribbble : '#';
+                    $email = $createdBy->userProfile->social_email ? 'mailto:'.$createdBy->userProfile->social_email : '#';
+                    ?>
+                    <li><?= Html::a('<i class=\'fa fa-facebook\'></i>', $facebook, ['target' => '_blank']) ?></li>
+                    <li><?= Html::a('<i class=\'fa fa-twitter\'></i>', $twitter, ['target' => '_blank']) ?></li>
+                    <li><?= Html::a('<i class=\'fa fa-linkedin\'></i>', $linkedIn, ['target' => '_blank']) ?></li>
+                    <li><?= Html::a('<i class=\'fa fa-dribbble\'></i>', $dribbble, ['target' => '_blank']) ?></li>
+                    <li><?= Html::a('<i class=\'fa fa-envelope-o\'></i>', $email, ['target' => '_blank']) ?></li>
                 </ul>
             </div>
         </div> <!-- /author-info-wrapper -->
@@ -128,14 +142,14 @@ use yii\widgets\Menu;
     </div><!-- /.widget_tt_twitter -->
 
 
-    <div class="widget widget_tt_instafeed">
+<!--    <div class="widget widget_tt_instafeed">
         <i class="fa fa-instagram"></i>
         <h3 class="widget-title">Instagram Photos</h3>
 
         <div id="myinstafeed">
-            <!-- html code injected via javascript -->
+             html code injected via javascript 
         </div> 
 
-    </div><!-- /.widget_tt_instafeed -->
+    </div> /.widget_tt_instafeed -->
 
 </div><!-- /.tt-sidebar-wrapper -->

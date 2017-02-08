@@ -25,6 +25,7 @@ class BlogSidebarWidget extends Widget
         return $this->render('blog-sidebar', [
             'latestBlogs' => $this->getLatestBlogs(),
             'blogCategories' => $this->getBlogCategories(),
+            'model' => $this->model,
         ]);
     }
     

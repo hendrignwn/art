@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\Html;
 use yii\helpers\Url;
 
 /* 
@@ -92,7 +93,7 @@ use yii\helpers\Url;
                      data-splitin="none" 
                      data-splitout="none" 
                      data-responsive_offset="on"
-                     style="z-index: 5; white-space: nowrap;">We Are Art TC
+                     style="z-index: 5; white-space: nowrap;">We Are ATC
                 </div>
 
                 <!-- LAYER NR. 6 -->
@@ -131,7 +132,7 @@ use yii\helpers\Url;
                      data-splitout="none" 
                      data-responsive_offset="on"
                      style="z-index: 7; white-space: nowrap;">
-                    <a href="#" class="btn btn-lg  waves-effect waves-light">Explore More</a>
+                    <?= Html::a(Yii::t('app.button', 'Explore More'), ['/about-us'], ['class'=>'btn btn-lg waves-effect waves-light']) ?>
                 </div>
 
 
@@ -146,7 +147,7 @@ use yii\helpers\Url;
                      data-transform_out="opacity:0;s:1500;e:Power4.easeIn;s:1500;e:Power4.easeIn;"
                      data-start="2400"
                      style="z-index: 5;">
-                    <div><img src="<?= Url::to(['themes/v1/img/banner-1/dummy.jpg']) ?>" alt="" data-lazyload="<?= Url::to(['themes/v1/img/banner-1/macbook.jpg']) ?>assets/img/banner-1/macbook.png">
+                    <div><img src="<?= Url::to(['themes/v1/img/banner-1/dummy.jpg']) ?>" alt="" data-lazyload="<?= Url::to(['themes/v1/img/banner-1/macbook.jpg']) ?>">
                     </div>
                 </div>
             </li>
@@ -168,7 +169,7 @@ use yii\helpers\Url;
                      data-transform_out="opacity:0;s:1500;e:Power4.easeIn;s:1500;e:Power4.easeIn;"
                      data-start="2000"
                      style="z-index: 5;">
-                    <div><img src="assets/img/banner-1/dummy.png" alt="" data-lazyload="assets/img/banner-2/book.png">
+                    <div><img src="<?= Url::to(['themes/v1/img/banner-1/dummy.png']) ?>" alt="" data-lazyload="<?= Url::to(['themes/v1/img/banner-2/dummy.png']) ?>">
                     </div>
                 </div>
 
@@ -182,7 +183,7 @@ use yii\helpers\Url;
                      data-transform_out="opacity:0;s:1500;e:Power4.easeIn;s:1500;e:Power4.easeIn;"
                      data-start="2000"
                      style="z-index: 5;">
-                    <div><img src="assets/img/banner-1/dummy.png" alt="" data-lazyload="assets/img/banner-2/flower.png">
+                    <div><img src="<?= Url::to(['themes/v1/img/banner-1/dummy.png']) ?>" alt="" data-lazyload="<?= Url::to(['themes/v1/img/banner-2/flower.png']) ?>">
                     </div>
                 </div>
 
@@ -196,7 +197,7 @@ use yii\helpers\Url;
                      data-transform_out="opacity:0;s:1500;e:Power4.easeIn;s:1500;e:Power4.easeIn;"
                      data-start="2400"
                      style="z-index: 5;">
-                    <div><img src="assets/img/banner-1/dummy.png" alt="" data-lazyload="assets/img/banner-2/box.png">
+                    <div><img src="<?= Url::to(['themes/v1/img/banner-1/dummy.png']) ?>" alt="" data-lazyload="<?= Url::to(['themes/v1/img/banner-2/box.png']) ?>">
                     </div>
                 </div>
 
@@ -210,7 +211,7 @@ use yii\helpers\Url;
                      data-transform_out="opacity:0;s:1500;e:Power4.easeIn;s:1500;e:Power4.easeIn;"
                      data-start="2400"
                      style="z-index: 5;">
-                    <div><img src="assets/img/banner-1/dummy.png" alt="" data-lazyload="assets/img/banner-2/tube.png">
+                    <div><img src="<?= Url::to(['themes/v1/img/banner-1/dummy.png']) ?>" alt="" data-lazyload="<?= Url::to(['themes/v1/img/banner-2/tube.png']) ?>">
                     </div>
                 </div>
 
@@ -271,7 +272,7 @@ use yii\helpers\Url;
                      data-splitout="none" 
                      data-responsive_offset="on"
                      style="z-index: 7; white-space: nowrap;">
-                    <a href="#" class="btn btn-lg  waves-effect waves-light">Explore More</a>
+                    <?= Html::a(Yii::t('app.button', 'Explore More'), ['/services'], ['class'=>'btn btn-lg waves-effect waves-light']) ?>
                 </div>
 
 
@@ -286,7 +287,7 @@ use yii\helpers\Url;
                      data-transform_out="opacity:0;s:1500;e:Power4.easeIn;s:1500;e:Power4.easeIn;"
                      data-start="2400"
                      style="z-index: 5;">
-                    <div><img src="assets/img/banner-1/dummy.png" alt="" data-lazyload="assets/img/banner-2/ipad.png">
+                    <div><img src="<?= Url::to(['themes/v1/img/banner-1/dummy.png']) ?>" alt="" data-lazyload="<?= Url::to(['themes/v1/img/banner-2/ipad.png']) ?>">
                     </div>
                 </div>
             </li>
