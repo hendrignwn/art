@@ -79,7 +79,7 @@ use yii\widgets\Menu;
 
 
                 <div class="col-md-3 widget">
-                    <h2 class="white-text">News Letter Widget</h2>
+<!--                    <h2 class="white-text">News Letter Widget</h2>
 
                     <form>
                         <div class="form-group clearfix">
@@ -87,7 +87,7 @@ use yii\widgets\Menu;
                             <input type="email" class="form-control" id="subscribe" placeholder="Email address">
                             <button type="submit" class="tt-animate ltr"><i class="fa fa-long-arrow-right"></i></button>
                         </div>
-                    </form>
+                    </form>-->
 
 
                     <div class="widget-tags">
