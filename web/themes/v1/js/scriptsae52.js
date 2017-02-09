@@ -516,7 +516,7 @@ Version: 1.5
 
                     // get group name from clicked item
                     var ttGroupName = $(this).attr('data-group');
-
+					
                     // reshuffle grid
                     ttGrid.shuffle('shuffle', ttGroupName);
                 });
