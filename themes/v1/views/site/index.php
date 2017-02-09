@@ -81,4 +81,4 @@ $this->registerMetaSocialMedia($socialMedia);
 
         <?= ContactUsWidget::widget(['model' => $contactModel]) ?>
         
-        <?//= GoogleMapWidget::widget() ?>
+        <?= GoogleMapWidget::widget() ?>
