@@ -12,7 +12,7 @@ use yii\helpers\Url;
 /* @var $model app\models\Portfolio */
 
 ?>
-<!--<div class="item portfolio-item" data-groups='["<?= $model->service ? $model->service->slug : 'all' ?>"]'>-->
+<!--<div class="item portfolio-item" data-groups='["<?//= $model->service ? $model->service->slug : 'all' ?>"]'>-->
     <div class="portfolio-wrapper">
 
         <div class="thumb">
@@ -24,7 +24,7 @@ use yii\helpers\Url;
 
             <div class="portfolio-intro">
                 <div class="action-btn">
-                    <a href="<?= Url::to(['data/img/portfolio-dummy-1.jpg']) ?>" class="tt-lightbox" title="iOS Game Design"> <i class="fa fa-search"></i></a>
+                    <a href="<?= Url::to(['data/img/portfolio-dummy-1.jpg']) ?>" class="tt-lightbox" title="<?= $model->getFirstGallery()->name ?>"> <i class="fa fa-search"></i></a>
                 </div>
             </div>
         </div><!-- thumb -->
