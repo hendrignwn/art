@@ -38,6 +38,7 @@ class HomeAsset extends AssetBundle
             'themes/'.$theme.'/bootstrap/css/bootstrap.min.css',
             'themes/'.$theme.'/css/shortcodes/shortcodesae52.css?v=5',
             'themes/'.$theme.'/styleae52.css?v=5',
+            'css/site.css',
         ];
         
         $this->js = [

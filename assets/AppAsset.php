@@ -37,6 +37,7 @@ class AppAsset extends AssetBundle
             'themes/'.$theme.'/css/shortcodes/shortcodesae52.css?v=5',
             'themes/'.$theme.'/css/skins/creative.css',
             'themes/'.$theme.'/styleae52.css?v=5',
+            'css/site.css',
         ];
         
         $this->js = [
