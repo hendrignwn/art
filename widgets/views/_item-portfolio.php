@@ -12,7 +12,7 @@ use yii\helpers\Url;
 /* @var $model app\models\Portfolio */
 
 ?>
-<div class="item portfolio-item" data-groups='["<?= $model->service ? $model->service->slug : 'all' ?>"]'>
+<!--<div class="item portfolio-item" data-groups='["<?= $model->service ? $model->service->slug : 'all' ?>"]'>-->
     <div class="portfolio-wrapper">
 
         <div class="thumb">
@@ -35,4 +35,4 @@ use yii\helpers\Url;
         </div>
 
     </div><!-- /.portfolio-wrapper -->
-</div><!-- /.portfolio-item -->
+<!--</div> /.portfolio-item -->

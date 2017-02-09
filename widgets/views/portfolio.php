@@ -45,17 +45,37 @@ use yii\widgets\ListView;
             
                 <?= ListView::widget([
                     'dataProvider' => $portfolios,
-                    'layout' => '<div class="portfolio portfolio-with-title col-3 gutter mt-50">{items}</div>{pager}',
-                    'itemOptions' => ['tag'=>null],
+                    'layout' => '{items}',
+                    'options' => [
+                        'class' => 'portfolio portfolio-with-title col-3 gutter mt-50',
+                    ],
+                    'itemOptions' => function ($model, $key, $index, $widget) {
+                        $groups = $model->service ? $model->service->slug : 'all';
+                        return [
+                            'class' => 'portfolio-item',
+                            'data-groups' => '["'.$groups.'"]',
+                            //'tag' => null,
+                        ];
+                    },
                     'itemView' => '_item-portfolio',
                     'pager' => [
                         'class' => ScrollPager::className(),
+                        'container' => '.portfolio-container',
+                        'item' => '.portfolio-item',
+                        //'paginationSelector' => '.portfolio .pagination',
                         'triggerText' => 'View All',
                         'triggerTemplate' => '<div class="load-more-button text-center"><a class="waves-effect waves-light btn mt-30"> <i class="fa fa-spinner left"></i> {text}</a></div>',
                         'spinnerSrc' => Url::to(['data/img/spinner.gif']),
                         'spinnerTemplate' => '<div class="load-more-button text-center"><a class="waves-effect waves-light btn mt-30"><img src="{src}"/></a></div>',
                         'noneLeftText' => '',
                         //'noneLeftTemplate' => '<div class="load-more-button text-center"><a class="waves-effect waves-light btn mt-30">{text}</a></div>',
+//                        'eventOnLoaded' => "function(data, items) {
+//                            $('.portfolio').append(items);
+//                            $('.portfolio').shuffle({
+//                                itemSelector: '.portfolio-item'
+//                            });
+//                            $('.portfolio').shuffle('appended', items);
+//                        }",
                     ],
 
                ]) ?>
