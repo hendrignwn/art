@@ -17,6 +17,7 @@ class PortfolioController extends BaseController
     {
         $searchModel = new PortfolioSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->setPagination(false); //debug
         
         return $this->render('index', [
             'portfolios' => $dataProvider
