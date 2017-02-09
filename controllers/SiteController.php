@@ -5,10 +5,9 @@ namespace app\controllers;
 use app\models\Client;
 use app\models\ContactForm;
 use app\models\Page;
-use app\models\Portfolio;
+use app\models\search\PortfolioSearch;
 use app\models\Subscribe;
 use Yii;
-use yii\data\Pagination;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 
@@ -66,12 +65,9 @@ class SiteController extends Controller
             return $this->refresh('#subscribe-form');
         }
         
-        $queryPortfolio = Portfolio::find()->actived()->orderCreatedAt();
-
-        $portfolioPages = new Pagination(['totalCount' => $queryPortfolio->count(), 'pageSize'=>9]);
-        $portfolios = $queryPortfolio->offset($portfolioPages->offset)
-            ->limit($portfolioPages->limit)
-            ->all();
+        $portfolioSearch = new PortfolioSearch();
+        $portfolioProvider = $portfolioSearch->search(Yii::$app->request->queryParams);
+        $portfolioProvider->setPagination(['pageSize'=>3]);
                 
         $shortService = Page::findOne(['id' => Page::PAGE_SERVICE_PARTIAL, 'status' => Page::STATUS_ACTIVE]);
         
@@ -79,8 +75,7 @@ class SiteController extends Controller
             'contactModel' => $contactModel,
             'shortService' => $shortService,
             'subscribeForm' => $subscribe,
-            'portfolios' => $portfolios,
-            'portfolioPages' => $portfolioPages,
+            'portfolioProvider' => $portfolioProvider,
         ]);
     }
 

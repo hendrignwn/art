@@ -1,10 +1,11 @@
 <?php
 
-use app\models\Portfolio;
-use yii\helpers\Html;
-use yii\helpers\Url;
+use app\helpers\Url;
+use kop\y2sp\ScrollPager;
+use yii\data\ActiveDataProvider;
+use yii\widgets\ListView;
 
-/* @var $portfolios Portfolio */
+/* @var $portfolios ActiveDataProvider */
 
 ?>
 
@@ -23,41 +24,43 @@ use yii\helpers\Url;
                     <li class="waves-effect waves-light" data-group="<?= $service->slug ?>"><?= $service->name ?></li>
                 <?php endforeach; ?>
             </ul>
-
-            <div class="portfolio portfolio-with-title col-3 gutter mt-50">
+            
+            <?php if ($portfolios->getCount() == 0) : ?>
                 
-                <?php foreach($portfolios as $portfolio) : ?>
-                    <div class="portfolio-item" data-groups='["<?= $portfolio->service ? $portfolio->service->slug : 'all' ?>"]'>
-                        <div class="portfolio-wrapper">
+                <div class="alert alert-box info-box col-xs-12 mt-50" role="alert">
 
-                            <div class="thumb">
-                                <div class="bg-overlay brand-overlay"></div>
-                                <?= $portfolio->getIsGallery() ?
-                                        Html::img($portfolio->getFirstGallery()->getPhotoUrl(), ['alt' => $portfolio->getFirstGallery()->name]) :
-                                        Html::img(['themes/v1/img/portfolio/portfolio-1.jpg'], [])
-                                 ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 
-                                <div class="portfolio-intro">
-                                    <div class="action-btn">
-                                        <a href="<?= Url::to(['themes/v1/img/portfolio/portfolio-1.jpg']) ?>" class="tt-lightbox" title="iOS Game Design"> <i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                            </div><!-- thumb -->
+                    <div class="icon-wrap">
+                        <i class="fa fa-check-circle-o"></i>
+                    </div><!-- /.icon-wrap -->
 
-                            <div class="portfolio-title">
-                                <h2><?= Html::a($portfolio->name, $portfolio->getDetailUrl()) ?></h2>
-                                <p><?= $portfolio->service ? $portfolio->service->name : 'All' ?></p>
-                            </div>
+                    <div class="info-wrap">
+                        <strong>Info Message: Portfolio is empty</strong>
+                        <span>Please contact us if the website there is a problem, thank you.</span>
+                    </div><!-- /.info-wrap -->
+                </div>
+            
+            <?php else: ?>
+            
+                <?= ListView::widget([
+                    'dataProvider' => $portfolios,
+                    'layout' => '<div class="portfolio portfolio-with-title col-3 gutter mt-50">{items}</div>{pager}',
+                    'itemOptions' => ['tag'=>null],
+                    'itemView' => '_item-portfolio',
+                    'pager' => [
+                        'class' => ScrollPager::className(),
+                        'triggerText' => 'View All',
+                        'triggerTemplate' => '<div class="load-more-button text-center"><a class="waves-effect waves-light btn mt-30"> <i class="fa fa-spinner left"></i> {text}</a></div>',
+                        'spinnerSrc' => Url::to(['data/img/spinner.gif']),
+                        'spinnerTemplate' => '<div class="load-more-button text-center"><a class="waves-effect waves-light btn mt-30"><img src="{src}"/></a></div>',
+                        'noneLeftText' => '',
+                        //'noneLeftTemplate' => '<div class="load-more-button text-center"><a class="waves-effect waves-light btn mt-30">{text}</a></div>',
+                    ],
 
-                        </div><!-- /.portfolio-wrapper -->
-                    </div><!-- /.portfolio-item -->
-                <?php endforeach; ?>
-
-            </div><!-- /.portfolio -->
-
-            <div class="load-more-button text-center">
-                <a class="waves-effect waves-light btn mt-30"> <i class="fa fa-spinner left"></i> View All</a>
-            </div>
+               ]) ?>
+            
+            <?php endif; ?>
 
         </div><!-- portfolio-container -->
 

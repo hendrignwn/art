@@ -19,13 +19,11 @@ use yii\base\Widget;
 class PortfolioWidget extends Widget
 {
     public $portfolios;
-    public $pages;
     
     public function run()
     {
         return $this->render('portfolio', [
             'portfolios' => $this->portfolios,
-            'pages' => $this->pages,
             'services' => $this->getMenuServices(),
         ]);
     }

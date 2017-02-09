@@ -72,7 +72,7 @@ $this->registerMetaSocialMedia($socialMedia);
               </div><!-- /.container -->
         </section>
 
-        <?= PortfolioWidget::widget(['portfolios' => $portfolios, 'pages' => $portfolioPages]) ?>
+        <?= PortfolioWidget::widget(['portfolios' => $portfolioProvider]) ?>
 
         <?= TestimonialWidget::widget() ?>
 

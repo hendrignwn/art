@@ -42,5 +42,4 @@ $this->registerMetaSocialMedia($socialMedia);
 
 <?= PortfolioWidget::widget([
     'portfolios' => $portfolios,
-    'pages' => $pages,
 ]) ?>

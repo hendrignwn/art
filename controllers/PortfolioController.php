@@ -3,7 +3,8 @@
 namespace app\controllers;
 
 use app\models\Portfolio;
-use yii\data\Pagination;
+use app\models\search\PortfolioSearch;
+use Yii;
 
 /**
  * PortfolioController
@@ -14,16 +15,11 @@ class PortfolioController extends BaseController
 {
     public function actionIndex()
     {
-        $query = Portfolio::find()->actived()->orderCreatedAt();
-
-        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize'=>9]);
-        $portfolios = $query->offset($pages->offset)
-            ->limit($pages->limit)
-            ->all();
+        $searchModel = new PortfolioSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         
         return $this->render('index', [
-            'portfolios' => $portfolios,
-            'pages' => $pages,
+            'portfolios' => $dataProvider
         ]);
     }
     
