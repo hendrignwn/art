@@ -4,6 +4,7 @@ use app\models\Config;
 use app\widgets\BannerWidget;
 use app\widgets\BlogSectionWidget;
 use app\widgets\ContactUsWidget;
+use app\widgets\GoogleMapWidget;
 use app\widgets\PortfolioWidget;
 use app\widgets\SubscribeFormWidget;
 use app\widgets\TestimonialWidget;
