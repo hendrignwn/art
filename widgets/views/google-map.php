@@ -1,6 +1,9 @@
 <?php
 
-app\assets\GoogleMapAsset::register($this);
+use app\assets\GoogleMapAsset;
+use app\helpers\Url;
+
+GoogleMapAsset::register($this);
 
 ?>
 
@@ -15,7 +18,7 @@ $this->registerJs('
             $map_zoom = 16 /* ZOOM SETTING */
 
         //google map custom marker icon 
-        var $marker_url = \'data/img/pin.png\';
+        var $marker_url = \''. Url::to(['data/img/pin.png']) .'\';
 
         //we define here the style of the map
         var style = [{
