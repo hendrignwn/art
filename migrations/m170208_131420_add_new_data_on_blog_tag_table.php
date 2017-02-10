@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 class m170208_131420_add_new_data_on_blog_tag_table extends Migration
 {

@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 class m170131_070508_add_new_about_on_page_table extends Migration
 {

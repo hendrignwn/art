@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 class m170202_111643_add_column_technology_on_portfolio_table extends Migration
 {

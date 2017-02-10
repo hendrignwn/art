@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 class m170202_075518_add_new_data_on_service_table extends Migration
 {

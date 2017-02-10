@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 /**
  * Handles the creation of table `config`.
@@ -17,7 +17,7 @@ class m170117_081244_create_config_table extends Migration
             'value' => $this->text()->notNull(),
             'label' => $this->string(100)->null(),
             'notes' => $this->string(255)->null(),
-        ]);
+        ], $this->tableOptions);
     }
 
     /**

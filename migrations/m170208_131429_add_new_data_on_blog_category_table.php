@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 class m170208_131429_add_new_data_on_blog_category_table extends Migration
 {

@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 /**
  * Handles the creation of table `blog_post`.
@@ -28,7 +28,7 @@ class m170123_024506_create_blog_post_table extends Migration
             'created_by' => $this->integer()->null(),
             'updated_by' => $this->integer()->null(),
             'blog_category_id' => $this->integer()->notNull(),
-        ]);
+        ], $this->tableOptions);
     }
 
     /**

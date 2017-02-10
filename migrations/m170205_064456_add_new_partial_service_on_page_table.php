@@ -1,7 +1,7 @@
 <?php
 
 use app\models\Page;
-use yii\db\Migration;
+use app\migrations\Migration;
 use yii\helpers\Html;
 
 class m170205_064456_add_new_partial_service_on_page_table extends Migration

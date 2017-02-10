@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 class m170131_104138_add_new_google_map_setting_on_config_table extends Migration
 {

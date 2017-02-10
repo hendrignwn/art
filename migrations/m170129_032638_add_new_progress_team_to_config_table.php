@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 class m170129_032638_add_new_progress_team_to_config_table extends Migration
 {

@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 class m170117_091516_create_new_public_route_to_table_config extends Migration
 {

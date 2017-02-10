@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 /**
  * Handles the creation of table `service`.
@@ -24,7 +24,7 @@ class m170117_082412_create_service_table extends Migration
             'updated_at' => $this->dateTime()->null(),
             'created_by' => $this->integer()->null(),
             'updated_by' => $this->integer()->null(),
-        ]);
+        ], $this->tableOptions);
     }
 
     /**

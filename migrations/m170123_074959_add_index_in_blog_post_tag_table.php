@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 class m170123_074959_add_index_in_blog_post_tag_table extends Migration
 {

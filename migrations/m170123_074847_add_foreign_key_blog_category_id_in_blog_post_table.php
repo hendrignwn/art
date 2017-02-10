@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 class m170123_074847_add_foreign_key_blog_category_id_in_blog_post_table extends Migration
 {

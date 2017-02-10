@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 /**
  * Handles the creation of table `user_profile`.
@@ -20,7 +20,7 @@ class m170117_084123_create_user_profile_table extends Migration
             'photo_background'=> $this->string(100)->notNull(),
             'bio'             => $this->string(255)->notNull(),
             'social_account'  => $this->string(255)->null(),
-        ]);
+        ], $this->tableOptions);
 
         $this->addForeignKey('fk_user_profile', '{{%user_profile}}', 'user_id', '{{%user}}', 'id', 'CASCADE', 'RESTRICT');
     }

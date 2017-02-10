@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 class m170131_153218_add_new_menu_testimonial_in_administrator_on_menu_table extends Migration
 {

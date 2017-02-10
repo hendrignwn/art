@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 /**
  * Handles the creation of table `gallery`.
@@ -25,7 +25,7 @@ class m170117_082922_create_gallery_table extends Migration
             'updated_at' => $this->dateTime()->null(),
             'created_by' => $this->integer()->null(),
             'updated_by' => $this->integer()->null(),
-        ]);
+        ], $this->tableOptions);
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 /**
  * Handles the creation of table `user`.
@@ -26,7 +26,7 @@ class m170117_084122_create_user_table extends Migration
             'updated_at' => $this->dateTime()->null(),
             'created_by' => $this->integer()->null(),
             'updated_by' => $this->integer()->null(),
-        ]);
+        ], $this->tableOptions);
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 class m170123_155046_add_new_data_to_menu_table extends Migration
 {

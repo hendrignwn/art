@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 class m170117_081345_create_new_data_to_table_config extends Migration
 {

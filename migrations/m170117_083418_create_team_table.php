@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 /**
  * Handles the creation of table `team`.
@@ -25,7 +25,7 @@ class m170117_083418_create_team_table extends Migration
             'updated_at' => $this->dateTime()->null(),
             'created_by' => $this->integer()->null(),
             'updated_by' => $this->integer()->null(),
-        ]);
+        ], $this->tableOptions);
     }
 
     /**

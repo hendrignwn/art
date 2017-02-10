@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 class m170131_155213_add_new_service_partial_on_page_table extends Migration
 {

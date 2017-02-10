@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 class m170202_081549_add_new_faq_in_footer_on_menu_table extends Migration
 {

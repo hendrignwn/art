@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 /**
  * Handles the creation of table `blog_tag`.
@@ -20,7 +20,7 @@ class m170123_024012_create_blog_tag_table extends Migration
             'updated_at' => $this->dateTime()->null(),
             'created_by' => $this->integer()->null(),
             'updated_by' => $this->integer()->null(),
-        ]);
+        ], $this->tableOptions);
     }
 
     /**

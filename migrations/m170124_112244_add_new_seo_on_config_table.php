@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 class m170124_112244_add_new_seo_on_config_table extends Migration
 {

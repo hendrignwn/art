@@ -1,6 +1,6 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\Migration;
 
 class m170131_155013_add_new_data_on_testimonial_table extends Migration
 {

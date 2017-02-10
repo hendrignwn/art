@@ -1,7 +1,7 @@
 <?php
 
 use app\models\Page;
-use yii\db\Migration;
+use app\migrations\Migration;
 
 class m170202_080949_add_new_faq_on_page_table extends Migration
 {
