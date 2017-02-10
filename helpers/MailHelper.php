@@ -4,7 +4,7 @@ namespace app\helpers;
 
 use app\models\Config;
 use Yii;
-use yii\httpclient\Exception;
+use Exception;
 
 /**
  * MailHelper provides additional mail functionality.

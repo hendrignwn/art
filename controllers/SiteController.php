@@ -126,4 +126,15 @@ class SiteController extends Controller
     {
         return $this->render('maintenance');
     }
+    
+    public function actionTest()
+    {
+        \app\helpers\MailHelper::sendMail([
+                'to' => \app\models\Config::getEmailAdmin(),
+                'subject' => 'New Contact | ',
+                'view' => ['html' => 'example/view'],
+                'viewParams' => ['model' => []],
+            ]);
+        die(true);
+    }
 }
