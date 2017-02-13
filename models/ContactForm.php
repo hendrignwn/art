@@ -62,13 +62,7 @@ class ContactForm extends Model
                 $model->save();
             }
             
-            MailHelper::sendMail([
-                'to' => Config::getEmailAdmin(),
-                'subject' => 'New Contact | '.$this->subject.' from '. $this->first_name,
-                'view' => ['html' => 'contact/new-contact-to-admin'],
-                'viewParams' => ['model' => $model],
-                'replyTo' => $this->email,
-            ]);
+            $model->sendEmailNewNotification();
             
             return true;
         }

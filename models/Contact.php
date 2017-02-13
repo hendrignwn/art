@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\helpers\MailHelper;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -52,7 +53,7 @@ class Contact extends BaseActiveRecord
             [['email'], 'string', 'max' => 100],
             [['phone'], 'string', 'max' => 15],
             [['subject'], 'string', 'max' => 150],
-            [['title_id'], 'default', 'value' => 1],
+            [['title_id'], 'default', 'value' => 0],
             [['status'], 'default', 'value' => self::STATUS_ACTIVE],
         ];
     }
@@ -118,5 +119,24 @@ class Contact extends BaseActiveRecord
     public function getFullName()
     {
         return $this->first_name . ' ' . $this->last_name;
+    }
+    
+    /**
+     * send email to user when create contact us from front end
+     * It's called by ContactForm
+     * 
+     * @return boolean
+     */
+    public function sendEmailNewNotification()
+    {
+        $mail = MailHelper::sendMail([
+                'to' => Config::getEmailAdmin(),
+                'subject' => 'New Contact | '.$this->subject.' from '. $this->first_name,
+                'view' => ['html' => 'contact/new-contact-to-admin'],
+                'viewParams' => ['model' => $this],
+                'replyTo' => $this->email,
+            ]);
+        
+        return $mail;
     }
 }
