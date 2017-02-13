@@ -90,7 +90,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->contact()) {
             Yii::$app->session->setFlash('contactFormSubmitted');
 
-            return $this->refresh();
+            return $this->refresh('#contact');
         }
         return $this->render('contact', [
             'model' => $model,
@@ -129,12 +129,10 @@ class SiteController extends Controller
     
     public function actionTest()
     {
-        \app\helpers\MailHelper::sendMail([
-                'to' => \app\models\Config::getEmailAdmin(),
-                'subject' => 'New Contact | ',
-                'view' => ['html' => 'example/view'],
-                'viewParams' => ['model' => []],
-            ]);
+        $contact = \app\models\Contact::findOne(1);
+        
+        $contact->sendEmailNewNotification();
+        
         die(true);
     }
 }
