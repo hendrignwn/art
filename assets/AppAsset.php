@@ -31,7 +31,7 @@ class AppAsset extends AssetBundle
         $theme = \Yii::$app->params['activeFrontTheme'];
         
         $this->css = [
-            'themes/'.$theme.'/magnific-popup/magnific-popup.css',
+            'themes/'.$theme.'/magnific-popup/magnific-popup.min.css',
             'themes/'.$theme.'/materialize/css/materialize.min.css',
             'themes/'.$theme.'/bootstrap/css/bootstrap.min.css',
             'themes/'.$theme.'/css/shortcodes/shortcodesae52.css?v=5',

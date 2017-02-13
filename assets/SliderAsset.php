@@ -27,6 +27,7 @@ class SliderAsset extends AssetBundle
         
         $this->css = [
             'themes/'.$theme.'/owl.carousel/assets/owl.carousel.min.css',
+            'themes/'.$theme.'/flexSlider/flexslider.min.css',
             'themes/'.$theme.'/revolution/css/settings.min.css',
             'themes/'.$theme.'/revolution/css/layers.min.css',
             'themes/'.$theme.'/revolution/css/navigation.min.css',

@@ -31,12 +31,11 @@ class HomeAsset extends AssetBundle
         $theme = \Yii::$app->params['activeFrontTheme'];
         
         $this->css = [
-            'themes/'.$theme.'/magnific-popup/'. (YII_ENV_DEV) ? 'magnific-popup.css' : 'magnific-popup.min.css',
-            'themes/'.$theme.'/owl.carousel/assets/owl.theme.default.min.css',
-            'themes/'.$theme.'/flexSlider/' . (YII_ENV_DEV) ? 'flexslider.css' : 'flexslider.min.css',
+            'themes/'.$theme.'/magnific-popup/magnific-popup.min.css',
             'themes/'.$theme.'/materialize/css/materialize.min.css',
             'themes/'.$theme.'/bootstrap/css/bootstrap.min.css',
             'themes/'.$theme.'/css/shortcodes/shortcodesae52.css?v=5',
+            'themes/'.$theme.'/css/skins/creative.css',
             'themes/'.$theme.'/styleae52.css?v=5',
             'css/site.css',
         ];
