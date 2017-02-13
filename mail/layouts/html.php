@@ -87,13 +87,13 @@ use yii\helpers\Html;
                                         <a href="<?= Url::home(true) ?>" style="text-decoration: none; color: #03A9F4;">Home</a>
                                     </td>
                                     <td align="center" style="padding: 15px 20px; font-family: arial,sans-serif; font-size: 14px; font-weight: bold;">
-                                        <a href="#" style="text-decoration: none; color: #03A9F4;">About Us</a>
+                                        <a href="<?= Url::to(['/site/about'], true) ?>" style="text-decoration: none; color: #03A9F4;">About Us</a>
                                     </td>
                                     <td align="center" style="padding: 15px 20px; font-family: arial,sans-serif; font-size: 14px; font-weight: bold;">
-                                        <a href="#" style="text-decoration: none; color: #03A9F4;">Service</a>
+                                        <a href="<?= Url::to(['/service/index'], true) ?>" style="text-decoration: none; color: #03A9F4;">Service</a>
                                     </td>
                                     <td align="center" style="padding: 15px 20px; font-family: arial,sans-serif; font-size: 14px; font-weight: bold;">
-                                        <a href="#" style="text-decoration: none; color: #03A9F4;">Portfolio</a>
+                                        <a href="<?= Url::to(['/portfolio/index'], true) ?>" style="text-decoration: none; color: #03A9F4;">Portfolio</a>
                                     </td>
                                 </tr>
                             </table>
@@ -104,7 +104,6 @@ use yii\helpers\Html;
                 <table cellpadding="0" cellspacing="0">
                     <tr class="main_nav">
                         <td id="mobile_nav" width="600">
-                            <br/>
                             <?= $content ?>
                             <br/>
                         </td>
