@@ -12,6 +12,7 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'mailer' => require(__DIR__ . '/mailer.php'),
         'log' => [
             'targets' => [
                 [
