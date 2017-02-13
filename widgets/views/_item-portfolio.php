@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Portfolio;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -9,22 +10,26 @@ use yii\helpers\Url;
  * and open the template in the editor.
  */
 
-/* @var $model app\models\Portfolio */
+/* @var $model Portfolio */
 
+if ($model->getIsGallery()) :
+    $photoUrl = $model->getFirstGallery()->getPhotoUrl();
+    $photoName = $model->getFirstGallery()->name;
+else:
+    $photoUrl = Url::to(['data/img/portfolio-dummy-1.jpg']);
+    $photoName = 'Portfolio';
+endif;
 ?>
 <!--<div class="item portfolio-item" data-groups='["<?//= $model->service ? $model->service->slug : 'all' ?>"]'>-->
     <div class="portfolio-wrapper">
 
         <div class="thumb">
             <div class="bg-overlay brand-overlay"></div>
-            <?= $model->getIsGallery() ?
-                    Html::img($model->getFirstGallery()->getPhotoUrl(), ['alt' => $model->getFirstGallery()->name]) :
-                    Html::img(['data/img/portfolio-dummy-1.jpg'], [])
-             ?>
+            <?= Html::img($photoUrl, ['alt' => $photoName]) ?>
 
             <div class="portfolio-intro">
                 <div class="action-btn">
-                    <a href="<?= Url::to(['data/img/portfolio-dummy-1.jpg']) ?>" class="tt-lightbox" title="<?= $model->getFirstGallery()->name ?>"> <i class="fa fa-search"></i></a>
+                    <?= Html::a('<i class=\'fa fa-search\'></i>', $photoUrl, ['title' => $photoName, 'class' => 'tt-lightbox']) ?>
                 </div>
             </div>
         </div><!-- thumb -->
