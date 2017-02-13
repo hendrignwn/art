@@ -1,4 +1,7 @@
 <?php
+
+use app\helpers\Url;
+use app\models\Config;
 use yii\helpers\Html;
 
 /* @var $this \yii\web\View view component instance */
@@ -66,8 +69,8 @@ use yii\helpers\Html;
                         <td id="header">
                             <table cellpadding="0" cellspacing="0" width="100%">
                                 <tr>
-                                    <td class="logo" align="left">
-                                        <a href="#"><img src="<?= \app\helpers\Url::to(['data/img/logo.png'], true) ?> " alt="" style="display: block; border: 0;width:80px;" /></a>
+                                    <td class="logo" align="center">
+                                        <a href="#"><img src="<?= Url::to(['data/img/logo.png'], true) ?> " alt="" style="display: block; border: 0;width:80px;" /></a>
                                     </td>
                                     <td align="right" class="toggle" style="display: none; width: 0; max-height: 0; max-width: 0; height: 0; overflow: hidden; float: left; font-size: 0;">
                                         <a href="#mobile_nav">Menu</a>
@@ -78,25 +81,19 @@ use yii\helpers\Html;
                     </tr>
                     <tr class="main_nav">
                         <td id="mobile_nav" width="600">
-                            <table cellpadding="0" cellspacing="0" width="100%">
+                            <table cellpadding="0" cellspacing="0" width="100%" style="background-color: #FAFAF0;">
                                 <tr>
                                     <td align="center" style="padding: 15px 20px; font-family: arial,sans-serif; font-size: 14px; font-weight: bold;">
-                                        <a href="#" style="text-decoration: none; color: #999999;">Nav 1</a>
+                                        <a href="<?= Url::home(true) ?>" style="text-decoration: none; color: #03A9F4;">Home</a>
                                     </td>
                                     <td align="center" style="padding: 15px 20px; font-family: arial,sans-serif; font-size: 14px; font-weight: bold;">
-                                        <a href="#" style="text-decoration: none; color: #999999;">Nav 2</a>
+                                        <a href="#" style="text-decoration: none; color: #03A9F4;">About Us</a>
                                     </td>
                                     <td align="center" style="padding: 15px 20px; font-family: arial,sans-serif; font-size: 14px; font-weight: bold;">
-                                        <a href="#" style="text-decoration: none; color: #999999;">Nav 3</a>
+                                        <a href="#" style="text-decoration: none; color: #03A9F4;">Service</a>
                                     </td>
                                     <td align="center" style="padding: 15px 20px; font-family: arial,sans-serif; font-size: 14px; font-weight: bold;">
-                                        <a href="#" style="text-decoration: none; color: #999999;">Nav 4</a>
-                                    </td>
-                                    <td align="center" style="padding: 15px 20px; font-family: arial,sans-serif; font-size: 14px; font-weight: bold;">
-                                        <a href="#" style="text-decoration: none; color: #999999;">Nav 5</a>
-                                    </td>
-                                    <td align="center" style="padding: 15px 20px; font-family: arial,sans-serif; font-size: 14px; font-weight: bold;">
-                                        <a href="#" style="text-decoration: none; color: #999999;">Nav 6</a>
+                                        <a href="#" style="text-decoration: none; color: #03A9F4;">Portfolio</a>
                                     </td>
                                 </tr>
                             </table>
@@ -107,7 +104,9 @@ use yii\helpers\Html;
                 <table cellpadding="0" cellspacing="0">
                     <tr class="main_nav">
                         <td id="mobile_nav" width="600">
+                            <br/>
                             <?= $content ?>
+                            <br/>
                         </td>
                     </tr>
                 </table>
@@ -117,8 +116,8 @@ use yii\helpers\Html;
                         <td id="mobile_nav" width="600">
                             <hr/>
                             <p>
-                                This email was sent by: <?= \Yii::$app->name ?><br>
-                                4822 West 62nd Street Mission, KS 66205<br><br>
+                                This email was sent by: <?= Yii::$app->name ?><br>
+                                <?= Config::getAppContactAddress() ?><br><br>
                                 <a href="#" style="color: #999;">Preferences</a> | <a href="#" style="color: #999;">Unsubscribe</a>
                             </p>
                         </td>
