@@ -129,6 +129,7 @@ class SiteController extends Controller
     
     public function actionTest()
     {
+        \app\models\ScheduledEmail::consoleBlastToSubscribers();die;
         $contact = \app\models\Contact::findOne(1);
         
         $contact->sendEmailNewNotification();

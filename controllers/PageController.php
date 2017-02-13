@@ -17,7 +17,7 @@ class PageController extends BaseController
         $page = Page::findOne([
             'slug' => $slug,
             'status' => Page::STATUS_ACTIVE,
-            'category' => Page::CATEGORY_PARTIAL,
+            'category' => Page::CATEGORY_FULL,
         ]);
         
         if (!$page) {
