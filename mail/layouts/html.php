@@ -84,7 +84,7 @@ use yii\helpers\Html;
                             <table cellpadding="0" cellspacing="0" width="100%" style="background-color: #FAFAF0;">
                                 <tr>
                                     <td align="center" style="padding: 15px 20px; font-family: arial,sans-serif; font-size: 14px; font-weight: bold;">
-                                        <a href="<?= Url::home(true) ?>" style="text-decoration: none; color: #03A9F4;">Home</a>
+                                        <a href="<?= Url::to(['/'], true) ?>" style="text-decoration: none; color: #03A9F4;">Home</a>
                                     </td>
                                     <td align="center" style="padding: 15px 20px; font-family: arial,sans-serif; font-size: 14px; font-weight: bold;">
                                         <a href="<?= Url::to(['/site/about'], true) ?>" style="text-decoration: none; color: #03A9F4;">About Us</a>
