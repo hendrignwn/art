@@ -22,6 +22,13 @@ $config = [
             ],
         ],
         'db' => $db,
+        'urlManager' => [
+            'class' => 'yii\web\UrlManager',
+            'scriptUrl' => $params['mainUrl'],
+            'baseUrl' => $params['mainUrl'],
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+        ],
     ],
     'params' => $params,
     /*
