@@ -35,7 +35,7 @@ class BlogController extends BaseController
 
         $query = BlogPost::getSearch($params);
         
-        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize'=>1]);
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize'=>20]);
         $blogPosts = $query->offset($pages->offset)
             ->limit($pages->limit)
             ->all();
