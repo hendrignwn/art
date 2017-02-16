@@ -108,7 +108,7 @@ class BlogPost extends BaseActiveRecord
     
     public function afterFind() 
     {
-        $this->blogTag = $this->getBlogPostTags()->select('id')->indexBy('id')->column();
+        $this->blogTag = $this->getBlogPostTags()->select('blog_tag_id')->indexBy('blog_tag_id')->column();
         
         return parent::afterFind();
     }
