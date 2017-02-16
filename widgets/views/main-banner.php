@@ -111,7 +111,7 @@ use yii\helpers\Url;
                      data-splitin="none" 
                      data-splitout="none" 
                      data-responsive_offset="on"
-                     style="z-index: 6; white-space: nowrap;">materialize is an interactive agency. Which develops websites <br> and premium mobile applications.
+                     style="z-index: 6; white-space: nowrap;">We are focused on Consultants IT and IT Trainings. 
                 </div>
 
                 <!-- LAYER NR. 7 -->
@@ -251,7 +251,7 @@ use yii\helpers\Url;
                      data-splitin="none" 
                      data-splitout="none" 
                      data-responsive_offset="on"
-                     style="z-index: 6; white-space: nowrap;">materialize is an interactive agency. Which develops websites <br> and premium mobile applications.
+                     style="z-index: 6; white-space: nowrap;">Consulting needs and problems that mass you to us <br/>and get a solution, planning and strategy suitable to your needs. 
                 </div>
 
                 <!-- LAYER NR. 7 -->
