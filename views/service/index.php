@@ -14,7 +14,7 @@ use yii\helpers\Html;
 $this->title = 'Our Services';
 $this->params['breadcrumbs'][] = $this->title;
 
-$description = 'Quisque non erat mi. Aenean sed ipsum luctus, scelerisque ipsum nec, iaculis justo. Sed at vestibulum purus, sit amet viverra diam nulla ac nisi rhoncus.';
+$description = 'Consulting needs and problems that mass you to us and get a solution, planning and strategy suitable to your needs. By planning and strategies appropriate expected to help you get the appropriate notwithstanding aspects of business process and to reduce financing.';
 
 /** SEO */
 $this->registerMetaTag([
@@ -41,7 +41,7 @@ $this->registerMetaSocialMedia($socialMedia);
     <div class="container">
 
         <div class="text-center mb-80">
-            <h2 class="section-title text-uppercase">What We Do</h2>
+            <h2 class="section-title text-uppercase">Our Services</h2>
             <p class="section-sub"><?= $description ?></p>
         </div>
 
