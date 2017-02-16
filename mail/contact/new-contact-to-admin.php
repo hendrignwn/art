@@ -8,7 +8,7 @@
 /* @var $model app\models\Contact */
 
 ?>
-
+<br/>
 Hello Admin,
 <br/>
 Someone calling you via Contact Form with details in following below:
