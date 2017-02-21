@@ -11,6 +11,10 @@ return [
     'showScriptName' => false,
     'rules' => [
         [
+            'pattern' => '/',
+            'route' => 'site/index',
+        ],
+        [
             'pattern' => 'about-us',
             'route' => 'site/about',
         ],
