@@ -16,10 +16,10 @@ use yii\helpers\Url;
         <ul>
 
             <!-- slide 1 start --> 
-            <li data-transition="fade" data-slotamount="default" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-thumb="<?= Url::to(['themes/v1/img/banner-1/bg.jpg']) ?>"  data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off"  data-title="We are Art TC" data-description="">
+            <li data-transition="fade" data-slotamount="default" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-thumb="<?= Url::to(['data/img/banner-2.jpg']) ?>"  data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off"  data-title="We are Art TC" data-description="">
 
                 <!-- MAIN IMAGE -->
-                <img src="<?= Url::to(['themes/v1/img/banner-1/bg.jpg']) ?>"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                <img src="<?= Url::to(['data/img/banner-2.jpg']) ?>"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
 
                 <!-- LAYER NR. 1 -->
                 <div class="tp-caption tp-resizeme"
@@ -31,7 +31,7 @@ use yii\helpers\Url;
                      data-transform_out="opacity:0;s:1500;e:Power4.easeIn;s:1500;e:Power4.easeIn;"
                      data-start="2000"
                      style="z-index: 5;">
-                    <div><img src="<?= Url::to(['themes/v1/img/banner-1/dummy.jpg']) ?>" alt="" data-lazyload="<?= Url::to(['themes/v1/img/banner-1/book.jpg']) ?>">
+                    <div><img src="<?= Url::to(['themes/v1/img/banner-1/dummy.png']) ?>" alt="" data-lazyload="<?= Url::to(['themes/v1/img/banner-1/book.png']) ?>">
                     </div>
                 </div>
 
@@ -44,7 +44,7 @@ use yii\helpers\Url;
                      data-transform_out="opacity:0;s:1500;e:Power4.easeIn;s:1500;e:Power4.easeIn;"
                      data-start="2000"
                      style="z-index: 5;">
-                    <div><img src="<?= Url::to(['themes/v1/img/banner-1/dummy.jpg']) ?>" alt="" data-lazyload="<?= Url::to(['themes/v1/img/banner-1/glasses.jpg']) ?>">
+                    <div><img src="<?= Url::to(['themes/v1/img/banner-1/dummy.png']) ?>" alt="" data-lazyload="<?= Url::to(['themes/v1/img/banner-1/glasses.png']) ?>">
                     </div>
                 </div>
 
@@ -57,7 +57,7 @@ use yii\helpers\Url;
                      data-transform_out="opacity:0;s:1500;e:Power4.easeIn;s:1500;e:Power4.easeIn;"
                      data-start="2400"
                      style="z-index: 5;">
-                    <div><img src="<?= Url::to(['themes/v1/img/banner-1/dummy.jpg']) ?>" alt="" data-lazyload="<?= Url::to(['themes/v1/img/banner-1/earphones.jpg']) ?>">
+                    <div><img src="<?= Url::to(['themes/v1/img/banner-1/dummy.png']) ?>" alt="" data-lazyload="<?= Url::to(['themes/v1/img/banner-1/earphones.png']) ?>">
                     </div>
                 </div>
 
@@ -71,7 +71,7 @@ use yii\helpers\Url;
                      data-transform_out="opacity:0;s:1500;e:Power4.easeIn;s:1500;e:Power4.easeIn;"
                      data-start="2400"
                      style="z-index: 5;">
-                    <div><img src="<?= Url::to(['themes/v1/img/banner-1/dummy.jpg']) ?>" alt="" data-lazyload="<?= Url::to(['themes/v1/img/banner-1/cup.jpg']) ?>">
+                    <div><img src="<?= Url::to(['themes/v1/img/banner-1/dummy.png']) ?>" alt="" data-lazyload="<?= Url::to(['themes/v1/img/banner-1/cup.png']) ?>">
                     </div>
                 </div>
 
