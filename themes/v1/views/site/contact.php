@@ -7,6 +7,9 @@ use app\widgets\ContactUsWidget;
 $this->title = 'Contact Us';
 $this->params['breadcrumbs'][] = $this->title;
 
+$metakey = 'contact ATC, contact Art Techno Corporation';
+$metadescription = 'Please call to get more information of ATC or Art Techno Corporation';
+
 /** SEO */
 $this->registerMetaTag([
     'http-equiv' => 'Content-Type',
@@ -15,15 +18,13 @@ $this->registerMetaTag([
 $this->registerLinkAlternate();
 $this->registerLinkCanonical();
 $this->registerMetaTitle();
-$this->registerMetaKeywords(Config::getAppMetaKey());
-$this->registerMetaDescription(Config::getAppMetaDescription());
-$this->registerMetaTag([
-    'name' => 'robots',
-    'content' => 'noindex,nofollow',
-]);
+$this->registerMetaKeywords($metakey);
+$this->registerMetaDescription($metadescription);
+$this->registerMetaTag(['name' => 'robots',  'content' => 'index,follow']);
+$this->registerMetaTag(['name' => 'googlebot',  'content' => 'index,follow']);
 $socialMedia = [
-    'title' => $this->title .' - '. Yii::$app->name,
-    'description' => Config::getAppMetaDescription(),
+    'title' => $metakey,
+    'description' => $metadescription,
 ];
 $this->registerMetaSocialMedia($socialMedia);
 
