@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Blog', 'url' =>['/blog/index']];
 $this->params['breadcrumbs'][] = Yii::t('app.label', 'Tag');
 $this->params['breadcrumbs'][] = $this->title;
 
+$metakey = 'Blog Build web and network, tutorials, tips, workshop, project development, ATC or Art Techno Corporation';
 $description = 'This is a list Blog Posts, you will be know about us in here';
 
 /** SEO */
@@ -26,14 +27,12 @@ $this->registerMetaTag([
 $this->registerLinkAlternate();
 $this->registerLinkCanonical();
 $this->registerMetaTitle();
-$this->registerMetaKeywords($this->title);
+$this->registerMetaKeywords($metakey);
 $this->registerMetaDescription($description);
-$this->registerMetaTag([
-    'name' => 'robots',
-    'content' => 'noindex,nofollow',
-]);
+$this->registerMetaTag(['name' => 'robots',  'content' => 'index,follow']);
+$this->registerMetaTag(['name' => 'googlebot',  'content' => 'index,follow']);
 $socialMedia = [
-    'title' => $this->title .' - '. Yii::$app->name,
+    'title' => $metakey,
     'description' => $description,
 ];
 $this->registerMetaSocialMedia($socialMedia);

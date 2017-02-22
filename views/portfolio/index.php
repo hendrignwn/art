@@ -16,6 +16,7 @@ use app\widgets\PortfolioWidget;
 $this->title = 'Our Portfolios';
 $this->params['breadcrumbs'][] = $this->title;
 
+$metakey = 'Our portfolio ATC, ATC, Art Techno Corporation, Web and Network maintenance, renovation and development';
 $description = 'This is a portfolios of the Art Techno Corporation, We are work with great heart';
 
 /** SEO */
@@ -26,14 +27,12 @@ $this->registerMetaTag([
 $this->registerLinkAlternate();
 $this->registerLinkCanonical();
 $this->registerMetaTitle();
-$this->registerMetaKeywords($this->title);
+$this->registerMetaKeywords($metakey);
 $this->registerMetaDescription($description);
-$this->registerMetaTag([
-    'name' => 'robots',
-    'content' => 'noindex,nofollow',
-]);
+$this->registerMetaTag(['name' => 'robots',  'content' => 'index,follow']);
+$this->registerMetaTag(['name' => 'googlebot',  'content' => 'index,follow']);
 $socialMedia = [
-    'title' => $this->title .' - '. Yii::$app->name,
+    'title' => $metakey .' - '. Yii::$app->name,
     'description' => $description,
 ];
 $this->registerMetaSocialMedia($socialMedia);

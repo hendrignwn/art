@@ -14,7 +14,8 @@ use yii\helpers\Html;
 $this->title = 'Our Services';
 $this->params['breadcrumbs'][] = $this->title;
 
-$description = 'Consulting needs and problems that mass you to us and get a solution, planning and strategy suitable to your needs. By planning and strategies appropriate expected to help you get the appropriate notwithstanding aspects of business process and to reduce financing.';
+$metakey = 'Our Services Web maintenance, network maintenance, renovation, development Art techno Corporation, Service ATC';
+$description = 'ATC or Art Techno Corporation is provide services Web and network maintenance, renovation, and development. Bogor Indonesia';
 
 /** SEO */
 $this->registerMetaTag([
@@ -24,14 +25,12 @@ $this->registerMetaTag([
 $this->registerLinkAlternate();
 $this->registerLinkCanonical();
 $this->registerMetaTitle();
-$this->registerMetaKeywords($this->title);
+$this->registerMetaKeywords($metakey);
 $this->registerMetaDescription($description);
-$this->registerMetaTag([
-    'name' => 'robots',
-    'content' => 'noindex,nofollow',
-]);
+$this->registerMetaTag(['name' => 'robots',  'content' => 'index,follow']);
+$this->registerMetaTag(['name' => 'googlebot',  'content' => 'index,follow']);
 $socialMedia = [
-    'title' => $this->title .' - '. Yii::$app->name,
+    'title' => $metakey .' - '. Yii::$app->name,
     'description' => $description,
 ];
 $this->registerMetaSocialMedia($socialMedia);
