@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f6b9cb1aa93686061b18681c4d9e7cce",
-    "content-hash": "4bbd295e57a90ec22a0a27525c52a532",
+    "hash": "5d29962c9a96e60090266e6de3c68ace",
+    "content-hash": "8d089d8b7b9c087235bb0109d9c99d49",
     "packages": [
         {
             "name": "2amigos/yii2-ckeditor-widget",
@@ -649,6 +649,50 @@
                 "yii2"
             ],
             "time": "2016-10-21 02:03:45"
+        },
+        {
+            "name": "evert/sitemap-php",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/evert/sitemap-php.git",
+                "reference": "be07a062943401067bf0ba62710ca733c838bc24"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/evert/sitemap-php/zipball/be07a062943401067bf0ba62710ca733c838bc24",
+                "reference": "be07a062943401067bf0ba62710ca733c838bc24",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "SitemapPHP": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Osman Üngür",
+                    "email": "osmanungur@gmail.com"
+                },
+                {
+                    "name": "Evert Pot",
+                    "email": "evert@rooftopsolutions.nl"
+                }
+            ],
+            "description": "Lightweight library for generating Google sitemap XML files",
+            "homepage": "http://code.google.com/p/sabredav/",
+            "keywords": [
+                "Sitemap"
+            ],
+            "time": "2015-04-17 21:45:50"
         },
         {
             "name": "ezyang/htmlpurifier",
