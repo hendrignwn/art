@@ -28,7 +28,7 @@ class MailHelper
 	 */
 	public static function sendMail($params)
 	{
-		$from = empty($params['from']) ? Config::getEmailNoReply() : $params['from'];
+		$from = empty($params['from']) ? [Config::getEmailNoReply() => Yii::$app->name] : $params['from'];
 		$replyTo = empty($params['replyTo']) ? Config::getEmailNoReply() : $params['replyTo'];
 
 		if (!isset($params['to'])) {
