@@ -14,17 +14,22 @@ $staticPages = [
 ?>
 
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<url>
+    <loc><?= Url::home(true) ?></loc>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+</url>    
 <?php foreach ($pages as $page) : ?>
     <url>
-        <loc><?= Url::to(['/'.$page->slug], true) ?></loc>
-        <changefreq>never</changefreq>
+        <loc><?= $page->getDetailUrl(true) ?></loc>
+        <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 <?php endforeach; ?>
 <?php foreach ($staticPages as $page) : ?>
     <url>
         <loc><?= Url::to([$page['url']], true) ?></loc>
-        <changefreq>never</changefreq>
+        <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 <?php endforeach; ?>
@@ -32,7 +37,7 @@ $staticPages = [
     <url>
         <loc><?= $blog->getDetailUrl(true) ?></loc>
         <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
+        <priority>0.6</priority>
         <image:image>
             <image:loc><?= $blog->getPhotoUrl() ?></image:loc>
             <image:caption><![CDATA[<?= $blog->title ?>]]></image:caption>
