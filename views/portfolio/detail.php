@@ -32,7 +32,7 @@ $this->registerMetaDescription($description);
 $this->registerMetaTag(['name' => 'robots',  'content' => 'index,follow']);
 $this->registerMetaTag(['name' => 'googlebot',  'content' => 'index,follow']);
 $socialMedia = [
-    'title' => $model->metakey,
+    'title' => $this->title,
     'description' => $description,
     'image' => $model->getIsGallery() ? $model->getFirstGallery()->getPhotoUrl(true) : Config::getAppSeoImageUrl(),
 ];

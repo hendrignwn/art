@@ -26,7 +26,7 @@ $this->registerMetaDescription($model->metadesc);
 $this->registerMetaTag(['name' => 'robots',  'content' => 'index,follow']);
 $this->registerMetaTag(['name' => 'googlebot',  'content' => 'index,follow']);
 $socialMedia = [
-    'title' => $model->metakey,
+    'title' => $this->title,
     'description' => $model->metadesc,
 ];
 $this->registerMetaSocialMedia($socialMedia);
