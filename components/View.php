@@ -135,5 +135,47 @@ class View extends BaseView {
             'property' => 'og:description',
             'content' => array_key_exists('description', $content) ? $content['description'] : $defaultDescription,
         ]);
+        
+        $this->registerMetaTag([
+            'property' => 'twitter:card',
+            'content' => 'summary',
+        ]);
+        $this->registerMetaTag([
+            'property' => 'twitter:url',
+            'content' => array_key_exists('url', $content) ? $content['url'] : $defaultUrl,
+        ]);
+        $this->registerMetaTag([
+            'property' => 'twitter:image',
+            'content' => array_key_exists('image', $content) ? $content['image'] : $defaultImage,
+        ]);
+        $this->registerMetaTag([
+            'property' => 'twitter:description',
+            'content' => array_key_exists('description', $content) ? $content['description'] : $defaultDescription,
+        ]);
+        
+        $this->registerMetaTag([
+            'itemscope' => true,
+            'itemtype' => 'http://schema.org/Article',
+        ]);
+        
+        $this->registerMetaTag([
+            'itemprop' => 'headline',
+            'content' => array_key_exists('title', $content) ? $content['title'] : $defaultTitle,
+        ]);
+        
+        $this->registerMetaTag([
+            'itemprop' => 'name',
+            'content' => array_key_exists('title', $content) ? $content['title'] : $defaultTitle,
+        ]);
+        
+        $this->registerMetaTag([
+            'itemprop' => 'description',
+            'content' => array_key_exists('description', $content) ? $content['description'] : $defaultDescription,
+        ]);
+        
+        $this->registerMetaTag([
+            'itemprop' => 'image',
+            'content' => array_key_exists('image', $content) ? $content['image'] : $defaultImage,
+        ]);
     }
 }
