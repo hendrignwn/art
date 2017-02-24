@@ -15,6 +15,7 @@ $this->registerJs("(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[
 
   ga('create', 'UA-92397862-1', 'auto');
   ga('send', 'pageview');", View::POS_END, 'google-analytic');
+Yii::$app->name = Yii::$app->name . ' | ATC';
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -23,7 +24,7 @@ $this->registerJs("(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title .' - '. Yii::$app->name) ?></title>
+    <title><?= Html::encode(Yii::$app->name . ' | ' . $this->title) ?></title>
     <?php $this->head() ?>
 </head>
 <body id="top">
