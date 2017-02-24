@@ -23,7 +23,7 @@ $this->registerMetaDescription($metadescription);
 $this->registerMetaTag(['name' => 'robots',  'content' => 'index,follow']);
 $this->registerMetaTag(['name' => 'googlebot',  'content' => 'index,follow']);
 $socialMedia = [
-    'title' => $metakey,
+    'title' => $this->title . ' | ' . Yii::$app->name,
     'description' => $metadescription,
 ];
 $this->registerMetaSocialMedia($socialMedia);
