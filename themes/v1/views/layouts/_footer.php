@@ -1,7 +1,7 @@
 <?php
 
 use app\helpers\Url;
-use app\models\BlogTag;
+use app\models\BlogPostTag;
 use app\models\Config;
 use app\models\Menu as Menu2;
 use yii\helpers\Html;
@@ -83,9 +83,9 @@ use yii\widgets\Menu;
                     <div class="widget-tags">
                         <h2 class="white-text">Blog Tags</h2>
                         <?php
-                        $tags = BlogTag::find()->limit(9)->all();
+                        $tags = BlogPostTag::find()->groupBy('blog_tag_id')->limit(9)->all();
                         foreach($tags as $tag) {
-                            echo Html::a($tag->name, $tag->getUrl());
+                            echo Html::a($tag->blogTag->name, $tag->blogTag->getUrl());
                         }
                         ?>
                     </div><!-- /.widget-tags -->
