@@ -13,7 +13,7 @@ use yii\helpers\Html;
 
         <div class="text-center mb-80">
             <h2 class="section-title text-uppercase">Get in Touch</h2>
-            <p class="section-sub">Quisque non erat mi. Etiam congue et augue sed tempus. Aenean sed ipsum luctus, scelerisque ipsum nec, iaculis justo. Sed at vestibulum purus, sit amet viverra diam nulla ac nisi rhoncus.</p>
+            <p class="section-sub">Contact us to provide a comment or ask a question about our features or our corporate</p>
         </div>
 
         <div class="row">

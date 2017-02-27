@@ -41,11 +41,17 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'website')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->widget(CKEditor::className(), [
-        'enableKCFinder' => false,
+        'preset' => 'full',
+        'enableKCFinder' => true,
         'clientOptions' => [
             'row' => 6,
         ],
     ]) ?>
+    <?php 
+    echo "<pre>";
+    var_dump(Yii::$app->session->get('KCFINDER'));
+    echo "</pre>";
+    ?>
 
     <?= $form->field($model, 'metakey')->textInput(['maxlength' => true]) ?>
 

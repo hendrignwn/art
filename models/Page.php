@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\behaviors\SluggableBehavior;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "page".
@@ -102,5 +103,16 @@ class Page extends BaseActiveRecord
     public function getCategoryLabel() 
     {
         return self::categoryLabels()[$this->category] ? self::categoryLabels()[$this->category] : $this->category;
+    }
+    
+    /**
+     * returns page detail url
+     * 
+     * @param type $absolute
+     * @return type
+     */
+    public function getDetailUrl($absolute = false)
+    {
+        return Url::to(['page/'.$this->slug], $absolute);
     }
 }

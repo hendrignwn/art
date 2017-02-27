@@ -136,7 +136,7 @@ class Portfolio extends BaseActiveRecord
      */
     public function getIsGallery()
     {
-        return ($this->galleries);
+        return isset($this->galleries) && (count($this->galleries) > 0);
     }
     
     /**

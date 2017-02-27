@@ -2,7 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\BlogPost;
 use app\models\Client;
+use app\models\Contact;
 use app\models\ContactForm;
 use app\models\Page;
 use app\models\search\PortfolioSearch;
@@ -10,6 +12,7 @@ use app\models\Subscribe;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
+use yii\web\Response;
 
 class SiteController extends Controller
 {
@@ -129,11 +132,31 @@ class SiteController extends Controller
     
     public function actionTest()
     {
-        \app\models\ScheduledEmail::consoleBlastToSubscribers();die;
-        $contact = \app\models\Contact::findOne(1);
+        $contact = Contact::findOne(1);
         
         $contact->sendEmailNewNotification();
         
         die(true);
+    }
+    
+    /**
+     * displays site map
+     * 
+     * @return view
+     */
+    public function actionSitemap()
+    {
+        $this->layout = false;
+        Yii::$app->response->format = Response::FORMAT_RAW;
+        $headers = Yii::$app->response->headers;
+        $headers->add('Content-Type', 'text/xml');
+        
+        $pages = Page::find()->where(['category' => Page::CATEGORY_FULL])->actived()->all();
+        $blogs = BlogPost::find()->actived()->all();
+        
+        return $this->render('sitemap', [
+            'pages' => $pages,
+            'blogs' => $blogs,
+        ]);
     }
 }

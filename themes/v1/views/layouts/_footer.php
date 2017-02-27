@@ -1,6 +1,7 @@
 <?php
 
-use app\models\BlogTag;
+use app\helpers\Url;
+use app\models\BlogPostTag;
 use app\models\Config;
 use app\models\Menu as Menu2;
 use yii\helpers\Html;
@@ -79,23 +80,12 @@ use yii\widgets\Menu;
 
 
                 <div class="col-md-3 widget">
-<!--                    <h2 class="white-text">News Letter Widget</h2>
-
-                    <form>
-                        <div class="form-group clearfix">
-                            <label class="sr-only" for="subscribe">Email address</label>
-                            <input type="email" class="form-control" id="subscribe" placeholder="Email address">
-                            <button type="submit" class="tt-animate ltr"><i class="fa fa-long-arrow-right"></i></button>
-                        </div>
-                    </form>-->
-
-
                     <div class="widget-tags">
                         <h2 class="white-text">Blog Tags</h2>
                         <?php
-                        $tags = BlogTag::find()->limit(9)->all();
+                        $tags = BlogPostTag::find()->groupBy('blog_tag_id')->limit(9)->all();
                         foreach($tags as $tag) {
-                            echo Html::a($tag->name, $tag->getUrl());
+                            echo Html::a($tag->blogTag->name, $tag->blogTag->getUrl());
                         }
                         ?>
                     </div><!-- /.widget-tags -->
@@ -106,7 +96,28 @@ use yii\widgets\Menu;
 
     <div class="secondary-footer brand-bg darken-2">
         <div class="container">
-            <span class="copy-text">Copyright &copy; 2016 <?= Html::a(Config::getAppCopyright(), \Yii::$app->getHomeUrl()) ?> &nbsp;  | &nbsp;  All Rights Reserved</span>
+            <span class="copy-text">Copyright &copy; 2016 <?= Html::a(Config::getAppCopyright(), Yii::$app->getHomeUrl()) ?> &nbsp;  | &nbsp;  All Rights Reserved</span>
         </div><!-- /.container -->
     </div><!-- /.secondary-footer -->
 </footer>
+<div style="display:none;" itemscope itemtype="http://schema.org/LocalBusiness">
+    <h2><?= Config::getAppMotto() ?></h2>
+    <span itemprop="name"><a itemprop="url" href="<?= Url::home(true) ?>"><?= Yii::$app->name ?></a></span>
+    <span itemprop="description"><?= Config::getAppMetaDescription() ?></span>
+    <span itemprop="logo"><?= Url::to(['data/img/logo.png'], true) ?></span>
+    <span itemprop="legalName"><?= Yii::$app->name ?></span>
+    <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+        <span itemprop="streetAddress">Jl Purnawarman No 11, Ciampea</span>
+        <span itemprop="addressLocality">Bogor</span>,
+        <span itemprop="addressRegion">Jawa Barat</span>
+        <span itemprop="addressCountry">Indonesia</span>
+    </div>
+    Phone: <span itemprop="telephone"><?= Config::getAppContactPhone() ?></span>
+    Email: <span itemprop="email"><?= Config::getAppContactEmail() ?></span>
+    <div itemprop="founder" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Sandi Winata</span>
+        <span itemprop="email">winatasandi05@gmail.com</span>
+        <span itemprop="nationality">Indonesia</span>
+    </div>
+    <div itemprop="foundingDate">2017-02-05</div>
+</div>

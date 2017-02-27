@@ -23,12 +23,10 @@ $this->registerLinkCanonical();
 $this->registerMetaTitle();
 $this->registerMetaKeywords($model->metakey);
 $this->registerMetaDescription($model->metadesc);
-$this->registerMetaTag([
-    'name' => 'robots',
-    'content' => 'noindex,nofollow',
-]);
+$this->registerMetaTag(['name' => 'robots',  'content' => 'index,follow']);
+$this->registerMetaTag(['name' => 'googlebot',  'content' => 'index,follow']);
 $socialMedia = [
-    'title' => $this->title .' - '. Yii::$app->name,
+    'title' => $this->title,
     'description' => $model->metadesc,
 ];
 $this->registerMetaSocialMedia($socialMedia);

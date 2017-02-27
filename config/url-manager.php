@@ -11,6 +11,15 @@ return [
     'showScriptName' => false,
     'rules' => [
         [
+            'pattern' => 'sitemap', 
+            'route' => 'site/sitemap', 
+            'suffix' => '.xml'
+        ],
+        [
+            'pattern' => '/',
+            'route' => 'site/index',
+        ],
+        [
             'pattern' => 'about-us',
             'route' => 'site/about',
         ],

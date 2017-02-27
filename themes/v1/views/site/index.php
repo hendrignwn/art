@@ -22,13 +22,12 @@ $this->registerLinkCanonical();
 $this->registerMetaTitle();
 $this->registerMetaKeywords(Config::getAppMetaKey());
 $this->registerMetaDescription(Config::getAppMetaDescription());
-$this->registerMetaTag([
-    'name' => 'robots',
-    'content' => 'noindex,nofollow',
-]);
+$this->registerMetaTag(['name' => 'robots',  'content' => 'index,follow']);
+$this->registerMetaTag(['name' => 'googlebot',  'content' => 'index,follow']);
 $socialMedia = [
-    'title' => $this->title .' - '. Yii::$app->name,
+    'title' => Yii::$app->name . ' | ' . $this->title,
     'description' => Config::getAppMetaDescription(),
+    'image' => Config::getAppSeoImageUrl(),
 ];
 $this->registerMetaSocialMedia($socialMedia);
 
@@ -83,3 +82,16 @@ $this->registerMetaSocialMedia($socialMedia);
         <?= ContactUsWidget::widget(['model' => $contactModel]) ?>
         
         <?= GoogleMapWidget::widget() ?>
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "url": "http://www.atc.co.id",
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "telephone": "<?= Config::getAppContactPhone() ?>",
+    "contactType": "customer service"
+  }]
+}
+</script>

@@ -447,7 +447,7 @@ class Config extends \yii\db\ActiveRecord
      */
     public static function getEmailAdmin()
     {
-        return self::getValueByName('email_admin');
+        return self::getValueJsonByName('email_admin');
     }
     
     /**

@@ -29,12 +29,10 @@ $this->registerLinkCanonical();
 $this->registerMetaTitle();
 $this->registerMetaKeywords($model->metakey);
 $this->registerMetaDescription($description);
-$this->registerMetaTag([
-    'name' => 'robots',
-    'content' => 'noindex,nofollow',
-]);
+$this->registerMetaTag(['name' => 'robots',  'content' => 'index,follow']);
+$this->registerMetaTag(['name' => 'googlebot',  'content' => 'index,follow']);
 $socialMedia = [
-    'title' => $model->metakey .' - '. Yii::$app->name,
+    'title' => $this->title,
     'description' => $description,
     'image' => $model->getIsGallery() ? $model->getFirstGallery()->getPhotoUrl(true) : Config::getAppSeoImageUrl(),
 ];

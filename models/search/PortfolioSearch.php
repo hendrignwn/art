@@ -46,7 +46,7 @@ class PortfolioSearch extends Portfolio
             'query' => $query,
             'sort' => [
                 'defaultOrder' => [
-                    'created_at' => SORT_DESC,
+                    'completed_on' => SORT_DESC,
                 ],
             ],
         ]);

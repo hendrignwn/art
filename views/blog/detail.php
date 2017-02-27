@@ -28,12 +28,10 @@ $this->registerLinkCanonical();
 $this->registerMetaTitle();
 $this->registerMetaKeywords($postDetail->metakey);
 $this->registerMetaDescription($description);
-$this->registerMetaTag([
-    'name' => 'robots',
-    'content' => 'noindex,nofollow',
-]);
+$this->registerMetaTag(['name' => 'robots',  'content' => 'index,follow']);
+$this->registerMetaTag(['name' => 'googlebot',  'content' => 'index,follow']);
 $socialMedia = [
-    'title' => $postDetail->metakey .' - '. Yii::$app->name,
+    'title' => $this->title,
     'description' => $description,
     'image' => $postDetail->getPhotoUrl()
 ];
@@ -124,24 +122,6 @@ $imgAuthor = $createdBy->userProfile->getPhotoUrl() ? $createdBy->userProfile->g
 
                     </article><!-- /.post-wrapper -->
 
-<!--                    <nav class="single-post-navigation" role="navigation">
-                        <div class="row">
-                             Previous Post 
-                            <div class="col-xs-6">
-                                <div class="previous-post-link">
-                                    <a class="waves-effect waves-light" href="#"><i class="fa fa-long-arrow-left"></i>Read Previous Post</a>
-                                </div>
-                            </div>
-
-                             Next Post 
-                            <div class="col-xs-6">
-                                <div class="next-post-link">
-                                    <a class="waves-effect waves-light" href="#">Read Next Post<i class="fa fa-long-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>  .row 
-                    </nav>-->
-                    
                     <?= Disqus::widget(['settings'=>['title'=>$postDetail->title, 'identifier'=>$postDetail->slug, 'url'=>$postDetail->getDetailUrl(true)]]) ?>
 
                 </div><!-- /.posts-content -->

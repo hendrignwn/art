@@ -9,7 +9,7 @@ $config = [
     'id' => 'atc-art-techno',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-	
+    
     // default language to use for i18n purpose
     // source translation is located in @app/messages directory
     //'language' => 'id-ID',

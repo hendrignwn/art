@@ -13,18 +13,17 @@ class m170205_064456_add_new_partial_service_on_page_table extends Migration
             'slug' => 'our-services',
             'category' => Page::CATEGORY_PARTIAL,
             'description' => '<div class="row padding-top-100">
-            <div class="col-md-7">
-                <h2 class="text-bold mb-30">Our Services</h2>
+<div class="col-md-7">
+<h2 class="text-bold mb-30">Our Services</h2>
 
-                <p>Quickly procrastinate functionalized human capital with equity invested experiences. Rapidiously provide access to extensible solutions after pandemic supply chains. Credibly supply resource sucking channels before areas Dynamically harness cooperative partnerships rather than just in time total linkage. Dramatically syndicate plug and play <a href="#">professional with focused</a>. Credibly supply resource sucking channels before areas.</p>
+<p>Consulting needs and problems that mass you to us and get a solution, planning and strategy suitable to your needs.</p>
 
-                <p>Lorem ipsum dolor sit amet cr adipiscing elit. In maximus ligula semper <a href="#">metus pellentesque</a> mattis.</p>
-            </div>
+<p>By planning and strategies appropriate expected to help you get the appropriate notwithstanding aspects of business process and to reduce financing.</p>
+</div>
 
-            <div class="col-md-5">
-                <img src="data/img/mac-spkr.png" class="img-responsive" />
-            </div>
-        </div>',
+<div class="col-md-5"><img class="img-responsive" src="data/img/mac-spkr.png" /></div>
+</div>
+',
             'status' => Page::STATUS_ACTIVE,
             'created_at' => date('Y-m-d H:i:s'),
         ]);

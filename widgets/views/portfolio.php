@@ -14,7 +14,7 @@ use yii\widgets\ListView;
 
         <div class="text-center mb-50">
             <h2 class="section-title text-uppercase">Works</h2>
-            <p class="section-sub">Quisque non erat mi. Etiam congue et augue sed tempus. Aenean sed ipsum luctus, scelerisque ipsum nec, iaculis justo. Sed at vestibulum purus, sit amet viverra diam. Nulla ac nisi rhoncus,</p>
+            <p class="section-sub">There are many versions of our portfolio online, where the visitor can follow the links to the details. We provide an overview and explanation of the each portfolios. </p>
         </div>
 
         <div class="portfolio-container text-center">

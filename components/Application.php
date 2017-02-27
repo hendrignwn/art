@@ -28,6 +28,15 @@ class Application extends \yii\web\Application
     
     public function run() 
     {
+        $this->view->registerMetaTag([
+            'name' => 'google-site-verification',  
+            'content' => '1-WO1CGauPMJEz_cuMPQe-YbfXmfyEJta2g33z0Avxk'
+        ]);
+        $this->view->registerMetaTag([
+            'name' => 'msvalidate.01',  
+            'content' => 'AEAF074EB5D345C076DDD01EE29E77E3'
+        ]);
+        
         $configs = Config::getByNames([
             'credential_googlemap_api',
             'map_location_latitude',
