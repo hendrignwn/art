@@ -90,6 +90,12 @@ class Contact extends BaseActiveRecord
         ]);
     }
     
+    public function getStatusLabel()
+	{
+		$list = self::statusLabels();
+		return $list[$this->status] ? $list[$this->status] : $this->status;
+	}
+    
     /**
      * @inheritdoc
      */
