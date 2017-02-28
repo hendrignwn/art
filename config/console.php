@@ -29,7 +29,7 @@ $config = [
             'class' => 'yii\web\UrlManager',
             'scriptUrl' => $params['mainUrl'],
             'baseUrl' => $params['mainUrl'],
-            'hostInfo' => $params['mainUrl'],
+			'hostInfo' => $params['mainUrl'],
             'enablePrettyUrl' => true,
             'showScriptName' => false,
         ],
