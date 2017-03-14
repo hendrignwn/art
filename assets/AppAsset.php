@@ -49,6 +49,7 @@ class AppAsset extends AssetBundle
             'themes/'.$theme.'/js/jquery.sticky.min.js',
             'themes/'.$theme.'/js/smoothscroll.min.js',
             'themes/'.$theme.'/js/imagesloaded.min.js',
+            'themes/'.$theme.'/js/masonry.pkgd.min.js',
             'themes/'.$theme.'/js/jquery.stellar.min.js',
             'themes/'.$theme.'/js/jquery.inview.min.js',
             'themes/'.$theme.'/js/jquery.shuffle.min.js',
