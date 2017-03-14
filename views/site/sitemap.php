@@ -37,7 +37,7 @@ $staticPages = [
     <url>
         <loc><?= $blog->getDetailUrl(true) ?></loc>
         <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
+        <priority>0.8</priority>
         <image:image>
             <image:loc><?= $blog->getPhotoUrl() ?></image:loc>
             <image:caption><![CDATA[<?= $blog->title ?>]]></image:caption>
