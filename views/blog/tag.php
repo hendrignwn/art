@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = Yii::t('app.label', 'Tag');
 $this->params['breadcrumbs'][] = $this->title;
 
 $metakey = 'Blog Build web and network, tutorials, tips, workshop, project development, ATC or Art Techno Corporation';
-$description = 'This is a list Blog Posts, you will be know about us in here';
+$description = 'This is a list Blog Posts tag '.$this->title.', you will be know about us in here';
 
 /** SEO */
 $this->registerMetaTag([
