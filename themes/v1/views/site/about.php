@@ -123,7 +123,7 @@ $this->registerMetaSocialMedia($socialMedia);
 </section>
 
 <?php if (!empty($clients)) : ?>
-<section class="section-padding">
+<section class="section-padding grid-news-hover grid-blog">
     <div class="container">
         <div class="text-center mb-80">
             <h2 class="section-title text-uppercase">Our Clients</h2>
@@ -132,17 +132,21 @@ $this->registerMetaSocialMedia($socialMedia);
 
         <div class="clients-grid grid-gutter">
             <div class="row">
-                <?php foreach ($clients as $client) : ?>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="border-box">
-                            <?= Html::a(
-                                    Html::img($client->getPhotoUrl(), ['alt' => $client->name]), 
-                                    $client->website, 
-                                    ['target' => '_blank']
-                            ) ?>
-                        </div><!-- /.border-box -->
-                    </div><!-- /.col-md-3 -->
-                <?php endforeach; ?>
+                <div id="blogGrid">
+                    <?php foreach ($clients as $client) : ?>
+                        <div class="col-md-3 col-sm-6 blog-grid-item">
+                            <article class="post-wrapper">
+                                <div class="border-box">
+                                    <?= Html::a(
+                                            Html::img($client->getPhotoUrl(), ['alt' => $client->name]), 
+                                            $client->website, 
+                                            ['target' => '_blank']
+                                    ) ?>
+                                </div><!-- /.border-box -->
+                            </article>
+                        </div><!-- /.col-md-3 -->
+                    <?php endforeach; ?>
+                </div>
             </div><!-- /.row -->
         </div><!-- /.clients-grid -->
 
