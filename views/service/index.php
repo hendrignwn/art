@@ -14,8 +14,8 @@ use yii\helpers\Html;
 $this->title = 'Our Services';
 $this->params['breadcrumbs'][] = $this->title;
 
-$metakey = 'Our Services Web maintenance, network maintenance, renovation, development Art techno Corporation, Service ATC';
-$description = 'ATC or Art Techno Corporation is provide services Web and network maintenance, renovation, and development. Bogor Indonesia';
+$metakey = 'Our Services Web maintenance, network maintenance, renovation, development PT Qelopak Teknologi Indonesia, Service PT Qelopak Teknologi Indonesia';
+$description = 'PT Qelopak Teknologi Indonesia is provide services Web and network maintenance, renovation, and development. Bogor Indonesia';
 
 /** SEO */
 $this->registerMetaTag([

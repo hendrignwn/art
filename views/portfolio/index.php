@@ -16,8 +16,8 @@ use app\widgets\PortfolioWidget;
 $this->title = 'Our Portfolios';
 $this->params['breadcrumbs'][] = $this->title;
 
-$metakey = 'Our portfolio ATC, ATC, Art Techno Corporation, Web and Network maintenance, renovation and development';
-$description = 'This is a portfolios of the Art Techno Corporation, We are work with great heart';
+$metakey = 'Our portfolio PT Qelopak Teknologi Indonesia, Web and Network maintenance, renovation and development, Hosting, VPS and Domain';
+$description = 'This is a portfolios of the PT Qelopak Teknologi Indonesia, We are work with great heart';
 
 /** SEO */
 $this->registerMetaTag([

@@ -17,7 +17,7 @@ $this->registerJs("(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[
 
   ga('create', 'UA-92397862-1', 'auto');
   ga('send', 'pageview');", View::POS_END, 'google-analytic');
-Yii::$app->name = Yii::$app->name . ' | ATC | '. Config::getAppMotto();
+Yii::$app->name = Yii::$app->name . ' | '. Config::getAppMotto();
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -25,6 +25,8 @@ Yii::$app->name = Yii::$app->name . ' | ATC | '. Config::getAppMotto();
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="<?= app\helpers\Url::to('favicon.ico') ?>" type="image/x-icon">
+    <link rel="icon" href="<?= app\helpers\Url::to('favicon.ico') ?>" type="image/x-icon">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title .' | '. Yii::$app->name) ?></title>
     <?php $this->head() ?>

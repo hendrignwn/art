@@ -14,7 +14,7 @@ $get = Yii::$app->request->get('query');
 $this->title = 'Blog Search: '.$get;
 $this->params['breadcrumbs'][] = $this->title;
 
-$metakey = 'Blog Build web and network, tutorials, tips, workshop, project development, ATC or Art Techno Corporation';
+$metakey = 'Blog Build web and network, tutorials, tips, workshop, project development, PT Qelopak Teknologi Indonesia';
 $description = 'This is a list Blog Posts, you will be know about us in here';
 
 /** SEO */

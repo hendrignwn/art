@@ -2278,6 +2278,10 @@ KEY FRAME
     background:#03a9f4;
 }
 
+#preloader img {
+	width: 20%;
+}
+
 
 
 

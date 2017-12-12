@@ -141,13 +141,13 @@ Header
 }
 
 .tt-nav .logo-brand .logo-light {
-	height: 75px;
+	height: 50px;
 	margin-top: -12px;
 }
 
 .tt-nav.sticky .logo-brand img, 
 .tt-nav.sticky .logo-brand img.retina  {
-    height: 60px !important;
+    height: 55px !important;
 	margin-top: -10px;
 	padding-bottom: 2px;
 }
@@ -324,7 +324,7 @@ header.sticky .menuzord-menu>li>a,
 .menuzord-menu>li>a {
     display: inline-block;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: normal;
     outline: 0;
     -webkit-tap-highlight-color: transparent

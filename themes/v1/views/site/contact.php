@@ -7,8 +7,8 @@ use app\widgets\ContactUsWidget;
 $this->title = 'Contact Us';
 $this->params['breadcrumbs'][] = $this->title;
 
-$metakey = 'contact ATC, contact Art Techno Corporation';
-$metadescription = 'Please call to get more information of ATC or Art Techno Corporation';
+$metakey = 'contact PT Qelopak Teknologi Indonesia';
+$metadescription = 'Please call to get more information of PT Qelopak Teknologi Indonesia';
 
 /** SEO */
 $this->registerMetaTag([

@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Blog', 'url' =>['/blog/index']];
 $this->params['breadcrumbs'][] = Yii::t('app.label', 'Tag');
 $this->params['breadcrumbs'][] = $this->title;
 
-$metakey = 'Blog Build web and network, tutorials, tips, workshop, project development, ATC or Art Techno Corporation';
+$metakey = 'Blog Build web and network, tutorials, tips, workshop, project development, PT Qelopak Teknologi Indonesia';
 $description = 'This is a list Blog Posts tag '.$this->title.', you will be know about us in here';
 
 /** SEO */

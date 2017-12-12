@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'adminEmail' => 'admin@example.com',
-    'mainUrl' => 'http://www.atc.co.id',
-    'mobileUrl' => 'http://m.atc.co.id',
+    'adminEmail' => 'hendri.gnw@gmail.com',
+    'mainUrl' => 'http://www.qelopak.com',
+    'mobileUrl' => 'http://m.qelopak.com',
     'jsBlock' => 0,
     'modalBlock' => 0,
     'activeFrontTheme' => 'v1',
