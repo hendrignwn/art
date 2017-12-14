@@ -135,6 +135,10 @@ class View extends BaseView {
             'property' => 'og:description',
             'content' => array_key_exists('description', $content) ? $content['description'] : $defaultDescription,
         ]);
+        $this->registerMetaTag([
+            'property' => 'og:site_name',
+            'content' => array_key_exists('title', $content) ? $content['title'] : $defaultTitle,
+        ]);
         
         $this->registerMetaTag([
             'property' => 'twitter:card',
