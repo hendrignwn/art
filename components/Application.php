@@ -48,6 +48,13 @@ class Application extends \yii\web\Application
 
         $this->params = ArrayHelper::merge($this->params, $configs);
         
+        $connection = \Yii::$app->getDb();
+        $command = $connection->createCommand("
+            SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))
+            ");
+
+        $result = $command->execute();
+        
         return parent::run();
     }
 }
